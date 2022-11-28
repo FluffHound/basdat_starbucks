@@ -1,0 +1,2715 @@
+@extends('starbucks.catalog_menu')
+
+@section('content')
+    <div class="container">
+        <button type="button justify-content-center" class="btn btn-dark" style="font-size: 25px;">List Menu</button>
+        <!-- <h1 class="fst-italic lh-1 mb-4">Menu Pesanan</h1> -->
+        <div class="card mb-6">
+            <div class="card-header"><i class="fas fa-table me-1"></i> Menu Order</div>
+            <div class="col">
+                <table id="datatablesSimple">
+                    <!-- PANJANG, DI HIDE AJA -->
+                    <thead>
+                        <tr>
+                            <th width="10px">ID Menu</th>
+                            <th width="100px">Menu</th>
+                            <th width="50px">Jenis Menu</th>
+                            <th width="100px">Harga</th>
+                            <th width="100px">Kuantitas</th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>1</td>
+                                    <td>7 Seeds Cookie</td>
+                                    <td>bakery</td>
+                                    <td>39000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="1" name="id_menu">
+                                    <input type="hidden" value="7 Seeds Cookie" name="nama_menu">
+                                    <input type="hidden" value="39000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>2</td>
+                                    <td>Almond Croissant</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="2" name="id_menu">
+                                    <input type="hidden" value="Almond Croissant" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>3</td>
+                                    <td>Bagel Bites</td>
+                                    <td>bakery</td>
+                                    <td>37000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="3" name="id_menu">
+                                    <input type="hidden" value="Bagel Bites" name="nama_menu">
+                                    <input type="hidden" value="37000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>4</td>
+                                    <td>Beef Sausages  &  Cheese Croissant</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="4" name="id_menu">
+                                    <input type="hidden" value="Beef Sausages  &  Cheese Croissant" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>5</td>
+                                    <td>Cheese Bagles</td>
+                                    <td>bakery</td>
+                                    <td>32000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="5" name="id_menu">
+                                    <input type="hidden" value="Cheese Bagles" name="nama_menu">
+                                    <input type="hidden" value="32000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>6</td>
+                                    <td>Chocolate Croissant</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="6" name="id_menu">
+                                    <input type="hidden" value="Chocolate Croissant" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>7</td>
+                                    <td>Cinamon Roll</td>
+                                    <td>bakery</td>
+                                    <td>33000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="7" name="id_menu">
+                                    <input type="hidden" value="Cinamon Roll" name="nama_menu">
+                                    <input type="hidden" value="33000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>8</td>
+                                    <td>Cinnamon Chocolate Marble Cake</td>
+                                    <td>bakery</td>
+                                    <td>40000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="8" name="id_menu">
+                                    <input type="hidden" value="Cinnamon Chocolate Marble Cake" name="nama_menu">
+                                    <input type="hidden" value="40000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>9</td>
+                                    <td>Espresso Brownie</td>
+                                    <td>bakery</td>
+                                    <td>29000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="9" name="id_menu">
+                                    <input type="hidden" value="Espresso Brownie" name="nama_menu">
+                                    <input type="hidden" value="29000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>10</td>
+                                    <td>Nutella Bombolone</td>
+                                    <td>bakery</td>
+                                    <td>39000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="10" name="id_menu">
+                                    <input type="hidden" value="Nutella Bombolone" name="nama_menu">
+                                    <input type="hidden" value="39000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>11</td>
+                                    <td>Old Fashioned Blueberry Muffin</td>
+                                    <td>bakery</td>
+                                    <td>30000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="11" name="id_menu">
+                                    <input type="hidden" value="Old Fashioned Blueberry Muffin" name="nama_menu">
+                                    <input type="hidden" value="30000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>12</td>
+                                    <td>Peanut Butter Cornflakes Cookie</td>
+                                    <td>bakery</td>
+                                    <td>20000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="12" name="id_menu">
+                                    <input type="hidden" value="Peanut Butter Cornflakes Cookie" name="nama_menu">
+                                    <input type="hidden" value="20000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>13</td>
+                                    <td>Pillow Glazed Doughnut</td>
+                                    <td>bakery</td>
+                                    <td>39000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="13" name="id_menu">
+                                    <input type="hidden" value="Pillow Glazed Doughnut" name="nama_menu">
+                                    <input type="hidden" value="39000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>14</td>
+                                    <td>Raisin Oatmeal Scones</td>
+                                    <td>bakery</td>
+                                    <td>41000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="14" name="id_menu">
+                                    <input type="hidden" value="Raisin Oatmeal Scones" name="nama_menu">
+                                    <input type="hidden" value="41000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>15</td>
+                                    <td>Spicy Tuna Bread</td>
+                                    <td>bakery</td>
+                                    <td>29000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="15" name="id_menu">
+                                    <input type="hidden" value="Spicy Tuna Bread" name="nama_menu">
+                                    <input type="hidden" value="29000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>16</td>
+                                    <td>Srikaya Swirl Danish</td>
+                                    <td>bakery</td>
+                                    <td>40000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="16" name="id_menu">
+                                    <input type="hidden" value="Srikaya Swirl Danish" name="nama_menu">
+                                    <input type="hidden" value="40000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>17</td>
+                                    <td>Sumatra Chocolate Eclair</td>
+                                    <td>bakery</td>
+                                    <td>41000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="17" name="id_menu">
+                                    <input type="hidden" value="Sumatra Chocolate Eclair" name="nama_menu">
+                                    <input type="hidden" value="41000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>18</td>
+                                    <td>Triple Chocolate Muffin</td>
+                                    <td>bakery</td>
+                                    <td>39000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="18" name="id_menu">
+                                    <input type="hidden" value="Triple Chocolate Muffin" name="nama_menu">
+                                    <input type="hidden" value="39000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>19</td>
+                                    <td>Tuna Puff</td>
+                                    <td>bakery</td>
+                                    <td>28000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="19" name="id_menu">
+                                    <input type="hidden" value="Tuna Puff" name="nama_menu">
+                                    <input type="hidden" value="28000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>20</td>
+                                    <td>Avocado Medley Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="20" name="id_menu">
+                                    <input type="hidden" value="Avocado Medley Cake" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>21</td>
+                                    <td>Classic Dark Chocolate Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>39000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="21" name="id_menu">
+                                    <input type="hidden" value="Classic Dark Chocolate Cake" name="nama_menu">
+                                    <input type="hidden" value="39000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>23</td>
+                                    <td>New York Cheesecake</td>
+                                    <td>sweet & cake</td>
+                                    <td>38000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="23" name="id_menu">
+                                    <input type="hidden" value="New York Cheesecake" name="nama_menu">
+                                    <input type="hidden" value="38000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>24</td>
+                                    <td>Oreo Cheesecake</td>
+                                    <td>sweet & cake</td>
+                                    <td>17000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="24" name="id_menu">
+                                    <input type="hidden" value="Oreo Cheesecake" name="nama_menu">
+                                    <input type="hidden" value="17000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>25</td>
+                                    <td>Scarlet Velvet Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>39000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="25" name="id_menu">
+                                    <input type="hidden" value="Scarlet Velvet Cake" name="nama_menu">
+                                    <input type="hidden" value="39000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>26</td>
+                                    <td>Starbucks Pandan Gula Aren Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>29000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="26" name="id_menu">
+                                    <input type="hidden" value="Starbucks Pandan Gula Aren Cake" name="nama_menu">
+                                    <input type="hidden" value="29000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>27</td>
+                                    <td>Starbucks Vanilla Keju Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>30000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="27" name="id_menu">
+                                    <input type="hidden" value="Starbucks Vanilla Keju Cake" name="nama_menu">
+                                    <input type="hidden" value="30000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>28</td>
+                                    <td>Via Red Velvet Roll Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>29000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="28" name="id_menu">
+                                    <input type="hidden" value="Via Red Velvet Roll Cake" name="nama_menu">
+                                    <input type="hidden" value="29000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>29</td>
+                                    <td>Banana Cake</td>
+                                    <td>grab & go</td>
+                                    <td>21000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="29" name="id_menu">
+                                    <input type="hidden" value="Banana Cake" name="nama_menu">
+                                    <input type="hidden" value="21000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>30</td>
+                                    <td>Caramel Stroopwafel</td>
+                                    <td>grab & go</td>
+                                    <td>15000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="30" name="id_menu">
+                                    <input type="hidden" value="Caramel Stroopwafel" name="nama_menu">
+                                    <input type="hidden" value="15000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>31</td>
+                                    <td>Chocolate Chip Cookies</td>
+                                    <td>grab & go</td>
+                                    <td>19000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="31" name="id_menu">
+                                    <input type="hidden" value="Chocolate Chip Cookies" name="nama_menu">
+                                    <input type="hidden" value="19000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>32</td>
+                                    <td>Chocolate Stroopwafel</td>
+                                    <td>grab & go</td>
+                                    <td>15000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="32" name="id_menu">
+                                    <input type="hidden" value="Chocolate Stroopwafel" name="nama_menu">
+                                    <input type="hidden" value="15000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>33</td>
+                                    <td>Juices</td>
+                                    <td>grab & go</td>
+                                    <td>21000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="33" name="id_menu">
+                                    <input type="hidden" value="Juices" name="nama_menu">
+                                    <input type="hidden" value="21000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>34</td>
+                                    <td>Raisin Oatmeal Cookies</td>
+                                    <td>grab & go</td>
+                                    <td>20000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="34" name="id_menu">
+                                    <input type="hidden" value="Raisin Oatmeal Cookies" name="nama_menu">
+                                    <input type="hidden" value="20000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>35</td>
+                                    <td>Beef Filone</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="35" name="id_menu">
+                                    <input type="hidden" value="Beef Filone" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>36</td>
+                                    <td>Classic Tuna Toastie</td>
+                                    <td>sandwiches</td>
+                                    <td>29000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="36" name="id_menu">
+                                    <input type="hidden" value="Classic Tuna Toastie" name="nama_menu">
+                                    <input type="hidden" value="29000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>37</td>
+                                    <td>Grilled Smooked Beef & Cheese Decker</td>
+                                    <td>sandwiches</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="37" name="id_menu">
+                                    <input type="hidden" value="Grilled Smooked Beef & Cheese Decker" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>38</td>
+                                    <td>Peanut Butter Panini</td>
+                                    <td>sandwiches</td>
+                                    <td>41000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="38" name="id_menu">
+                                    <input type="hidden" value="Peanut Butter Panini" name="nama_menu">
+                                    <input type="hidden" value="41000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>39</td>
+                                    <td>Smoked Beef Mushroom & Cheese Panini</td>
+                                    <td>sandwiches</td>
+                                    <td>49000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="39" name="id_menu">
+                                    <input type="hidden" value="Smoked Beef Mushroom & Cheese Panini" name="nama_menu">
+                                    <input type="hidden" value="49000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>40</td>
+                                    <td>Trio Mixed Roll</td>
+                                    <td>sandwiches</td>
+                                    <td>44000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="40" name="id_menu">
+                                    <input type="hidden" value="Trio Mixed Roll" name="nama_menu">
+                                    <input type="hidden" value="44000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>41</td>
+                                    <td>Tuna Cheese Whole Wheat Panini</td>
+                                    <td>sandwiches</td>
+                                    <td>48000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="41" name="id_menu">
+                                    <input type="hidden" value="Tuna Cheese Whole Wheat Panini" name="nama_menu">
+                                    <input type="hidden" value="48000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>43</td>
+                                    <td>All Day Bfast Bun</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="43" name="id_menu">
+                                    <input type="hidden" value="All Day Bfast Bun" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>44</td>
+                                    <td>Cheese Quiche</td>
+                                    <td>savory pies</td>
+                                    <td>37000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="44" name="id_menu">
+                                    <input type="hidden" value="Cheese Quiche" name="nama_menu">
+                                    <input type="hidden" value="37000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>45</td>
+                                    <td>Smoked Beef Quiche</td>
+                                    <td>savory pies</td>
+                                    <td>35000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="45" name="id_menu">
+                                    <input type="hidden" value="Smoked Beef Quiche" name="nama_menu">
+                                    <input type="hidden" value="35000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>46</td>
+                                    <td>Asian Dolce Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>52000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="46" name="id_menu">
+                                    <input type="hidden" value="Asian Dolce Frappucino" name="nama_menu">
+                                    <input type="hidden" value="52000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>47</td>
+                                    <td>Caramel Coffee Jelly Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>57000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="47" name="id_menu">
+                                    <input type="hidden" value="Caramel Coffee Jelly Frappucino" name="nama_menu">
+                                    <input type="hidden" value="57000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>48</td>
+                                    <td>Caramel Java Chip Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>57000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="48" name="id_menu">
+                                    <input type="hidden" value="Caramel Java Chip Frappucino" name="nama_menu">
+                                    <input type="hidden" value="57000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>49</td>
+                                    <td>Coffee Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>44000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="49" name="id_menu">
+                                    <input type="hidden" value="Coffee Frappucino" name="nama_menu">
+                                    <input type="hidden" value="44000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>50</td>
+                                    <td>Dark Mocha Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>57000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="50" name="id_menu">
+                                    <input type="hidden" value="Dark Mocha Frappucino" name="nama_menu">
+                                    <input type="hidden" value="57000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>51</td>
+                                    <td>Espresso Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>48000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="51" name="id_menu">
+                                    <input type="hidden" value="Espresso Frappucino" name="nama_menu">
+                                    <input type="hidden" value="48000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>52</td>
+                                    <td>Hazelnut Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>50000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="52" name="id_menu">
+                                    <input type="hidden" value="Hazelnut Frappucino" name="nama_menu">
+                                    <input type="hidden" value="50000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>53</td>
+                                    <td>Java Chip Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>57000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="53" name="id_menu">
+                                    <input type="hidden" value="Java Chip Frappucino" name="nama_menu">
+                                    <input type="hidden" value="57000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>54</td>
+                                    <td>Mocha Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>53000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="54" name="id_menu">
+                                    <input type="hidden" value="Mocha Frappucino" name="nama_menu">
+                                    <input type="hidden" value="53000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>55</td>
+                                    <td>Mocha Jelly Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="55" name="id_menu">
+                                    <input type="hidden" value="Mocha Jelly Frappucino" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>56</td>
+                                    <td>Caramel Cream Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>57000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="56" name="id_menu">
+                                    <input type="hidden" value="Caramel Cream Frappucino" name="nama_menu">
+                                    <input type="hidden" value="57000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>57</td>
+                                    <td>Double Chocolate Cream Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="57" name="id_menu">
+                                    <input type="hidden" value="Double Chocolate Cream Frappucino" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>58</td>
+                                    <td>Green Tea Cream Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="58" name="id_menu">
+                                    <input type="hidden" value="Green Tea Cream Frappucino" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>59</td>
+                                    <td>Vanilla Cream Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="59" name="id_menu">
+                                    <input type="hidden" value="Vanilla Cream Frappucino" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>60</td>
+                                    <td>Mango Passion Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>47000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="60" name="id_menu">
+                                    <input type="hidden" value="Mango Passion Frappucino" name="nama_menu">
+                                    <input type="hidden" value="47000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>61</td>
+                                    <td>Rapsberry Currant Frappucino</td>
+                                    <td>blended beve</td>
+                                    <td>47000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="61" name="id_menu">
+                                    <input type="hidden" value="Rapsberry Currant Frappucino" name="nama_menu">
+                                    <input type="hidden" value="47000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>62</td>
+                                    <td>Cold Brew</td>
+                                    <td>brewed coffe</td>
+                                    <td>41000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="62" name="id_menu">
+                                    <input type="hidden" value="Cold Brew" name="nama_menu">
+                                    <input type="hidden" value="41000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>63</td>
+                                    <td>reshly Brewed Coffee</td>
+                                    <td>brewed coffe</td>
+                                    <td>23000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="63" name="id_menu">
+                                    <input type="hidden" value="reshly Brewed Coffee" name="nama_menu">
+                                    <input type="hidden" value="23000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>64</td>
+                                    <td>Misto</td>
+                                    <td>brewed coffe</td>
+                                    <td>23000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="64" name="id_menu">
+                                    <input type="hidden" value="Misto" name="nama_menu">
+                                    <input type="hidden" value="23000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>65</td>
+                                    <td>Vanilla Sweet Cream Cold Brew</td>
+                                    <td>brewed coffe</td>
+                                    <td>46000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="65" name="id_menu">
+                                    <input type="hidden" value="Vanilla Sweet Cream Cold Brew" name="nama_menu">
+                                    <input type="hidden" value="46000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>66</td>
+                                    <td>Caffe Americano</td>
+                                    <td>espresso bev</td>
+                                    <td>34000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="66" name="id_menu">
+                                    <input type="hidden" value="Caffe Americano" name="nama_menu">
+                                    <input type="hidden" value="34000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>67</td>
+                                    <td>Caffe Latte</td>
+                                    <td>espresso bev</td>
+                                    <td>44000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="67" name="id_menu">
+                                    <input type="hidden" value="Caffe Latte" name="nama_menu">
+                                    <input type="hidden" value="44000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>68</td>
+                                    <td>Caffe Mocha</td>
+                                    <td>espresso bev</td>
+                                    <td>53000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="68" name="id_menu">
+                                    <input type="hidden" value="Caffe Mocha" name="nama_menu">
+                                    <input type="hidden" value="53000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>69</td>
+                                    <td>Cappucino</td>
+                                    <td>espresso bev</td>
+                                    <td>44000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="69" name="id_menu">
+                                    <input type="hidden" value="Cappucino" name="nama_menu">
+                                    <input type="hidden" value="44000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>70</td>
+                                    <td>Caramel Macchiato</td>
+                                    <td>espresso bev</td>
+                                    <td>57000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="70" name="id_menu">
+                                    <input type="hidden" value="Caramel Macchiato" name="nama_menu">
+                                    <input type="hidden" value="57000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>71</td>
+                                    <td>Cocoa Cappucino</td>
+                                    <td>espresso bev</td>
+                                    <td>53000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="71" name="id_menu">
+                                    <input type="hidden" value="Cocoa Cappucino" name="nama_menu">
+                                    <input type="hidden" value="53000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>72</td>
+                                    <td>Cold Foam</td>
+                                    <td>espresso bev</td>
+                                    <td>41000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="72" name="id_menu">
+                                    <input type="hidden" value="Cold Foam" name="nama_menu">
+                                    <input type="hidden" value="41000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>73</td>
+                                    <td>Double Shot Iced Shaken Espresso</td>
+                                    <td>espresso bev</td>
+                                    <td>48000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="73" name="id_menu">
+                                    <input type="hidden" value="Double Shot Iced Shaken Espresso" name="nama_menu">
+                                    <input type="hidden" value="48000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>74</td>
+                                    <td>Espresso Con Panna</td>
+                                    <td>espresso bev</td>
+                                    <td>45000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="74" name="id_menu">
+                                    <input type="hidden" value="Espresso Con Panna" name="nama_menu">
+                                    <input type="hidden" value="45000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>75</td>
+                                    <td>Espresso Macchiato</td>
+                                    <td>espresso bev</td>
+                                    <td>53000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="75" name="id_menu">
+                                    <input type="hidden" value="Espresso Macchiato" name="nama_menu">
+                                    <input type="hidden" value="53000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>76</td>
+                                    <td>lat White</td>
+                                    <td>espresso bev</td>
+                                    <td>44000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="76" name="id_menu">
+                                    <input type="hidden" value="lat White" name="nama_menu">
+                                    <input type="hidden" value="44000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>77</td>
+                                    <td>Iced Espresso and Matcha Fusion</td>
+                                    <td>espresso bev</td>
+                                    <td>53000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="77" name="id_menu">
+                                    <input type="hidden" value="Iced Espresso and Matcha Fusion" name="nama_menu">
+                                    <input type="hidden" value="53000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>78</td>
+                                    <td>Ristretto Bianco</td>
+                                    <td>espresso bev</td>
+                                    <td>53000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="78" name="id_menu">
+                                    <input type="hidden" value="Ristretto Bianco" name="nama_menu">
+                                    <input type="hidden" value="53000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>79</td>
+                                    <td>Signature Chocolate</td>
+                                    <td>milk and cho</td>
+                                    <td>50000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="79" name="id_menu">
+                                    <input type="hidden" value="Signature Chocolate" name="nama_menu">
+                                    <input type="hidden" value="50000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>80</td>
+                                    <td>Iced Shaken Lemonade Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="80" name="id_menu">
+                                    <input type="hidden" value="Iced Shaken Lemonade Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>81</td>
+                                    <td>TEAVANA Chai Hot Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="81" name="id_menu">
+                                    <input type="hidden" value="TEAVANA Chai Hot Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>82</td>
+                                    <td>TEAVANA Chamomile Hot Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="82" name="id_menu">
+                                    <input type="hidden" value="TEAVANA Chamomile Hot Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>83</td>
+                                    <td>TEAVANA Citrus Mint Hot Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="83" name="id_menu">
+                                    <input type="hidden" value="TEAVANA Citrus Mint Hot Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>84</td>
+                                    <td>TEAVANA Earl Grey Hot Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="84" name="id_menu">
+                                    <input type="hidden" value="TEAVANA Earl Grey Hot Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>85</td>
+                                    <td>TEAVANA English Breakfast Hot Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="85" name="id_menu">
+                                    <input type="hidden" value="TEAVANA English Breakfast Hot Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>86</td>
+                                    <td>TEAVANA Mint Blend Hot Tea</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="86" name="id_menu">
+                                    <input type="hidden" value="TEAVANA Mint Blend Hot Tea" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>87</td>
+                                    <td>Black Tea Latte</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="87" name="id_menu">
+                                    <input type="hidden" value="Black Tea Latte" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>88</td>
+                                    <td>Chai Tea Latte</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="88" name="id_menu">
+                                    <input type="hidden" value="Chai Tea Latte" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>89</td>
+                                    <td>Earl Grey Tea Latte</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="89" name="id_menu">
+                                    <input type="hidden" value="Earl Grey Tea Latte" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>90</td>
+                                    <td>Green Tea Latte</td>
+                                    <td>tea</td>
+                                    <td>22000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="90" name="id_menu">
+                                    <input type="hidden" value="Green Tea Latte" name="nama_menu">
+                                    <input type="hidden" value="22000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>91</td>
+                                    <td>Cold Cup Translucent Mint</td>
+                                    <td>bulk</td>
+                                    <td>250000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="91" name="id_menu">
+                                    <input type="hidden" value="Cold Cup Translucent Mint" name="nama_menu">
+                                    <input type="hidden" value="250000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>92</td>
+                                    <td>Cold Cup Cooper</td>
+                                    <td>bulk</td>
+                                    <td>425000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="92" name="id_menu">
+                                    <input type="hidden" value="Cold Cup Cooper" name="nama_menu">
+                                    <input type="hidden" value="425000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>93</td>
+                                    <td>Tumbler Wordmark Cooper</td>
+                                    <td>bulk</td>
+                                    <td>450000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="93" name="id_menu">
+                                    <input type="hidden" value="Tumbler Wordmark Cooper" name="nama_menu">
+                                    <input type="hidden" value="450000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>94</td>
+                                    <td>Tumbler Siren Art Cooper</td>
+                                    <td>bulk</td>
+                                    <td>450000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="94" name="id_menu">
+                                    <input type="hidden" value="Tumbler Siren Art Cooper" name="nama_menu">
+                                    <input type="hidden" value="450000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>95</td>
+                                    <td>Tumbler Matter Green</td>
+                                    <td>bulk</td>
+                                    <td>450000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="95" name="id_menu">
+                                    <input type="hidden" value="Tumbler Matter Green" name="nama_menu">
+                                    <input type="hidden" value="450000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>96</td>
+                                    <td>Waterbottle Green</td>
+                                    <td>bulk</td>
+                                    <td>395000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="96" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Green" name="nama_menu">
+                                    <input type="hidden" value="395000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>97</td>
+                                    <td>Waterbottle Mint</td>
+                                    <td>bulk</td>
+                                    <td>395000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="97" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Mint" name="nama_menu">
+                                    <input type="hidden" value="395000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>98</td>
+                                    <td>Waterbottle Siren Art Mint</td>
+                                    <td>bulk</td>
+                                    <td>485000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="98" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Siren Art Mint" name="nama_menu">
+                                    <input type="hidden" value="485000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>99</td>
+                                    <td>Waterbottle Siren Mint</td>
+                                    <td>bulk</td>
+                                    <td>500000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="99" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Siren Mint" name="nama_menu">
+                                    <input type="hidden" value="500000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>100</td>
+                                    <td>Waterbottle Touple Siren Art</td>
+                                    <td>bulk</td>
+                                    <td>550000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="100" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Touple Siren Art" name="nama_menu">
+                                    <input type="hidden" value="550000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>101</td>
+                                    <td>Waterbottle Wordmark Green</td>
+                                    <td>bulk</td>
+                                    <td>425000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="101" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Wordmark Green" name="nama_menu">
+                                    <input type="hidden" value="425000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>102</td>
+                                    <td>Straw Mint</td>
+                                    <td>bulk</td>
+                                    <td>150000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="102" name="id_menu">
+                                    <input type="hidden" value="Straw Mint" name="nama_menu">
+                                    <input type="hidden" value="150000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>103</td>
+                                    <td>To Go Food Box Green Round</td>
+                                    <td>bulk</td>
+                                    <td>250000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="103" name="id_menu">
+                                    <input type="hidden" value="To Go Food Box Green Round" name="nama_menu">
+                                    <input type="hidden" value="250000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>104</td>
+                                    <td>Cold Cup Coffe Chery Siren</td>
+                                    <td>bulk</td>
+                                    <td>250000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="104" name="id_menu">
+                                    <input type="hidden" value="Cold Cup Coffe Chery Siren" name="nama_menu">
+                                    <input type="hidden" value="250000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>105</td>
+                                    <td>Waterbottle Mint Lid Siren</td>
+                                    <td>bulk</td>
+                                    <td>280000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="105" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Mint Lid Siren" name="nama_menu">
+                                    <input type="hidden" value="280000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>106</td>
+                                    <td>Waterbottle Green Siren with Sleeve</td>
+                                    <td>bulk</td>
+                                    <td>275000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="106" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Green Siren with Sleeve" name="nama_menu">
+                                    <input type="hidden" value="275000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>107</td>
+                                    <td>Waterbottle Green Lid</td>
+                                    <td>bulk</td>
+                                    <td>235000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="107" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Green Lid" name="nama_menu">
+                                    <input type="hidden" value="235000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>108</td>
+                                    <td>Waterbottle Mint Coffe Leaf with Sleeve</td>
+                                    <td>bulk</td>
+                                    <td>250000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="108" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Mint Coffe Leaf with Sleeve" name="nama_menu">
+                                    <input type="hidden" value="250000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>109</td>
+                                    <td>Reuse Cold Cup Green</td>
+                                    <td>bulk</td>
+                                    <td>99000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="109" name="id_menu">
+                                    <input type="hidden" value="Reuse Cold Cup Green" name="nama_menu">
+                                    <input type="hidden" value="99000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>110</td>
+                                    <td>Waterbottle Mint Siren</td>
+                                    <td>bulk</td>
+                                    <td>550000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="110" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Mint Siren" name="nama_menu">
+                                    <input type="hidden" value="550000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>111</td>
+                                    <td>Cold Cup Siren with Stopper</td>
+                                    <td>bulk</td>
+                                    <td>435000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="111" name="id_menu">
+                                    <input type="hidden" value="Cold Cup Siren with Stopper" name="nama_menu">
+                                    <input type="hidden" value="435000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>112</td>
+                                    <td>Tumbler Green Siren</td>
+                                    <td>bulk</td>
+                                    <td>535000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="112" name="id_menu">
+                                    <input type="hidden" value="Tumbler Green Siren" name="nama_menu">
+                                    <input type="hidden" value="535000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>113</td>
+                                    <td>Waterbottle Green Cherry Leaf</td>
+                                    <td>bulk</td>
+                                    <td>365000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="113" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Green Cherry Leaf" name="nama_menu">
+                                    <input type="hidden" value="365000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>114</td>
+                                    <td>Mug Green Desktop</td>
+                                    <td>bulk</td>
+                                    <td>375000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="114" name="id_menu">
+                                    <input type="hidden" value="Mug Green Desktop" name="nama_menu">
+                                    <input type="hidden" value="375000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>115</td>
+                                    <td>Waterbottle Mint Coffe Leaf</td>
+                                    <td>bulk</td>
+                                    <td>430000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="115" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Mint Coffe Leaf" name="nama_menu">
+                                    <input type="hidden" value="430000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>116</td>
+                                    <td>Waterbottle Mint</td>
+                                    <td>bulk</td>
+                                    <td>400000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="116" name="id_menu">
+                                    <input type="hidden" value="Waterbottle Mint" name="nama_menu">
+                                    <input type="hidden" value="400000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>117</td>
+                                    <td>Tumbler Black with Black Siren</td>
+                                    <td>bulk</td>
+                                    <td>450000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="117" name="id_menu">
+                                    <input type="hidden" value="Tumbler Black with Black Siren" name="nama_menu">
+                                    <input type="hidden" value="450000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>118</td>
+                                    <td>Starbucks Tumbler 16ss Classic Bunny S11135756 Aut22 (Cold cup P</td>
+                                    <td>seasonal</td>
+                                    <td>600000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="118" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16ss Classic Bunny S11135756 Aut22 (Cold cup P" name="nama_menu">
+                                    <input type="hidden" value="600000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>119</td>
+                                    <td>Starbucks Tumbler 16 Bunnies On Yarn Balls S11135759 Aut22 (Tumb</td>
+                                    <td>seasonal</td>
+                                    <td>355000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="119" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16 Bunnies On Yarn Balls S11135759 Aut22 (Tumb" name="nama_menu">
+                                    <input type="hidden" value="355000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>120</td>
+                                    <td>Starbucks Waterbottle 14oz Bunnies In Sweaters S11135767 Aut22 (</td>
+                                    <td>seasonal</td>
+                                    <td>325000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="120" name="id_menu">
+                                    <input type="hidden" value="Starbucks Waterbottle 14oz Bunnies In Sweaters S11135767 Aut22 (" name="nama_menu">
+                                    <input type="hidden" value="325000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>121</td>
+                                    <td>Starbucks Waterbottle 12ss Classic Bunny S11135764 Aut22 (Waterb</td>
+                                    <td>seasonal</td>
+                                    <td>550000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="121" name="id_menu">
+                                    <input type="hidden" value="Starbucks Waterbottle 12ss Classic Bunny S11135764 Aut22 (Waterb" name="nama_menu">
+                                    <input type="hidden" value="550000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>122</td>
+                                    <td>Starbucks Cold Cup 18ss Bunnies Knit The Mn S11135761 Aut22 (Col</td>
+                                    <td>seasonal</td>
+                                    <td>555000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="122" name="id_menu">
+                                    <input type="hidden" value="Starbucks Cold Cup 18ss Bunnies Knit The Mn S11135761 Aut22 (Col" name="nama_menu">
+                                    <input type="hidden" value="555000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>123</td>
+                                    <td>Starbucks Cold Cup 16oz Knitting Bunnies S11135763 Aut22 (Coldcu</td>
+                                    <td>seasonal</td>
+                                    <td>385000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="123" name="id_menu">
+                                    <input type="hidden" value="Starbucks Cold Cup 16oz Knitting Bunnies S11135763 Aut22 (Coldcu" name="nama_menu">
+                                    <input type="hidden" value="385000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>124</td>
+                                    <td>Starbucks Waterbottle 20ss Gradient Coral S11135742 Aut22 (Water</td>
+                                    <td>seasonal</td>
+                                    <td>565000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="124" name="id_menu">
+                                    <input type="hidden" value="Starbucks Waterbottle 20ss Gradient Coral S11135742 Aut22 (Water" name="nama_menu">
+                                    <input type="hidden" value="565000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>125</td>
+                                    <td>Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu</td>
+                                    <td>seasonal</td>
+                                    <td>425000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="125" name="id_menu">
+                                    <input type="hidden" value="Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu" name="nama_menu">
+                                    <input type="hidden" value="425000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>126</td>
+                                    <td>Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu</td>
+                                    <td>seasonal</td>
+                                    <td>425000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="126" name="id_menu">
+                                    <input type="hidden" value="Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu" name="nama_menu">
+                                    <input type="hidden" value="425000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>127</td>
+                                    <td>Starbucks Tumbler 16oz Dreamy Coral S11135736 Aut22 (Tumbler Pla</td>
+                                    <td>seasonal</td>
+                                    <td>285000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="127" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16oz Dreamy Coral S11135736 Aut22 (Tumbler Pla" name="nama_menu">
+                                    <input type="hidden" value="285000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>128</td>
+                                    <td>Starbucks Waterbottle 18oz Siren In Coral Sea S11135744 Aut22 (W</td>
+                                    <td>seasonal</td>
+                                    <td>300000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="128" name="id_menu">
+                                    <input type="hidden" value="Starbucks Waterbottle 18oz Siren In Coral Sea S11135744 Aut22 (W" name="nama_menu">
+                                    <input type="hidden" value="300000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>129</td>
+                                    <td>Starbucks Tumbler 16ss Siren In Coral Sea S11135732 Aut22 (Tumbl</td>
+                                    <td>seasonal</td>
+                                    <td>550000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="129" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16ss Siren In Coral Sea S11135732 Aut22 (Tumbl" name="nama_menu">
+                                    <input type="hidden" value="550000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>130</td>
+                                    <td>Starbucks Tumbler 16ss Faceted Gradint Blue S11135735 Aut22 (Tum</td>
+                                    <td>seasonal</td>
+                                    <td>565000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="130" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16ss Faceted Gradint Blue S11135735 Aut22 (Tum" name="nama_menu">
+                                    <input type="hidden" value="565000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>131</td>
+                                    <td>Starbucks Tumbler 16ss Anniversary Blnd 22 S11135536 Aut22 (Cold</td>
+                                    <td>seasonal</td>
+                                    <td>675000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="131" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16ss Anniversary Blnd 22 S11135536 Aut22 (Cold" name="nama_menu">
+                                    <input type="hidden" value="675000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>132</td>
+                                    <td>Starbucks Tumbler 16oz Siren In Coral Sea S11135737 Aut22 (Tumbl</td>
+                                    <td>seasonal</td>
+                                    <td>385000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="132" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16oz Siren In Coral Sea S11135737 Aut22 (Tumbl" name="nama_menu">
+                                    <input type="hidden" value="385000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>133</td>
+                                    <td>Starbucks Tumbler 16ss Siren On Coral Reef S11135730 Aut22 (Tumb</td>
+                                    <td>seasonal</td>
+                                    <td>675000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="133" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16ss Siren On Coral Reef S11135730 Aut22 (Tumb" name="nama_menu">
+                                    <input type="hidden" value="675000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>134</td>
+                                    <td>Starbucks Tumbler 16Oz People Of Indonesia Indigenous Animal And</td>
+                                    <td>seasonal</td>
+                                    <td>455000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="134" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16Oz People Of Indonesia Indigenous Animal And" name="nama_menu">
+                                    <input type="hidden" value="455000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>135</td>
+                                    <td>Starbucks Tumbler 16Oz Landmark Of Indonesia S0606223 (Beauty Of</td>
+                                    <td>seasonal</td>
+                                    <td>455000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="135" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16Oz Landmark Of Indonesia S0606223 (Beauty Of" name="nama_menu">
+                                    <input type="hidden" value="455000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>136</td>
+                                    <td>Starbucks Tumbler 16Oz People Of Indonesia S0606220 Beauty Of In</td>
+                                    <td>seasonal</td>
+                                    <td>455000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="136" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16Oz People Of Indonesia S0606220 Beauty Of In" name="nama_menu">
+                                    <input type="hidden" value="455000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>137</td>
+                                    <td>Starbucks Tumbler 16Oz Culture Of Indonesia S0606222 (Beauty Of </td>
+                                    <td>seasonal</td>
+                                    <td>455000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="137" name="id_menu">
+                                    <input type="hidden" value="Starbucks Tumbler 16Oz Culture Of Indonesia S0606222 (Beauty Of " name="nama_menu">
+                                    <input type="hidden" value="455000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>138</td>
+                                    <td>Starbucks Plastic Reusable Water Bottle 1 Liter Dreamy Day Desig</td>
+                                    <td>seasonal</td>
+                                    <td>109000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="138" name="id_menu">
+                                    <input type="hidden" value="Starbucks Plastic Reusable Water Bottle 1 Liter Dreamy Day Desig" name="nama_menu">
+                                    <input type="hidden" value="109000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>139</td>
+                                    <td>Starbucks Plastic Reusable Water Bottle 1 Liter Design Coffee Ti</td>
+                                    <td>seasonal</td>
+                                    <td>109000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="139" name="id_menu">
+                                    <input type="hidden" value="Starbucks Plastic Reusable Water Bottle 1 Liter Design Coffee Ti" name="nama_menu">
+                                    <input type="hidden" value="109000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>140</td>
+                                    <td>Starbucks Plastic Reusable Water Bottle 1 Liter Design Under Wat</td>
+                                    <td>seasonal</td>
+                                    <td>109000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="140" name="id_menu">
+                                    <input type="hidden" value="Starbucks Plastic Reusable Water Bottle 1 Liter Design Under Wat" name="nama_menu">
+                                    <input type="hidden" value="109000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>141</td>
+                                    <td>Almond Whirl Choco Chips Danish</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="141" name="id_menu">
+                                    <input type="hidden" value="Almond Whirl Choco Chips Danish" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>142</td>
+                                    <td>Butter Croissant</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="142" name="id_menu">
+                                    <input type="hidden" value="Butter Croissant" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>143</td>
+                                    <td>Canele</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="143" name="id_menu">
+                                    <input type="hidden" value="Canele" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>144</td>
+                                    <td>Choco Chips Pistachio Pocket</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="144" name="id_menu">
+                                    <input type="hidden" value="Choco Chips Pistachio Pocket" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>145</td>
+                                    <td>Choco Chunk Praline Muffin</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="145" name="id_menu">
+                                    <input type="hidden" value="Choco Chunk Praline Muffin" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>146</td>
+                                    <td>Cinnamon Rolls</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="146" name="id_menu">
+                                    <input type="hidden" value="Cinnamon Rolls" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>147</td>
+                                    <td>Gluten Free Almond Financier</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="147" name="id_menu">
+                                    <input type="hidden" value="Gluten Free Almond Financier" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>148</td>
+                                    <td>Madeleine</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="148" name="id_menu">
+                                    <input type="hidden" value="Madeleine" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>149</td>
+                                    <td>Smoked Beef Emmental Croissant</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="149" name="id_menu">
+                                    <input type="hidden" value="Smoked Beef Emmental Croissant" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>150</td>
+                                    <td>Wild Berry Muffin</td>
+                                    <td>bakery</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="150" name="id_menu">
+                                    <input type="hidden" value="Wild Berry Muffin" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>151</td>
+                                    <td>Apple and Cinnamon Crumble</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="151" name="id_menu">
+                                    <input type="hidden" value="Apple and Cinnamon Crumble" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>152</td>
+                                    <td>Banana Maltine Eclairs</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="152" name="id_menu">
+                                    <input type="hidden" value="Banana Maltine Eclairs" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>153</td>
+                                    <td>Carrot Walnut Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="153" name="id_menu">
+                                    <input type="hidden" value="Carrot Walnut Cake" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>154</td>
+                                    <td>Chocolate Ganache Raspberry Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="154" name="id_menu">
+                                    <input type="hidden" value="Chocolate Ganache Raspberry Cake" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>155</td>
+                                    <td>Espresso Brownies</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="155" name="id_menu">
+                                    <input type="hidden" value="Espresso Brownies" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>156</td>
+                                    <td>Avocado Medley Cake</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="156" name="id_menu">
+                                    <input type="hidden" value="Avocado Medley Cake" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>157</td>
+                                    <td>French Cherry Tart</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="157" name="id_menu">
+                                    <input type="hidden" value="French Cherry Tart" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>158</td>
+                                    <td>Green Tea and Ogura Swiss Roll</td>
+                                    <td>sweet & cake</td>
+                                    <td>36000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="158" name="id_menu">
+                                    <input type="hidden" value="Green Tea and Ogura Swiss Roll" name="nama_menu">
+                                    <input type="hidden" value="36000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>159</td>
+                                    <td>Bahn Mie Chicken Baguette</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="159" name="id_menu">
+                                    <input type="hidden" value="Bahn Mie Chicken Baguette" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>160</td>
+                                    <td>Honey Mustard Roast Beef Focaccia</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="160" name="id_menu">
+                                    <input type="hidden" value="Honey Mustard Roast Beef Focaccia" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>161</td>
+                                    <td>Mediterranean Chicken Sandwich</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="161" name="id_menu">
+                                    <input type="hidden" value="Mediterranean Chicken Sandwich" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>162</td>
+                                    <td>Smoked Beef Mushroom and Cheese Panini</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="162" name="id_menu">
+                                    <input type="hidden" value="Smoked Beef Mushroom and Cheese Panini" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>163</td>
+                                    <td>Spicy Roast Beef Dark Ciabatta</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="163" name="id_menu">
+                                    <input type="hidden" value="Spicy Roast Beef Dark Ciabatta" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                            
+
+                            <tr>
+                                <form method='POST' action="{{ route('cart.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <td>164</td>
+                                    <td>Tuna Black Pepper Sour Dough Bread</td>
+                                    <td>sandwiches</td>
+                                    <td>55000</td>
+                                    <td><input name='quantity' type="number" placeholder='Jumlah'></td>
+                                    <input type="hidden" value="164" name="id_menu">
+                                    <input type="hidden" value="Tuna Black Pepper Sour Dough Bread" name="nama_menu">
+                                    <input type="hidden" value="55000"  name="harga_menu">
+                                    <td><button type='submit' class='btn btn-success'>Add</button></td>
+                                </form>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+        <br>
+    </div>
+@endsection
+
+@section('cart')
+<button type="button" class="btn btn-dark" style="font-size: 20px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Order
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1 " aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel" style="size: 2px;">Summary Order</h5>
+                                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-25">
+                                        <div class="container">
+                                            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+                                            <!-- <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+                                            <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+                                            <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+                                            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+                                            <hr>
+                                            <p>Total <span class="price" style="color:black"><b>$30</b></span></p> -->
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th width="10px">ID Menu</th>
+                                                        <th width="100px">Menu</th>
+                                                        <th width="100px">Kuantitas</th>
+                                                        <th width="100px">Harga</th>
+                                                        <th width="100px">Remove</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        @foreach ($cartItems as $item)
+                                                            <tr>
+                                                                <td><p>{{ $item -> id }}</p></td>
+                                                                <td><p>{{ $item -> name }}</p></td>
+                                                                <td><p>{{ $item -> quantity }}</p></td>
+                                                                <td><p>{{ $item -> price }}</p></td>
+                                                                <td>
+                                                                    <form action="{{ route('cart.remove') }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" value="{{ $item->id }}" name="id">
+                                                                    <button class="px-4 py-2 text-white bg-red-600">x</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        Total: ${{ Cart::getTotal() }}
+                                    </div>
+                                    <div>
+                                        <form action="{{ route('cart.clear') }}" method="POST">
+                                            @csrf
+                                            <button class="px-6 py-2 text-red-800 bg-red-300">Remove All Cart</button>
+                                        </form>
+                                    </div>
+                                    <!-- === PEMBAYARAN === -->
+                                    <h3 style="font-size: 25px;">Payment</h3>
+                                    <label for="fname">Accepted Cards</label>
+                                    <br>
+                                    <button style="font-size:20px; justify-content: center;" type="button" class="btn btn-light"> <i class="fa-brands fa-cc-paypal" style="font-size:48px;color:black"></i></button>
+                                    <button style="font-size:20px; justify-content: center;" type="button" class="btn btn-light"> <i class="fa-brands fa-cc-mastercard"  style="font-size:48px;color:black"></i></button>
+                                    <button style="font-size:20px; justify-content: center;" type="button" class="btn btn-light"> <i class="fa fa-credit-card"  style="font-size:48px;color:black"></i></button>
+                                    <button style="font-size:20px; justify-content: center;" type="button" class="btn btn-light"> <i class="fa-solid fa-money-bill-1-wave" style="font-size:48px;color:black"></i></button>
+                                    <button style="font-size:20px; justify-content: center;" type="button" class="btn btn-light"> <i class="fa fa-user-plus" style="font-size:48px;color:black"></i></button>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button onclick="myFunction()" type="button" class="btn btn-success">Bayar</button>
+                                </div>
+
+                                <div id="hideDIV" style="display: none;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </symbol>
+                                        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                        </symbol>
+                                        </svg>
+                                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                        <div>
+                                            Pembayaran Berhasil !
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+@endsection

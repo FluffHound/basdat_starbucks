@@ -11,7 +11,7 @@
  Target Server Version : 100424 (10.4.24-MariaDB)
  File Encoding         : 65001
 
- Date: 07/12/2022 23:03:31
+ Date: 07/12/2022 23:32:41
 */
 
 SET NAMES utf8mb4;
@@ -25,10 +25,12 @@ CREATE TABLE `toko`  (
   `id_toko` int NOT NULL,
   `nama_toko` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `id_provinsi_fk` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `id_provinsi_fk` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `kode_pos` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `nomor_telepon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_toko`) USING BTREE
+  PRIMARY KEY (`id_toko`) USING BTREE,
+  INDEX `id_provinsi_fk`(`id_provinsi_fk` ASC) USING BTREE,
+  CONSTRAINT `toko_ibfk_1` FOREIGN KEY (`id_provinsi_fk`) REFERENCES `provinsi` (`id_provinsi`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------

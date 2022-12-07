@@ -5,19 +5,19 @@
  Source Server Type    : MySQL
  Source Server Version : 100424 (10.4.24-MariaDB)
  Source Host           : localhost:3306
- Source Schema         : starbucks_test
+ Source Schema         : starbucks
 
  Target Server Type    : MySQL
  Target Server Version : 100424 (10.4.24-MariaDB)
  File Encoding         : 65001
 
- Date: 05/12/2022 16:17:15
+ Date: 07/12/2022 23:00:37
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP DATABASE IF EXISTS `starbucks`;
+DROP DATABASE IF EXISTS starbucks;
 CREATE DATABASE starbucks;
 USE starbucks;
 
@@ -67,10 +67,10 @@ CREATE TABLE `data_karyawan`  (
   INDEX `fk_data_karyawan_posisi`(`id_posisi_fk` ASC) USING BTREE,
   INDEX `fk_data_karyawan_golongan`(`id_golongan_fk` ASC) USING BTREE,
   INDEX `id_toko_fk`(`id_toko_fk` ASC) USING BTREE,
-  CONSTRAINT `fk_data_karyawan_posisi` FOREIGN KEY (`id_posisi_fk`) REFERENCES `posisi` (`id_posisi`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `data_karyawan_ibfk_1` FOREIGN KEY (`id_toko_fk`) REFERENCES `toko` (`id_toko`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_data_karyawan_golongan` FOREIGN KEY (`id_golongan_fk`) REFERENCES `golongan` (`id_golongan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  CONSTRAINT `fk_data_karyawan_golongan` FOREIGN KEY (`id_golongan_fk`) REFERENCES `golongan` (`id_golongan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_data_karyawan_posisi` FOREIGN KEY (`id_posisi_fk`) REFERENCES `posisi` (`id_posisi`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of data_karyawan
@@ -1108,7 +1108,7 @@ CREATE TABLE `detail_pemesanan`  (
   INDEX `kode_produk_fk`(`kode_produk_fk` ASC) USING BTREE,
   CONSTRAINT `detail_pemesanan_ibfk_1` FOREIGN KEY (`id_pemesanan_fk`) REFERENCES `pemesanan` (`id_pemesanan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `detail_pemesanan_ibfk_2` FOREIGN KEY (`kode_produk_fk`) REFERENCES `produk` (`kode_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of detail_pemesanan
@@ -5388,179 +5388,179 @@ DROP TABLE IF EXISTS `produk`;
 CREATE TABLE `produk`  (
   `kode_produk` int NOT NULL,
   `nama_produk` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `tipe_produk_fk` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_tipe_produk_fk` int NOT NULL,
   `stok_tersedia` int UNSIGNED NULL DEFAULT NULL,
   `harga` decimal(10, 3) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`kode_produk`) USING BTREE,
-  INDEX `fk_produk_tipe_produk`(`tipe_produk_fk` ASC) USING BTREE,
-  CONSTRAINT `fk_produk_tipe_produk` FOREIGN KEY (`tipe_produk_fk`) REFERENCES `tipe_produk` (`tipe_produk`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  INDEX `id_tipe_produk_fk`(`id_tipe_produk_fk` ASC) USING BTREE,
+  CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_tipe_produk_fk`) REFERENCES `tipe_produk` (`id_tipe_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of produk
 -- ----------------------------
-INSERT INTO `produk` VALUES (1, '7 Seeds Cookie', 'bakery', 3, 39000.000);
-INSERT INTO `produk` VALUES (2, 'Almond Croissant', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (3, 'Bagel Bites', 'bakery', 20, 37000.000);
-INSERT INTO `produk` VALUES (4, 'Beef Sausages  &  Cheese Croissant', 'bakery', 0, 36000.000);
-INSERT INTO `produk` VALUES (5, 'Cheese Bagles', 'bakery', 20, 32000.000);
-INSERT INTO `produk` VALUES (6, 'Chocolate Croissant', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (7, 'Cinamon Roll', 'bakery', 20, 33000.000);
-INSERT INTO `produk` VALUES (8, 'Cinnamon Chocolate Marble Cake', 'bakery', 20, 40000.000);
-INSERT INTO `produk` VALUES (9, 'Espresso Brownie', 'bakery', 20, 29000.000);
-INSERT INTO `produk` VALUES (10, 'Nutella Bombolone', 'bakery', 20, 39000.000);
-INSERT INTO `produk` VALUES (11, 'Old Fashioned Blueberry Muffin', 'bakery', 20, 30000.000);
-INSERT INTO `produk` VALUES (12, 'Peanut Butter Cornflakes Cookie', 'bakery', 20, 20000.000);
-INSERT INTO `produk` VALUES (13, 'Pillow Glazed Doughnut', 'bakery', 20, 39000.000);
-INSERT INTO `produk` VALUES (14, 'Raisin Oatmeal Scones', 'bakery', 20, 41000.000);
-INSERT INTO `produk` VALUES (15, 'Spicy Tuna Bread', 'bakery', 20, 29000.000);
-INSERT INTO `produk` VALUES (16, 'Srikaya Swirl Danish', 'bakery', 20, 40000.000);
-INSERT INTO `produk` VALUES (17, 'Sumatra Chocolate Eclair', 'bakery', 20, 41000.000);
-INSERT INTO `produk` VALUES (18, 'Triple Chocolate Muffin', 'bakery', 20, 39000.000);
-INSERT INTO `produk` VALUES (19, 'Tuna Puff', 'bakery', 3, 28000.000);
-INSERT INTO `produk` VALUES (20, 'Avocado Medley Cake', 'sweet & cakes', 0, 36000.000);
-INSERT INTO `produk` VALUES (21, 'Classic Dark Chocolate Cake', 'sweet & cakes', 20, 39000.000);
-INSERT INTO `produk` VALUES (23, 'New York Cheesecake', 'sweet & cakes', 20, 38000.000);
-INSERT INTO `produk` VALUES (24, 'Oreo Cheesecake', 'sweet & cakes', 20, 17000.000);
-INSERT INTO `produk` VALUES (25, 'Scarlet Velvet Cake', 'sweet & cakes', 20, 39000.000);
-INSERT INTO `produk` VALUES (26, 'Starbucks Pandan Gula Aren Cake', 'sweet & cakes', 20, 29000.000);
-INSERT INTO `produk` VALUES (27, 'Starbucks Vanilla Keju Cake', 'sweet & cakes', 20, 30000.000);
-INSERT INTO `produk` VALUES (28, 'Via Red Velvet Roll Cake', 'sweet & cakes', 20, 29000.000);
-INSERT INTO `produk` VALUES (29, 'Banana Cake', 'grab & go', 20, 21000.000);
-INSERT INTO `produk` VALUES (30, 'Caramel Stroopwafel', 'grab & go', 20, 15000.000);
-INSERT INTO `produk` VALUES (31, 'Chocolate Chip Cookies', 'grab & go', 20, 19000.000);
-INSERT INTO `produk` VALUES (32, 'Chocolate Stroopwafel', 'grab & go', 20, 15000.000);
-INSERT INTO `produk` VALUES (33, 'Juices', 'grab & go', 20, 21000.000);
-INSERT INTO `produk` VALUES (34, 'Raisin Oatmeal Cookies', 'grab & go', 20, 20000.000);
-INSERT INTO `produk` VALUES (35, 'Beef Filone', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (36, 'Classic Tuna Toastie', 'sandwiches', 20, 29000.000);
-INSERT INTO `produk` VALUES (37, 'Grilled Smooked Beef & Cheese Decker', 'sandwiches', 20, 36000.000);
-INSERT INTO `produk` VALUES (38, 'Peanut Butter Panini', 'sandwiches', 20, 41000.000);
-INSERT INTO `produk` VALUES (39, 'Smoked Beef Mushroom & Cheese Panini', 'sandwiches', 20, 49000.000);
-INSERT INTO `produk` VALUES (40, 'Trio Mixed Roll', 'sandwiches', 20, 44000.000);
-INSERT INTO `produk` VALUES (41, 'Tuna Cheese Whole Wheat Panini', 'sandwiches', 20, 48000.000);
-INSERT INTO `produk` VALUES (43, 'All Day Bfast Bun', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (44, 'Cheese Quiche', 'savory pies', 20, 37000.000);
-INSERT INTO `produk` VALUES (45, 'Smoked Beef Quiche', 'savory pies', 20, 35000.000);
-INSERT INTO `produk` VALUES (46, 'Asian Dolce Frappucino', 'blended beverage', 20, 52000.000);
-INSERT INTO `produk` VALUES (47, 'Caramel Coffee Jelly Frappucino', 'blended beverage', 0, 57000.000);
-INSERT INTO `produk` VALUES (48, 'Caramel Java Chip Frappucino', 'blended beverage', 30, 57000.000);
-INSERT INTO `produk` VALUES (49, 'Coffee Frappucino', 'blended beverage', 0, 44000.000);
-INSERT INTO `produk` VALUES (50, 'Dark Mocha Frappucino', 'blended beverage', 30, 57000.000);
-INSERT INTO `produk` VALUES (51, 'Espresso Frappucino', 'blended beverage', 0, 48000.000);
-INSERT INTO `produk` VALUES (52, 'Hazelnut Frappucino', 'blended beverage', 30, 50000.000);
-INSERT INTO `produk` VALUES (53, 'Java Chip Frappucino', 'blended beverage', 0, 57000.000);
-INSERT INTO `produk` VALUES (54, 'Mocha Frappucino', 'blended beverage', 30, 53000.000);
-INSERT INTO `produk` VALUES (55, 'Mocha Jelly Frappucino', 'blended beverage', 0, 55000.000);
-INSERT INTO `produk` VALUES (56, 'Caramel Cream Frappucino', 'blended beverage', 0, 57000.000);
-INSERT INTO `produk` VALUES (57, 'Double Chocolate Cream Frappucino', 'blended beverage', 30, 55000.000);
-INSERT INTO `produk` VALUES (58, 'Green Tea Cream Frappucino', 'blended beverage', 0, 55000.000);
-INSERT INTO `produk` VALUES (59, 'Vanilla Cream Frappucino', 'blended beverage', 0, 55000.000);
-INSERT INTO `produk` VALUES (60, 'Mango Passion Frappucino', 'blended beverage', 10, 47000.000);
-INSERT INTO `produk` VALUES (61, 'Rapsberry Currant Frappucino', 'blended beverage', 0, 47000.000);
-INSERT INTO `produk` VALUES (62, 'Cold Brew', 'brewed coffee', 30, 41000.000);
-INSERT INTO `produk` VALUES (63, 'reshly Brewed Coffee', 'brewed coffee', 0, 23000.000);
-INSERT INTO `produk` VALUES (64, 'Misto', 'brewed coffee', 20, 23000.000);
-INSERT INTO `produk` VALUES (65, 'Vanilla Sweet Cream Cold Brew', 'brewed coffee', 0, 46000.000);
-INSERT INTO `produk` VALUES (66, 'Caffe Americano', 'espresso beverages', 20, 34000.000);
-INSERT INTO `produk` VALUES (67, 'Caffe Latte', 'espresso beverages', 0, 44000.000);
-INSERT INTO `produk` VALUES (68, 'Caffe Mocha', 'espresso beverages', 0, 53000.000);
-INSERT INTO `produk` VALUES (69, 'Cappucino', 'espresso beverages', 0, 44000.000);
-INSERT INTO `produk` VALUES (70, 'Caramel Macchiato', 'espresso beverages', 0, 57000.000);
-INSERT INTO `produk` VALUES (71, 'Cocoa Cappucino', 'espresso beverages', 0, 53000.000);
-INSERT INTO `produk` VALUES (72, 'Cold Foam', 'espresso beverages', 30, 41000.000);
-INSERT INTO `produk` VALUES (73, 'Double Shot Iced Shaken Espresso', 'espresso beverages', 0, 48000.000);
-INSERT INTO `produk` VALUES (74, 'Espresso Con Panna', 'espresso beverages', 0, 45000.000);
-INSERT INTO `produk` VALUES (75, 'Espresso Macchiato', 'espresso beverages', 30, 53000.000);
-INSERT INTO `produk` VALUES (76, 'lat White', 'espresso beverages', 0, 44000.000);
-INSERT INTO `produk` VALUES (77, 'Iced Espresso and Matcha Fusion', 'espresso beverages', 0, 53000.000);
-INSERT INTO `produk` VALUES (78, 'Ristretto Bianco', 'espresso beverages', 0, 53000.000);
-INSERT INTO `produk` VALUES (79, 'Signature Chocolate', 'milk and chocolate', 0, 50000.000);
-INSERT INTO `produk` VALUES (80, 'Iced Shaken Lemonade Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (81, 'TEAVANA Chai Hot Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (82, 'TEAVANA Chamomile Hot Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (83, 'TEAVANA Citrus Mint Hot Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (84, 'TEAVANA Earl Grey Hot Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (85, 'TEAVANA English Breakfast Hot Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (86, 'TEAVANA Mint Blend Hot Tea', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (87, 'Black Tea Latte', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (88, 'Chai Tea Latte', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (89, 'Earl Grey Tea Latte', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (90, 'Green Tea Latte', 'tea', 0, 22000.000);
-INSERT INTO `produk` VALUES (91, 'Cold Cup Translucent Mint', 'bulk', 75, 250000.000);
-INSERT INTO `produk` VALUES (92, 'Cold Cup Cooper', 'bulk', 79, 425000.000);
-INSERT INTO `produk` VALUES (93, 'Tumbler Wordmark Cooper', 'bulk', 75, 450000.000);
-INSERT INTO `produk` VALUES (94, 'Tumbler Siren Art Cooper', 'bulk', 75, 450000.000);
-INSERT INTO `produk` VALUES (95, 'Tumbler Matter Green', 'bulk', 75, 450000.000);
-INSERT INTO `produk` VALUES (96, 'Waterbottle Green', 'bulk', 75, 395000.000);
-INSERT INTO `produk` VALUES (97, 'Waterbottle Mint', 'bulk', 75, 395000.000);
-INSERT INTO `produk` VALUES (98, 'Waterbottle Siren Art Mint', 'bulk', 75, 485000.000);
-INSERT INTO `produk` VALUES (99, 'Waterbottle Siren Mint', 'bulk', 75, 500000.000);
-INSERT INTO `produk` VALUES (100, 'Waterbottle Touple Siren Art', 'bulk', 75, 550000.000);
-INSERT INTO `produk` VALUES (101, 'Waterbottle Wordmark Green', 'bulk', 75, 425000.000);
-INSERT INTO `produk` VALUES (102, 'Straw Mint', 'bulk', 75, 150000.000);
-INSERT INTO `produk` VALUES (103, 'To Go Food Box Green Round', 'bulk', 75, 250000.000);
-INSERT INTO `produk` VALUES (104, 'Cold Cup Coffe Chery Siren', 'bulk', 75, 250000.000);
-INSERT INTO `produk` VALUES (105, 'Waterbottle Mint Lid Siren', 'bulk', 75, 280000.000);
-INSERT INTO `produk` VALUES (106, 'Waterbottle Green Siren with Sleeve', 'bulk', 75, 275000.000);
-INSERT INTO `produk` VALUES (107, 'Waterbottle Green Lid', 'bulk', 75, 235000.000);
-INSERT INTO `produk` VALUES (108, 'Waterbottle Mint Coffe Leaf with Sleeve', 'bulk', 75, 250000.000);
-INSERT INTO `produk` VALUES (109, 'Reuse Cold Cup Green', 'bulk', 75, 99000.000);
-INSERT INTO `produk` VALUES (110, 'Waterbottle Mint Siren', 'bulk', 75, 550000.000);
-INSERT INTO `produk` VALUES (111, 'Cold Cup Siren with Stopper', 'bulk', 75, 435000.000);
-INSERT INTO `produk` VALUES (112, 'Tumbler Green Siren', 'bulk', 75, 535000.000);
-INSERT INTO `produk` VALUES (113, 'Waterbottle Green Cherry Leaf', 'bulk', 75, 365000.000);
-INSERT INTO `produk` VALUES (114, 'Mug Green Desktop', 'bulk', 75, 375000.000);
-INSERT INTO `produk` VALUES (115, 'Waterbottle Mint Coffe Leaf', 'bulk', 75, 430000.000);
-INSERT INTO `produk` VALUES (116, 'Waterbottle Mint', 'bulk', 75, 400000.000);
-INSERT INTO `produk` VALUES (117, 'Tumbler Black with Black Siren', 'bulk', 75, 450000.000);
-INSERT INTO `produk` VALUES (118, 'Starbucks Tumbler 16ss Classic Bunny S11135756 Aut22 (Cold cup P', 'seasonal', 50, 600000.000);
-INSERT INTO `produk` VALUES (119, 'Starbucks Tumbler 16 Bunnies On Yarn Balls S11135759 Aut22 (Tumb', 'seasonal', 50, 355000.000);
-INSERT INTO `produk` VALUES (120, 'Starbucks Waterbottle 14oz Bunnies In Sweaters S11135767 Aut22 (', 'seasonal', 50, 325000.000);
-INSERT INTO `produk` VALUES (121, 'Starbucks Waterbottle 12ss Classic Bunny S11135764 Aut22 (Waterb', 'seasonal', 50, 550000.000);
-INSERT INTO `produk` VALUES (122, 'Starbucks Cold Cup 18ss Bunnies Knit The Mn S11135761 Aut22 (Col', 'seasonal', 50, 555000.000);
-INSERT INTO `produk` VALUES (123, 'Starbucks Cold Cup 16oz Knitting Bunnies S11135763 Aut22 (Coldcu', 'seasonal', 50, 385000.000);
-INSERT INTO `produk` VALUES (124, 'Starbucks Waterbottle 20ss Gradient Coral S11135742 Aut22 (Water', 'seasonal', 50, 565000.000);
-INSERT INTO `produk` VALUES (125, 'Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu', 'seasonal', 50, 425000.000);
-INSERT INTO `produk` VALUES (126, 'Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu', 'seasonal', 50, 425000.000);
-INSERT INTO `produk` VALUES (127, 'Starbucks Tumbler 16oz Dreamy Coral S11135736 Aut22 (Tumbler Pla', 'seasonal', 50, 285000.000);
-INSERT INTO `produk` VALUES (128, 'Starbucks Waterbottle 18oz Siren In Coral Sea S11135744 Aut22 (W', 'seasonal', 50, 300000.000);
-INSERT INTO `produk` VALUES (129, 'Starbucks Tumbler 16ss Siren In Coral Sea S11135732 Aut22 (Tumbl', 'seasonal', 50, 550000.000);
-INSERT INTO `produk` VALUES (130, 'Starbucks Tumbler 16ss Faceted Gradint Blue S11135735 Aut22 (Tum', 'seasonal', 50, 565000.000);
-INSERT INTO `produk` VALUES (131, 'Starbucks Tumbler 16ss Anniversary Blnd 22 S11135536 Aut22 (Cold', 'seasonal', 50, 675000.000);
-INSERT INTO `produk` VALUES (132, 'Starbucks Tumbler 16oz Siren In Coral Sea S11135737 Aut22 (Tumbl', 'seasonal', 50, 385000.000);
-INSERT INTO `produk` VALUES (133, 'Starbucks Tumbler 16ss Siren On Coral Reef S11135730 Aut22 (Tumb', 'seasonal', 50, 675000.000);
-INSERT INTO `produk` VALUES (134, 'Starbucks Tumbler 16Oz People Of Indonesia Indigenous Animal And', 'seasonal', 50, 455000.000);
-INSERT INTO `produk` VALUES (135, 'Starbucks Tumbler 16Oz Landmark Of Indonesia S0606223 (Beauty Of', 'seasonal', 50, 455000.000);
-INSERT INTO `produk` VALUES (136, 'Starbucks Tumbler 16Oz People Of Indonesia S0606220 Beauty Of In', 'seasonal', 50, 455000.000);
-INSERT INTO `produk` VALUES (137, 'Starbucks Tumbler 16Oz Culture Of Indonesia S0606222 (Beauty Of ', 'seasonal', 50, 455000.000);
-INSERT INTO `produk` VALUES (138, 'Starbucks Plastic Reusable Water Bottle 1 Liter Dreamy Day Desig', 'seasonal', 50, 109000.000);
-INSERT INTO `produk` VALUES (139, 'Starbucks Plastic Reusable Water Bottle 1 Liter Design Coffee Ti', 'seasonal', 50, 109000.000);
-INSERT INTO `produk` VALUES (140, 'Starbucks Plastic Reusable Water Bottle 1 Liter Design Under Wat', 'seasonal', 50, 109000.000);
-INSERT INTO `produk` VALUES (141, 'Almond Whirl Choco Chips Danish', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (142, 'Butter Croissant', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (143, 'Canele', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (144, 'Choco Chips Pistachio Pocket', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (145, 'Choco Chunk Praline Muffin', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (146, 'Cinnamon Rolls', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (147, 'Gluten Free Almond Financier', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (148, 'Madeleine', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (149, 'Smoked Beef Emmental Croissant', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (150, 'Wild Berry Muffin', 'bakery', 20, 36000.000);
-INSERT INTO `produk` VALUES (151, 'Apple and Cinnamon Crumble', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (152, 'Banana Maltine Eclairs', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (153, 'Carrot Walnut Cake', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (154, 'Chocolate Ganache Raspberry Cake', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (155, 'Espresso Brownies', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (156, 'Avocado Medley Cake', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (157, 'French Cherry Tart', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (158, 'Green Tea and Ogura Swiss Roll', 'sweet & cakes', 20, 36000.000);
-INSERT INTO `produk` VALUES (159, 'Bahn Mie Chicken Baguette', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (160, 'Honey Mustard Roast Beef Focaccia', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (161, 'Mediterranean Chicken Sandwich', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (162, 'Smoked Beef Mushroom and Cheese Panini', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (163, 'Spicy Roast Beef Dark Ciabatta', 'sandwiches', 20, 55000.000);
-INSERT INTO `produk` VALUES (164, 'Tuna Black Pepper Sour Dough Bread', 'sandwiches', 20, 55000.000);
+INSERT INTO `produk` VALUES (1, '7 Seeds Cookie', 1, 3, 39000.000);
+INSERT INTO `produk` VALUES (2, 'Almond Croissant', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (3, 'Bagel Bites', 1, 20, 37000.000);
+INSERT INTO `produk` VALUES (4, 'Beef Sausages  &  Cheese Croissant', 1, 0, 36000.000);
+INSERT INTO `produk` VALUES (5, 'Cheese Bagles', 1, 20, 32000.000);
+INSERT INTO `produk` VALUES (6, 'Chocolate Croissant', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (7, 'Cinamon Roll', 1, 20, 33000.000);
+INSERT INTO `produk` VALUES (8, 'Cinnamon Chocolate Marble Cake', 1, 20, 40000.000);
+INSERT INTO `produk` VALUES (9, 'Espresso Brownie', 1, 20, 29000.000);
+INSERT INTO `produk` VALUES (10, 'Nutella Bombolone', 1, 20, 39000.000);
+INSERT INTO `produk` VALUES (11, 'Old Fashioned Blueberry Muffin', 1, 20, 30000.000);
+INSERT INTO `produk` VALUES (12, 'Peanut Butter Cornflakes Cookie', 1, 20, 20000.000);
+INSERT INTO `produk` VALUES (13, 'Pillow Glazed Doughnut', 1, 20, 39000.000);
+INSERT INTO `produk` VALUES (14, 'Raisin Oatmeal Scones', 1, 20, 41000.000);
+INSERT INTO `produk` VALUES (15, 'Spicy Tuna Bread', 1, 20, 29000.000);
+INSERT INTO `produk` VALUES (16, 'Srikaya Swirl Danish', 1, 20, 40000.000);
+INSERT INTO `produk` VALUES (17, 'Sumatra Chocolate Eclair', 1, 20, 41000.000);
+INSERT INTO `produk` VALUES (18, 'Triple Chocolate Muffin', 1, 20, 39000.000);
+INSERT INTO `produk` VALUES (19, 'Tuna Puff', 1, 3, 28000.000);
+INSERT INTO `produk` VALUES (20, 'Avocado Medley Cake', 11, 0, 36000.000);
+INSERT INTO `produk` VALUES (21, 'Classic Dark Chocolate Cake', 11, 20, 39000.000);
+INSERT INTO `produk` VALUES (23, 'New York Cheesecake', 11, 20, 38000.000);
+INSERT INTO `produk` VALUES (24, 'Oreo Cheesecake', 11, 20, 17000.000);
+INSERT INTO `produk` VALUES (25, 'Scarlet Velvet Cake', 11, 20, 39000.000);
+INSERT INTO `produk` VALUES (26, 'Starbucks Pandan Gula Aren Cake', 11, 20, 29000.000);
+INSERT INTO `produk` VALUES (27, 'Starbucks Vanilla Keju Cake', 11, 20, 30000.000);
+INSERT INTO `produk` VALUES (28, 'Via Red Velvet Roll Cake', 11, 20, 29000.000);
+INSERT INTO `produk` VALUES (29, 'Banana Cake', 6, 20, 21000.000);
+INSERT INTO `produk` VALUES (30, 'Caramel Stroopwafel', 6, 20, 15000.000);
+INSERT INTO `produk` VALUES (31, 'Chocolate Chip Cookies', 6, 20, 19000.000);
+INSERT INTO `produk` VALUES (32, 'Chocolate Stroopwafel', 6, 20, 15000.000);
+INSERT INTO `produk` VALUES (33, 'Juices', 6, 20, 21000.000);
+INSERT INTO `produk` VALUES (34, 'Raisin Oatmeal Cookies', 6, 20, 20000.000);
+INSERT INTO `produk` VALUES (35, 'Beef Filone', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (36, 'Classic Tuna Toastie', 8, 20, 29000.000);
+INSERT INTO `produk` VALUES (37, 'Grilled Smooked Beef & Cheese Decker', 8, 20, 36000.000);
+INSERT INTO `produk` VALUES (38, 'Peanut Butter Panini', 8, 20, 41000.000);
+INSERT INTO `produk` VALUES (39, 'Smoked Beef Mushroom & Cheese Panini', 8, 20, 49000.000);
+INSERT INTO `produk` VALUES (40, 'Trio Mixed Roll', 8, 20, 44000.000);
+INSERT INTO `produk` VALUES (41, 'Tuna Cheese Whole Wheat Panini', 8, 20, 48000.000);
+INSERT INTO `produk` VALUES (43, 'All Day Bfast Bun', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (44, 'Cheese Quiche', 9, 20, 37000.000);
+INSERT INTO `produk` VALUES (45, 'Smoked Beef Quiche', 9, 20, 35000.000);
+INSERT INTO `produk` VALUES (46, 'Asian Dolce Frappucino', 0, 20, 52000.000);
+INSERT INTO `produk` VALUES (47, 'Caramel Coffee Jelly Frappucino', 0, 0, 57000.000);
+INSERT INTO `produk` VALUES (48, 'Caramel Java Chip Frappucino', 0, 30, 57000.000);
+INSERT INTO `produk` VALUES (49, 'Coffee Frappucino', 0, 0, 44000.000);
+INSERT INTO `produk` VALUES (50, 'Dark Mocha Frappucino', 0, 30, 57000.000);
+INSERT INTO `produk` VALUES (51, 'Espresso Frappucino', 0, 0, 48000.000);
+INSERT INTO `produk` VALUES (52, 'Hazelnut Frappucino', 0, 30, 50000.000);
+INSERT INTO `produk` VALUES (53, 'Java Chip Frappucino', 0, 0, 57000.000);
+INSERT INTO `produk` VALUES (54, 'Mocha Frappucino', 0, 30, 53000.000);
+INSERT INTO `produk` VALUES (55, 'Mocha Jelly Frappucino', 0, 0, 55000.000);
+INSERT INTO `produk` VALUES (56, 'Caramel Cream Frappucino', 0, 0, 57000.000);
+INSERT INTO `produk` VALUES (57, 'Double Chocolate Cream Frappucino', 0, 30, 55000.000);
+INSERT INTO `produk` VALUES (58, 'Green Tea Cream Frappucino', 0, 0, 55000.000);
+INSERT INTO `produk` VALUES (59, 'Vanilla Cream Frappucino', 0, 0, 55000.000);
+INSERT INTO `produk` VALUES (60, 'Mango Passion Frappucino', 0, 10, 47000.000);
+INSERT INTO `produk` VALUES (61, 'Rapsberry Currant Frappucino', 0, 0, 47000.000);
+INSERT INTO `produk` VALUES (62, 'Cold Brew', 3, 30, 41000.000);
+INSERT INTO `produk` VALUES (63, 'reshly Brewed Coffee', 3, 0, 23000.000);
+INSERT INTO `produk` VALUES (64, 'Misto', 3, 20, 23000.000);
+INSERT INTO `produk` VALUES (65, 'Vanilla Sweet Cream Cold Brew', 3, 0, 46000.000);
+INSERT INTO `produk` VALUES (66, 'Caffe Americano', 5, 20, 34000.000);
+INSERT INTO `produk` VALUES (67, 'Caffe Latte', 5, 0, 44000.000);
+INSERT INTO `produk` VALUES (68, 'Caffe Mocha', 5, 0, 53000.000);
+INSERT INTO `produk` VALUES (69, 'Cappucino', 5, 0, 44000.000);
+INSERT INTO `produk` VALUES (70, 'Caramel Macchiato', 5, 0, 57000.000);
+INSERT INTO `produk` VALUES (71, 'Cocoa Cappucino', 5, 0, 53000.000);
+INSERT INTO `produk` VALUES (72, 'Cold Foam', 5, 30, 41000.000);
+INSERT INTO `produk` VALUES (73, 'Double Shot Iced Shaken Espresso', 5, 0, 48000.000);
+INSERT INTO `produk` VALUES (74, 'Espresso Con Panna', 5, 0, 45000.000);
+INSERT INTO `produk` VALUES (75, 'Espresso Macchiato', 5, 30, 53000.000);
+INSERT INTO `produk` VALUES (76, 'lat White', 5, 0, 44000.000);
+INSERT INTO `produk` VALUES (77, 'Iced Espresso and Matcha Fusion', 5, 0, 53000.000);
+INSERT INTO `produk` VALUES (78, 'Ristretto Bianco', 5, 0, 53000.000);
+INSERT INTO `produk` VALUES (79, 'Signature Chocolate', 7, 0, 50000.000);
+INSERT INTO `produk` VALUES (80, 'Iced Shaken Lemonade Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (81, 'TEAVANA Chai Hot Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (82, 'TEAVANA Chamomile Hot Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (83, 'TEAVANA Citrus Mint Hot Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (84, 'TEAVANA Earl Grey Hot Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (85, 'TEAVANA English Breakfast Hot Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (86, 'TEAVANA Mint Blend Hot Tea', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (87, 'Black Tea Latte', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (88, 'Chai Tea Latte', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (89, 'Earl Grey Tea Latte', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (90, 'Green Tea Latte', 12, 0, 22000.000);
+INSERT INTO `produk` VALUES (91, 'Cold Cup Translucent Mint', 4, 75, 250000.000);
+INSERT INTO `produk` VALUES (92, 'Cold Cup Cooper', 4, 79, 425000.000);
+INSERT INTO `produk` VALUES (93, 'Tumbler Wordmark Cooper', 4, 75, 450000.000);
+INSERT INTO `produk` VALUES (94, 'Tumbler Siren Art Cooper', 4, 75, 450000.000);
+INSERT INTO `produk` VALUES (95, 'Tumbler Matter Green', 4, 75, 450000.000);
+INSERT INTO `produk` VALUES (96, 'Waterbottle Green', 4, 75, 395000.000);
+INSERT INTO `produk` VALUES (97, 'Waterbottle Mint', 4, 75, 395000.000);
+INSERT INTO `produk` VALUES (98, 'Waterbottle Siren Art Mint', 4, 75, 485000.000);
+INSERT INTO `produk` VALUES (99, 'Waterbottle Siren Mint', 4, 75, 500000.000);
+INSERT INTO `produk` VALUES (100, 'Waterbottle Touple Siren Art', 4, 75, 550000.000);
+INSERT INTO `produk` VALUES (101, 'Waterbottle Wordmark Green', 4, 75, 425000.000);
+INSERT INTO `produk` VALUES (102, 'Straw Mint', 4, 75, 150000.000);
+INSERT INTO `produk` VALUES (103, 'To Go Food Box Green Round', 4, 75, 250000.000);
+INSERT INTO `produk` VALUES (104, 'Cold Cup Coffe Chery Siren', 4, 75, 250000.000);
+INSERT INTO `produk` VALUES (105, 'Waterbottle Mint Lid Siren', 4, 75, 280000.000);
+INSERT INTO `produk` VALUES (106, 'Waterbottle Green Siren with Sleeve', 4, 75, 275000.000);
+INSERT INTO `produk` VALUES (107, 'Waterbottle Green Lid', 4, 75, 235000.000);
+INSERT INTO `produk` VALUES (108, 'Waterbottle Mint Coffe Leaf with Sleeve', 4, 75, 250000.000);
+INSERT INTO `produk` VALUES (109, 'Reuse Cold Cup Green', 4, 75, 99000.000);
+INSERT INTO `produk` VALUES (110, 'Waterbottle Mint Siren', 4, 75, 550000.000);
+INSERT INTO `produk` VALUES (111, 'Cold Cup Siren with Stopper', 4, 75, 435000.000);
+INSERT INTO `produk` VALUES (112, 'Tumbler Green Siren', 4, 75, 535000.000);
+INSERT INTO `produk` VALUES (113, 'Waterbottle Green Cherry Leaf', 4, 75, 365000.000);
+INSERT INTO `produk` VALUES (114, 'Mug Green Desktop', 4, 75, 375000.000);
+INSERT INTO `produk` VALUES (115, 'Waterbottle Mint Coffe Leaf', 4, 75, 430000.000);
+INSERT INTO `produk` VALUES (116, 'Waterbottle Mint', 4, 75, 400000.000);
+INSERT INTO `produk` VALUES (117, 'Tumbler Black with Black Siren', 4, 75, 450000.000);
+INSERT INTO `produk` VALUES (118, 'Starbucks Tumbler 16ss Classic Bunny S11135756 Aut22 (Cold cup P', 10, 50, 600000.000);
+INSERT INTO `produk` VALUES (119, 'Starbucks Tumbler 16 Bunnies On Yarn Balls S11135759 Aut22 (Tumb', 10, 50, 355000.000);
+INSERT INTO `produk` VALUES (120, 'Starbucks Waterbottle 14oz Bunnies In Sweaters S11135767 Aut22 (', 10, 50, 325000.000);
+INSERT INTO `produk` VALUES (121, 'Starbucks Waterbottle 12ss Classic Bunny S11135764 Aut22 (Waterb', 10, 50, 550000.000);
+INSERT INTO `produk` VALUES (122, 'Starbucks Cold Cup 18ss Bunnies Knit The Mn S11135761 Aut22 (Col', 10, 50, 555000.000);
+INSERT INTO `produk` VALUES (123, 'Starbucks Cold Cup 16oz Knitting Bunnies S11135763 Aut22 (Coldcu', 10, 50, 385000.000);
+INSERT INTO `produk` VALUES (124, 'Starbucks Waterbottle 20ss Gradient Coral S11135742 Aut22 (Water', 10, 50, 565000.000);
+INSERT INTO `produk` VALUES (125, 'Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu', 10, 50, 425000.000);
+INSERT INTO `produk` VALUES (126, 'Starbucks Cold Cup 24oz Jewel Mint Blue S11135741 Aut22 (Cold cu', 10, 50, 425000.000);
+INSERT INTO `produk` VALUES (127, 'Starbucks Tumbler 16oz Dreamy Coral S11135736 Aut22 (Tumbler Pla', 10, 50, 285000.000);
+INSERT INTO `produk` VALUES (128, 'Starbucks Waterbottle 18oz Siren In Coral Sea S11135744 Aut22 (W', 10, 50, 300000.000);
+INSERT INTO `produk` VALUES (129, 'Starbucks Tumbler 16ss Siren In Coral Sea S11135732 Aut22 (Tumbl', 10, 50, 550000.000);
+INSERT INTO `produk` VALUES (130, 'Starbucks Tumbler 16ss Faceted Gradint Blue S11135735 Aut22 (Tum', 10, 50, 565000.000);
+INSERT INTO `produk` VALUES (131, 'Starbucks Tumbler 16ss Anniversary Blnd 22 S11135536 Aut22 (Cold', 10, 50, 675000.000);
+INSERT INTO `produk` VALUES (132, 'Starbucks Tumbler 16oz Siren In Coral Sea S11135737 Aut22 (Tumbl', 10, 50, 385000.000);
+INSERT INTO `produk` VALUES (133, 'Starbucks Tumbler 16ss Siren On Coral Reef S11135730 Aut22 (Tumb', 10, 50, 675000.000);
+INSERT INTO `produk` VALUES (134, 'Starbucks Tumbler 16Oz People Of Indonesia Indigenous Animal And', 10, 50, 455000.000);
+INSERT INTO `produk` VALUES (135, 'Starbucks Tumbler 16Oz Landmark Of Indonesia S0606223 (Beauty Of', 10, 50, 455000.000);
+INSERT INTO `produk` VALUES (136, 'Starbucks Tumbler 16Oz People Of Indonesia S0606220 Beauty Of In', 10, 50, 455000.000);
+INSERT INTO `produk` VALUES (137, 'Starbucks Tumbler 16Oz Culture Of Indonesia S0606222 (Beauty Of ', 10, 50, 455000.000);
+INSERT INTO `produk` VALUES (138, 'Starbucks Plastic Reusable Water Bottle 1 Liter Dreamy Day Desig', 10, 50, 109000.000);
+INSERT INTO `produk` VALUES (139, 'Starbucks Plastic Reusable Water Bottle 1 Liter Design Coffee Ti', 10, 50, 109000.000);
+INSERT INTO `produk` VALUES (140, 'Starbucks Plastic Reusable Water Bottle 1 Liter Design Under Wat', 10, 50, 109000.000);
+INSERT INTO `produk` VALUES (141, 'Almond Whirl Choco Chips Danish', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (142, 'Butter Croissant', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (143, 'Canele', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (144, 'Choco Chips Pistachio Pocket', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (145, 'Choco Chunk Praline Muffin', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (146, 'Cinnamon Rolls', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (147, 'Gluten Free Almond Financier', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (148, 'Madeleine', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (149, 'Smoked Beef Emmental Croissant', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (150, 'Wild Berry Muffin', 1, 20, 36000.000);
+INSERT INTO `produk` VALUES (151, 'Apple and Cinnamon Crumble', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (152, 'Banana Maltine Eclairs', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (153, 'Carrot Walnut Cake', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (154, 'Chocolate Ganache Raspberry Cake', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (155, 'Espresso Brownies', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (156, 'Avocado Medley Cake', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (157, 'French Cherry Tart', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (158, 'Green Tea and Ogura Swiss Roll', 11, 20, 36000.000);
+INSERT INTO `produk` VALUES (159, 'Bahn Mie Chicken Baguette', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (160, 'Honey Mustard Roast Beef Focaccia', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (161, 'Mediterranean Chicken Sandwich', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (162, 'Smoked Beef Mushroom and Cheese Panini', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (163, 'Spicy Roast Beef Dark Ciabatta', 8, 20, 55000.000);
+INSERT INTO `produk` VALUES (164, 'Tuna Black Pepper Sour Dough Bread', 8, 20, 55000.000);
 
 -- ----------------------------
 -- Table structure for provinsi
@@ -5615,27 +5615,28 @@ INSERT INTO `provinsi` VALUES ('9', 'Lampung');
 -- ----------------------------
 DROP TABLE IF EXISTS `tipe_produk`;
 CREATE TABLE `tipe_produk`  (
+  `id_tipe_produk` int NOT NULL AUTO_INCREMENT,
   `tipe_produk` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kategori` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `deskripsi` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`tipe_produk`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  PRIMARY KEY (`id_tipe_produk`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tipe_produk
 -- ----------------------------
-INSERT INTO `tipe_produk` VALUES ('bakery', 'food', 'choose from baked goods that are thoughtfully crafted with high-quality ingredients and the oh-so-good taste you are craving');
-INSERT INTO `tipe_produk` VALUES ('blended beverage', 'drink', '');
-INSERT INTO `tipe_produk` VALUES ('brewed coffee', 'drink', 'artfully roasted and brewed fresh all day long, every day!');
-INSERT INTO `tipe_produk` VALUES ('bulk', 'merchandise', 'anda bisa mendapatkan informasid an melakukan pemesanan merchandise official Starbucks dalam jumlah banyak untuk keperluan bisni');
-INSERT INTO `tipe_produk` VALUES ('espresso beverages', 'drink', 'handcrated lattes, cappuccinos, macchiatos and more');
-INSERT INTO `tipe_produk` VALUES ('grab & go', 'food', 'why not pick up something small to accompany your coffe?');
-INSERT INTO `tipe_produk` VALUES ('milk and chocolate', 'drink', 'Chocolate and dairy milk, steamed together to create a hot chocolate fit for a chocaholic! Topped with whipped cream and dusted ');
-INSERT INTO `tipe_produk` VALUES ('sandwiches', 'food', 'level-up lunch with fresh ingredients and irresistible combinations');
-INSERT INTO `tipe_produk` VALUES ('savory pies', 'food', 'treat your palette with these appetizing savory pies');
-INSERT INTO `tipe_produk` VALUES ('seasonal', 'merchandise', '');
-INSERT INTO `tipe_produk` VALUES ('sweet & cakes', 'food', 'get your sweet tooth cravings filled here');
-INSERT INTO `tipe_produk` VALUES ('tea', 'drink', 'As bold and Tea.jpg invigorating as the dawn of a bright new day. As smooth and sweet as your finest moments therein. Drink up a');
+INSERT INTO `tipe_produk` VALUES (1, 'bakery', 'food', 'choose from baked goods that are thoughtfully crafted with high-quality ingredients and the oh-so-good taste you are craving');
+INSERT INTO `tipe_produk` VALUES (2, 'blended beverage', 'drink', '');
+INSERT INTO `tipe_produk` VALUES (3, 'brewed coffee', 'drink', 'artfully roasted and brewed fresh all day long, every day!');
+INSERT INTO `tipe_produk` VALUES (4, 'bulk', 'merchandise', 'anda bisa mendapatkan informasid an melakukan pemesanan merchandise official Starbucks dalam jumlah banyak untuk keperluan bisni');
+INSERT INTO `tipe_produk` VALUES (5, 'espresso beverages', 'drink', 'handcrated lattes, cappuccinos, macchiatos and more');
+INSERT INTO `tipe_produk` VALUES (6, 'grab & go', 'food', 'why not pick up something small to accompany your coffe?');
+INSERT INTO `tipe_produk` VALUES (7, 'milk and chocolate', 'drink', 'Chocolate and dairy milk, steamed together to create a hot chocolate fit for a chocaholic! Topped with whipped cream and dusted ');
+INSERT INTO `tipe_produk` VALUES (8, 'sandwiches', 'food', 'level-up lunch with fresh ingredients and irresistible combinations');
+INSERT INTO `tipe_produk` VALUES (9, 'savory pies', 'food', 'treat your palette with these appetizing savory pies');
+INSERT INTO `tipe_produk` VALUES (10, 'seasonal', 'merchandise', '');
+INSERT INTO `tipe_produk` VALUES (11, 'sweet & cakes', 'food', 'get your sweet tooth cravings filled here');
+INSERT INTO `tipe_produk` VALUES (12, 'tea', 'drink', 'As bold and Tea.jpg invigorating as the dawn of a bright new day. As smooth and sweet as your finest moments therein. Drink up a');
 
 -- ----------------------------
 -- Table structure for toko
@@ -5643,119 +5644,118 @@ INSERT INTO `tipe_produk` VALUES ('tea', 'drink', 'As bold and Tea.jpg invigorat
 DROP TABLE IF EXISTS `toko`;
 CREATE TABLE `toko`  (
   `id_toko` int NOT NULL,
+  `nama_toko` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `id_provinsi_fk` varchar(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id_provinsi_fk` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `kode_pos` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `nomor_telepon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id_toko`) USING BTREE,
-  INDEX `id_provinsi_fk`(`id_provinsi_fk` ASC) USING BTREE,
-  CONSTRAINT `toko_ibfk_1` FOREIGN KEY (`id_provinsi_fk`) REFERENCES `provinsi` (`id_provinsi`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+  PRIMARY KEY (`id_toko`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of toko
 -- ----------------------------
-INSERT INTO `toko` VALUES (1, 'Ap #897-1593 Cras Ave', '2', '6152', '058286685212');
-INSERT INTO `toko` VALUES (2, '9512 Torquent St.', '2', '78811', '086463536153');
-INSERT INTO `toko` VALUES (3, 'P.O. Box 108, 8643 Euismod Av.', '2', '74951', '036783988469');
-INSERT INTO `toko` VALUES (4, 'Ap #112-9294 Risus. Rd.', '3', '42439', '035434158485');
-INSERT INTO `toko` VALUES (5, 'Ap #124-6701 Ante, Avenue', '3', '636306', '014526624273');
-INSERT INTO `toko` VALUES (6, 'Ap #538-1195 Eu Avenue', '3', '20886', '066563576258');
-INSERT INTO `toko` VALUES (7, 'Ap #867-6323 Ac Rd.', '4', '83026', '079758857311');
-INSERT INTO `toko` VALUES (8, 'Ap #821-4298 Facilisis Avenue', '4', '5336', '035430560452');
-INSERT INTO `toko` VALUES (9, 'Ap #515-9899 Rutrum Road', '4', '658486', '030790531811');
-INSERT INTO `toko` VALUES (10, '227-9633 Vitae Ave', '5', '4336-5586', '097623126085');
-INSERT INTO `toko` VALUES (11, 'Ap #448-8685 Mattis Street', '5', 'M93 4JC', '075084212741');
-INSERT INTO `toko` VALUES (12, '364-8802 Nibh Ave', '5', '45732-2851', '030611786379');
-INSERT INTO `toko` VALUES (13, 'P.O. Box 418, 2576 Sem Av.', '6', '654177', '007888601910');
-INSERT INTO `toko` VALUES (14, 'Ap #120-6688 Ut Rd.', '6', '813343', '048802125637');
-INSERT INTO `toko` VALUES (15, '8991 Dapibus Street', '6', '844774', '048047613723');
-INSERT INTO `toko` VALUES (16, 'Ap #763-3535 Sed St.', '7', '18322', '017177878487');
-INSERT INTO `toko` VALUES (17, 'Ap #141-3248 Augue Road', '7', '21855-1387', '014838844923');
-INSERT INTO `toko` VALUES (18, '512-1952 Vitae Rd.', '7', '5565', '068674373178');
-INSERT INTO `toko` VALUES (19, '6246 Fermentum St.', '8', '294254', '077281153531');
-INSERT INTO `toko` VALUES (20, 'P.O. Box 570, 5720 Elementum Avenue', '8', '36294', '079287116828');
-INSERT INTO `toko` VALUES (21, '180-6027 Ridiculus Rd.', '8', '6237-2144', '002277717380');
-INSERT INTO `toko` VALUES (22, 'Ap #711-2792 Nec, Avenue', '9', '63248', '059050564469');
-INSERT INTO `toko` VALUES (23, '160-5038 Dui, St.', '9', '645627', '071815075689');
-INSERT INTO `toko` VALUES (24, 'P.O. Box 379, 5699 Egestas. Street', '9', '64C 6B1', '078768116189');
-INSERT INTO `toko` VALUES (25, 'P.O. Box 249, 9778 Aliquet Rd.', '10', '6856', '083822215224');
-INSERT INTO `toko` VALUES (26, '872-9680 Aliquet Ave', '10', '473411', '071767504275');
-INSERT INTO `toko` VALUES (27, 'Ap #821-9299 Consequat Rd.', '10', '38541', '059579994111');
-INSERT INTO `toko` VALUES (28, 'Ap #164-3398 Luctus St.', '11', '85-71', '087275462661');
-INSERT INTO `toko` VALUES (29, 'Ap #391-9093 Elementum St.', '11', '6662', '026930378653');
-INSERT INTO `toko` VALUES (30, '6550 At Av.', '11', '975666', '081714278885');
-INSERT INTO `toko` VALUES (31, '6232 Odio. Rd.', '12', '96923', '084261287954');
-INSERT INTO `toko` VALUES (32, 'Ap #351-7490 Non, Road', '12', '688417', '084016052657');
-INSERT INTO `toko` VALUES (33, '1646 Consectetuer Road', '12', '64378', '051113134874');
-INSERT INTO `toko` VALUES (34, '3853 Parturient Rd.', '13', '155931', '073282484894');
-INSERT INTO `toko` VALUES (35, '4366 Ac Av.', '13', '9182 OD', '077521843887');
-INSERT INTO `toko` VALUES (36, '113-7948 Vivamus Rd.', '13', '2394', '017225735298');
-INSERT INTO `toko` VALUES (37, '6751 Ultrices Av.', '14', '45-988', '090320417641');
-INSERT INTO `toko` VALUES (38, '7808 Felis, Road', '14', '838244', '086012751316');
-INSERT INTO `toko` VALUES (39, 'Ap #772-3245 Varius Rd.', '14', '66773', '037898085221');
-INSERT INTO `toko` VALUES (40, 'P.O. Box 475, 7532 Non Rd.', '15', '54903-2375', '085113119671');
-INSERT INTO `toko` VALUES (41, 'P.O. Box 351, 6083 Felis. Rd.', '15', '17892', '066105365887');
-INSERT INTO `toko` VALUES (42, '240-7177 Porttitor Ave', '15', '43-62', '024819764298');
-INSERT INTO `toko` VALUES (43, '3576 Quisque Avenue', '16', '1273-4776', '044795677750');
-INSERT INTO `toko` VALUES (44, '862-4790 Ultrices St.', '16', '8949-3201', '077536138018');
-INSERT INTO `toko` VALUES (45, 'Ap #637-3811 Elit, Street', '16', '391434', '087761335811');
-INSERT INTO `toko` VALUES (46, '3475 Quis, Rd.', '17', '354845', '046957786633');
-INSERT INTO `toko` VALUES (47, 'Ap #488-6394 Bibendum St.', '17', '543149', '098462321875');
-INSERT INTO `toko` VALUES (48, 'Ap #833-3234 Id Rd.', '17', '45426-8533', '066262730586');
-INSERT INTO `toko` VALUES (49, '6858 Posuere, St.', '18', '68762', '095777622085');
-INSERT INTO `toko` VALUES (50, '895-1471 Sit Rd.', '18', 'I3G 6V8', '074814259688');
-INSERT INTO `toko` VALUES (51, 'Ap #593-5634 Facilisis Road', '18', '7425', '052518726278');
-INSERT INTO `toko` VALUES (52, 'Ap #681-7044 Praesent Avenue', '19', '424865', '078118765143');
-INSERT INTO `toko` VALUES (53, 'Ap #147-997 Molestie. Av.', '19', '8032', '053280938817');
-INSERT INTO `toko` VALUES (54, 'Ap #395-6367 Dui. Rd.', '19', '196161', '038948241496');
-INSERT INTO `toko` VALUES (55, '330-1034 Rhoncus. St.', '20', '3352', '018611322550');
-INSERT INTO `toko` VALUES (56, '173-9287 Molestie Ave', '20', '820028', '067486042284');
-INSERT INTO `toko` VALUES (57, '380-6327 Pede Rd.', '20', '733645', '073783621544');
-INSERT INTO `toko` VALUES (58, 'Ap #443-8289 Odio St.', '21', '85727', '026442644819');
-INSERT INTO `toko` VALUES (59, 'Ap #593-226 Ac Road', '21', '3247-9516', '046124942343');
-INSERT INTO `toko` VALUES (60, '727-1801 Sit Av.', '21', '245065', '033101782945');
-INSERT INTO `toko` VALUES (61, '323 Lorem Ave', '22', 'ET5J 4EH', '073325736646');
-INSERT INTO `toko` VALUES (62, '6902 At, Rd.', '22', '715836', '003633486392');
-INSERT INTO `toko` VALUES (63, 'P.O. Box 647, 3814 Eu St.', '22', '32686-7118', '001829056171');
-INSERT INTO `toko` VALUES (64, 'Ap #533-532 Nibh. Ave', '23', '798871', '012995737735');
-INSERT INTO `toko` VALUES (65, '8117 Vestibulum St.', '23', '30805', '064014249523');
-INSERT INTO `toko` VALUES (66, '2894 Nec, Rd.', '23', '660868', '058043489103');
-INSERT INTO `toko` VALUES (67, 'Ap #587-6302 Commodo St.', '24', '88357', '015756431266');
-INSERT INTO `toko` VALUES (68, '201-2573 Nec Avenue', '24', '340437', '037018681711');
-INSERT INTO `toko` VALUES (69, '822-847 Libero Rd.', '24', '13122', '052138599541');
-INSERT INTO `toko` VALUES (70, 'Ap #494-8326 Nulla. Ave', '25', '187171', '062631619757');
-INSERT INTO `toko` VALUES (71, 'P.O. Box 299, 9239 Sed St.', '25', '85677', '065189217565');
-INSERT INTO `toko` VALUES (72, 'Ap #353-1391 Risus. Street', '25', '20611', '004593934405');
-INSERT INTO `toko` VALUES (73, '3827 Sed Road', '26', '431111', '096457265467');
-INSERT INTO `toko` VALUES (74, 'Ap #655-1445 Montes, Rd.', '26', '2845', '018369655562');
-INSERT INTO `toko` VALUES (75, 'Ap #350-5953 Netus Road', '26', '21705', '030445105817');
-INSERT INTO `toko` VALUES (76, 'P.O. Box 680, 2446 Morbi Street', '27', '568511', '064764756323');
-INSERT INTO `toko` VALUES (77, '3114 Enim, Rd.', '27', '855283', '044505757986');
-INSERT INTO `toko` VALUES (78, '3412 Aptent Road', '27', '2775', '091374832153');
-INSERT INTO `toko` VALUES (79, 'P.O. Box 604, 3270 Dictum. Avenue', '28', '97600', '034218518622');
-INSERT INTO `toko` VALUES (80, '191-5485 Dapibus Ave', '28', '622771', '032641591708');
-INSERT INTO `toko` VALUES (81, '6247 Montes, Ave', '28', '71435', '011621271635');
-INSERT INTO `toko` VALUES (82, '174-7686 Egestas St.', '29', '41595', '053216814066');
-INSERT INTO `toko` VALUES (83, 'Ap #729-1762 Eu, Street', '29', '3016', '067688236460');
-INSERT INTO `toko` VALUES (84, 'P.O. Box 639, 6377 Lorem, Street', '29', '716773', '055962182843');
-INSERT INTO `toko` VALUES (85, 'Ap #824-2869 Nisi St.', '30', '738748', '038869566766');
-INSERT INTO `toko` VALUES (86, '178-8517 Risus. Rd.', '30', '436513', '066334411945');
-INSERT INTO `toko` VALUES (87, 'P.O. Box 761, 5997 Bibendum Avenue', '30', '540496', '087482369510');
-INSERT INTO `toko` VALUES (88, '204-2616 Tempor Road', '31', '5608', '036031398417');
-INSERT INTO `toko` VALUES (89, 'P.O. Box 663, 6038 Nunc St.', '31', '97088', '081698412575');
-INSERT INTO `toko` VALUES (90, '385-3429 Malesuada Road', '31', '49668', '094871412155');
-INSERT INTO `toko` VALUES (91, '911-8044 Magna. St.', '32', '2876', '072996842858');
-INSERT INTO `toko` VALUES (92, 'P.O. Box 206, 6618 Non Road', '32', '3110', '036840423184');
-INSERT INTO `toko` VALUES (93, '792-9151 Mauris Avenue', '32', '62480', '083472318582');
-INSERT INTO `toko` VALUES (94, '7238 Per Ave', '33', '1468', '080589668809');
-INSERT INTO `toko` VALUES (95, 'Ap #135-6990 Nostra, Road', '33', '67582-8845', '032761458780');
-INSERT INTO `toko` VALUES (96, '949-4123 Velit Rd.', '33', '37653', '071563665340');
-INSERT INTO `toko` VALUES (97, 'P.O. Box 554, 1854 Ac Road', '34', '6528-5280', '043504849446');
-INSERT INTO `toko` VALUES (98, '4625 Risus. St.', '34', '685224', '093280451674');
-INSERT INTO `toko` VALUES (99, 'Ap #812-165 Velit. Street', '34', '2580', '081827084408');
-INSERT INTO `toko` VALUES (100, 'P.O. Box 767, 6735 Sagittis Ave', '1', '5975', '082198449301');
-INSERT INTO `toko` VALUES (101, '808-249 Sed Street', '1', '771924', '087423742111');
-INSERT INTO `toko` VALUES (102, '1691 Aliquam, Street', '1', '98425', '022238628775');
+INSERT INTO `toko` VALUES (1, 'cabang_1', '473-8272 Aliquam Av.', '1', '71747', '0846330584835');
+INSERT INTO `toko` VALUES (2, 'cabang_2', '9556 Leo. Rd.', '1', '35593', '084707156672');
+INSERT INTO `toko` VALUES (3, 'cabang_3', 'P.O. Box 451, 2385 Erat Ave', '1', '78643', '08781017743');
+INSERT INTO `toko` VALUES (4, 'cabang_4', '540-8909 Blandit Rd.', '2', '67325', '08751183843');
+INSERT INTO `toko` VALUES (5, 'cabang_5', 'P.O. Box 988, 4088 Rutrum. St.', '2', '82923', '085317254335');
+INSERT INTO `toko` VALUES (6, 'cabang_6', 'Ap #984-9635 Mauris. St.', '2', '84728', '08298478972');
+INSERT INTO `toko` VALUES (7, 'cabang_7', 'Ap #265-1891 Tempus, Avenue', '3', '26317', '08071228411');
+INSERT INTO `toko` VALUES (8, 'cabang_8', 'P.O. Box 948, 5286 Et Avenue', '3', '28514', '08668132417');
+INSERT INTO `toko` VALUES (9, 'cabang_9', '799-5787 Molestie Street', '3', '37834', '0820234697211');
+INSERT INTO `toko` VALUES (10, 'cabang_10', '800-6863 Dolor Road', '4', '98131', '082304951134');
+INSERT INTO `toko` VALUES (11, 'cabang_11', 'Ap #570-7330 Dui. Road', '4', '72218', '082527622655');
+INSERT INTO `toko` VALUES (12, 'cabang_12', '158-2223 Id St.', '4', '24446', '083154320724');
+INSERT INTO `toko` VALUES (13, 'cabang_13', 'Ap #741-7952 Sed Street', '5', '83398', '082515271738');
+INSERT INTO `toko` VALUES (14, 'cabang_14', 'Ap #915-8592 Metus Road', '5', '36420', '089669132853');
+INSERT INTO `toko` VALUES (15, 'cabang_15', 'Ap #877-1603 Metus Street', '5', '58234', '0870332140844');
+INSERT INTO `toko` VALUES (16, 'cabang_16', '5297 Libero St.', '6', '25689', '08021196732');
+INSERT INTO `toko` VALUES (17, 'cabang_17', '208-1991 Ligula Rd.', '6', '35674', '088986591148');
+INSERT INTO `toko` VALUES (18, 'cabang_18', 'Ap #822-6561 Rutrum St.', '6', '87535', '0823538807684');
+INSERT INTO `toko` VALUES (19, 'cabang_19', 'P.O. Box 729, 1708 Urna St.', '7', '91327', '08359187152');
+INSERT INTO `toko` VALUES (20, 'cabang_20', '832-5662 Montes, Road', '7', '35315', '0817378163451');
+INSERT INTO `toko` VALUES (21, 'cabang_21', 'P.O. Box 673, 3774 Placerat. Rd.', '7', '47313', '085407853132');
+INSERT INTO `toko` VALUES (22, 'cabang_22', '7070 Eget St.', '8', '85722', '0836406113230');
+INSERT INTO `toko` VALUES (23, 'cabang_23', '205-1008 Luctus St.', '8', '22518', '0854129839727');
+INSERT INTO `toko` VALUES (24, 'cabang_24', 'Ap #605-5034 Id, Av.', '8', '40681', '08093435380');
+INSERT INTO `toko` VALUES (25, 'cabang_25', '778-9629 Non Ave', '9', '78872', '083725278007');
+INSERT INTO `toko` VALUES (26, 'cabang_26', 'Ap #950-3029 Mattis. Ave', '9', '78348', '08861616457');
+INSERT INTO `toko` VALUES (27, 'cabang_27', 'P.O. Box 947, 8354 Semper. St.', '9', '78564', '084303471453');
+INSERT INTO `toko` VALUES (28, 'cabang_28', 'Ap #793-4235 Tempor St.', '10', '33410', '081724184119');
+INSERT INTO `toko` VALUES (29, 'cabang_29', '1134 Consectetuer St.', '10', '46586', '08971639973');
+INSERT INTO `toko` VALUES (30, 'cabang_30', '851-3839 In, Rd.', '10', '42578', '086878535972');
+INSERT INTO `toko` VALUES (31, 'cabang_31', '569-858 Dui Av.', '11', '37272', '0853807971756');
+INSERT INTO `toko` VALUES (32, 'cabang_32', 'P.O. Box 558, 251 Arcu Road', '11', '23056', '0814168424131');
+INSERT INTO `toko` VALUES (33, 'cabang_33', '987-3997 Duis St.', '11', '11108', '08312070657');
+INSERT INTO `toko` VALUES (34, 'cabang_34', '554-7836 Commodo Ave', '12', '36831', '0850274472122');
+INSERT INTO `toko` VALUES (35, 'cabang_35', '5444 Purus Rd.', '12', '74168', '08248656973');
+INSERT INTO `toko` VALUES (36, 'cabang_36', 'P.O. Box 396, 2559 Pharetra Rd.', '12', '86789', '0873585512612');
+INSERT INTO `toko` VALUES (37, 'cabang_37', 'Ap #932-6395 Pede. Rd.', '13', '82530', '08212567585');
+INSERT INTO `toko` VALUES (38, 'cabang_38', '474-2717 Ut St.', '13', '24640', '086382448466');
+INSERT INTO `toko` VALUES (39, 'cabang_39', 'P.O. Box 368, 1077 Cubilia Road', '13', '53545', '08763575284');
+INSERT INTO `toko` VALUES (40, 'cabang_40', 'Ap #487-5551 Suspendisse Road', '14', '54357', '0875275745735');
+INSERT INTO `toko` VALUES (41, 'cabang_41', '5765 Amet Ave', '14', '51582', '0876373876191');
+INSERT INTO `toko` VALUES (42, 'cabang_42', '430-5312 Elit. St.', '14', '67322', '084184357596');
+INSERT INTO `toko` VALUES (43, 'cabang_43', '456-4215 In St.', '15', '95444', '08285766828');
+INSERT INTO `toko` VALUES (44, 'cabang_44', '6726 Id Rd.', '15', '36237', '08620149211');
+INSERT INTO `toko` VALUES (45, 'cabang_45', '961-5502 Facilisis, Rd.', '15', '66683', '081838336856');
+INSERT INTO `toko` VALUES (46, 'cabang_46', '268-283 Mi Rd.', '16', '71346', '083648532454');
+INSERT INTO `toko` VALUES (47, 'cabang_47', 'Ap #182-3336 Non, Avenue', '16', '22775', '08147185708');
+INSERT INTO `toko` VALUES (48, 'cabang_48', '866-5060 Nisi. St.', '16', '45515', '08567501942');
+INSERT INTO `toko` VALUES (49, 'cabang_49', '3395 Lobortis Ave', '17', '23611', '08407208812');
+INSERT INTO `toko` VALUES (50, 'cabang_50', 'Ap #413-3593 Dolor St.', '17', '18184', '0860175937752');
+INSERT INTO `toko` VALUES (51, 'cabang_51', 'P.O. Box 837, 5426 Tortor. Street', '17', '23492', '0861925264666');
+INSERT INTO `toko` VALUES (52, 'cabang_52', 'Ap #488-9845 Libero St.', '18', '40683', '08179676525');
+INSERT INTO `toko` VALUES (53, 'cabang_53', '444-3045 Nisl Avenue', '18', '47392', '081381596416');
+INSERT INTO `toko` VALUES (54, 'cabang_54', 'P.O. Box 337, 5989 Morbi Av.', '18', '72154', '086463221162');
+INSERT INTO `toko` VALUES (55, 'cabang_55', 'Ap #603-1068 Nec Street', '19', '94482', '086845742941');
+INSERT INTO `toko` VALUES (56, 'cabang_56', 'P.O. Box 850, 8774 Sociis Rd.', '19', '23957', '0828541444699');
+INSERT INTO `toko` VALUES (57, 'cabang_57', 'P.O. Box 110, 2989 Quam, Ave', '19', '15600', '0828838134314');
+INSERT INTO `toko` VALUES (58, 'cabang_58', 'Ap #690-4741 Egestas. Ave', '20', '47376', '08315199973');
+INSERT INTO `toko` VALUES (59, 'cabang_59', '587-3622 Cras Rd.', '20', '33522', '0822687102373');
+INSERT INTO `toko` VALUES (60, 'cabang_60', '1959 Suspendisse Rd.', '20', '55880', '08363150217');
+INSERT INTO `toko` VALUES (61, 'cabang_61', 'Ap #266-7117 Morbi Rd.', '21', '22585', '088761364121');
+INSERT INTO `toko` VALUES (62, 'cabang_62', '706-4954 Sollicitudin Road', '21', '67564', '080152163634');
+INSERT INTO `toko` VALUES (63, 'cabang_63', '423-7091 Euismod Avenue', '21', '44780', '0826656521335');
+INSERT INTO `toko` VALUES (64, 'cabang_64', '963-4422 Consectetuer St.', '22', '60476', '085530827748');
+INSERT INTO `toko` VALUES (65, 'cabang_65', 'Ap #875-4754 Sagittis. Road', '22', '76264', '08486822286');
+INSERT INTO `toko` VALUES (66, 'cabang_66', 'Ap #758-158 Odio. Street', '22', '98276', '086145533768');
+INSERT INTO `toko` VALUES (67, 'cabang_67', '131-9783 Elit, Rd.', '23', '50152', '0875648813061');
+INSERT INTO `toko` VALUES (68, 'cabang_68', '617-9978 Magna Rd.', '23', '13058', '0895474983415');
+INSERT INTO `toko` VALUES (69, 'cabang_69', 'Ap #881-7510 Vulputate St.', '23', '41633', '089121655554');
+INSERT INTO `toko` VALUES (70, 'cabang_70', '9628 Sed St.', '24', '42171', '0884458443858');
+INSERT INTO `toko` VALUES (71, 'cabang_71', '490-7476 Sit Road', '24', '61861', '082618831436');
+INSERT INTO `toko` VALUES (72, 'cabang_72', 'P.O. Box 423, 8473 Rutrum Rd.', '24', '71918', '08820018536');
+INSERT INTO `toko` VALUES (73, 'cabang_73', 'P.O. Box 278, 1821 Gravida Av.', '25', '41831', '08453942274');
+INSERT INTO `toko` VALUES (74, 'cabang_74', 'Ap #537-8416 Magna Rd.', '25', '81531', '08668576272');
+INSERT INTO `toko` VALUES (75, 'cabang_75', 'Ap #184-8438 Nec St.', '25', '35376', '0896573872527');
+INSERT INTO `toko` VALUES (76, 'cabang_76', '500-1899 Mauris, Avenue', '26', '80364', '084515555488');
+INSERT INTO `toko` VALUES (77, 'cabang_77', 'P.O. Box 738, 1750 Non, Street', '26', '77268', '0876127747262');
+INSERT INTO `toko` VALUES (78, 'cabang_78', 'Ap #479-5450 Commodo Rd.', '26', '93523', '0832698522928');
+INSERT INTO `toko` VALUES (79, 'cabang_79', '479-7367 Arcu. Rd.', '27', '20363', '081027330351');
+INSERT INTO `toko` VALUES (80, 'cabang_80', 'Ap #445-3371 Quis, Ave', '27', '86631', '0850975796523');
+INSERT INTO `toko` VALUES (81, 'cabang_81', '373-1149 Ullamcorper Road', '27', '37668', '081966538507');
+INSERT INTO `toko` VALUES (82, 'cabang_82', 'Ap #982-5834 Adipiscing Av.', '28', '29486', '0821867214838');
+INSERT INTO `toko` VALUES (83, 'cabang_83', 'P.O. Box 296, 5235 Lobortis, Rd.', '28', '82126', '0828632916139');
+INSERT INTO `toko` VALUES (84, 'cabang_84', '7418 Quisque St.', '28', '57252', '08425080735');
+INSERT INTO `toko` VALUES (85, 'cabang_85', 'P.O. Box 219, 1214 Euismod Ave', '29', '60223', '0884768965236');
+INSERT INTO `toko` VALUES (86, 'cabang_86', 'P.O. Box 840, 1040 Magna. St.', '29', '50313', '08354742754');
+INSERT INTO `toko` VALUES (87, 'cabang_87', '344-5629 Mauris Street', '29', '34967', '086267142323');
+INSERT INTO `toko` VALUES (88, 'cabang_88', 'Ap #165-8003 Faucibus Av.', '30', '85490', '0844362435189');
+INSERT INTO `toko` VALUES (89, 'cabang_89', '3676 Mauris St.', '30', '76881', '086326461853');
+INSERT INTO `toko` VALUES (90, 'cabang_90', '5001 Mauris St.', '30', '29750', '080239475768');
+INSERT INTO `toko` VALUES (91, 'cabang_91', 'Ap #356-5708 Consectetuer Street', '31', '99863', '083023532483');
+INSERT INTO `toko` VALUES (92, 'cabang_92', 'Ap #731-3902 Felis St.', '31', '36432', '0828659815279');
+INSERT INTO `toko` VALUES (93, 'cabang_93', '283-9457 Non, St.', '31', '27587', '08753227288');
+INSERT INTO `toko` VALUES (94, 'cabang_94', '828-5004 Auctor Street', '32', '64192', '0831546578439');
+INSERT INTO `toko` VALUES (95, 'cabang_95', '376-1457 Et, Rd.', '32', '39620', '084047400928');
+INSERT INTO `toko` VALUES (96, 'cabang_96', 'P.O. Box 943, 7479 Molestie Rd.', '32', '94847', '0854428186846');
+INSERT INTO `toko` VALUES (97, 'cabang_97', '2395 Augue Street', '33', '77389', '081352427860');
+INSERT INTO `toko` VALUES (98, 'cabang_98', 'P.O. Box 498, 1624 Nunc Rd.', '33', '95757', '082785869732');
+INSERT INTO `toko` VALUES (99, 'cabang_99', '871-1527 At Av.', '33', '34693', '0898924276087');
+INSERT INTO `toko` VALUES (100, 'cabang_100', '304-1115 Mauris Road', '34', '68372', '0883141470142');
+INSERT INTO `toko` VALUES (101, 'cabang_101', 'Ap #731-2635 Cras Ave', '34', '58472', '085321206152');
+INSERT INTO `toko` VALUES (102, 'cabang_102', 'Ap #963-9079 In Rd.', '34', '34584', '088227654498');
 
 SET FOREIGN_KEY_CHECKS = 1;

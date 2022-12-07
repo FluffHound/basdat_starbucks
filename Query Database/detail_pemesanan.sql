@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 100424 (10.4.24-MariaDB)
  Source Host           : localhost:3306
- Source Schema         : starbucks_test
+ Source Schema         : starbucks
 
  Target Server Type    : MySQL
  Target Server Version : 100424 (10.4.24-MariaDB)
  File Encoding         : 65001
 
- Date: 05/12/2022 16:19:36
+ Date: 07/12/2022 23:02:36
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,7 @@ CREATE TABLE `detail_pemesanan`  (
   INDEX `kode_produk_fk`(`kode_produk_fk` ASC) USING BTREE,
   CONSTRAINT `detail_pemesanan_ibfk_1` FOREIGN KEY (`id_pemesanan_fk`) REFERENCES `pemesanan` (`id_pemesanan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `detail_pemesanan_ibfk_2` FOREIGN KEY (`kode_produk_fk`) REFERENCES `produk` (`kode_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of detail_pemesanan

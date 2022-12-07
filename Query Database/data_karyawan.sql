@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 100424 (10.4.24-MariaDB)
  Source Host           : localhost:3306
- Source Schema         : starbucks_test
+ Source Schema         : starbucks
 
  Target Server Type    : MySQL
  Target Server Version : 100424 (10.4.24-MariaDB)
  File Encoding         : 65001
 
- Date: 05/12/2022 16:19:29
+ Date: 07/12/2022 23:02:29
 */
 
 SET NAMES utf8mb4;
@@ -41,10 +41,10 @@ CREATE TABLE `data_karyawan`  (
   INDEX `fk_data_karyawan_posisi`(`id_posisi_fk` ASC) USING BTREE,
   INDEX `fk_data_karyawan_golongan`(`id_golongan_fk` ASC) USING BTREE,
   INDEX `id_toko_fk`(`id_toko_fk` ASC) USING BTREE,
-  CONSTRAINT `fk_data_karyawan_posisi` FOREIGN KEY (`id_posisi_fk`) REFERENCES `posisi` (`id_posisi`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `data_karyawan_ibfk_1` FOREIGN KEY (`id_toko_fk`) REFERENCES `toko` (`id_toko`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `fk_data_karyawan_golongan` FOREIGN KEY (`id_golongan_fk`) REFERENCES `golongan` (`id_golongan`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  CONSTRAINT `fk_data_karyawan_golongan` FOREIGN KEY (`id_golongan_fk`) REFERENCES `golongan` (`id_golongan`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_data_karyawan_posisi` FOREIGN KEY (`id_posisi_fk`) REFERENCES `posisi` (`id_posisi`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of data_karyawan

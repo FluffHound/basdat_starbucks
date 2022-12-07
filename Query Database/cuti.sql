@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 100424 (10.4.24-MariaDB)
  Source Host           : localhost:3306
- Source Schema         : starbucks_test
+ Source Schema         : starbucks
 
  Target Server Type    : MySQL
  Target Server Version : 100424 (10.4.24-MariaDB)
  File Encoding         : 65001
 
- Date: 05/12/2022 16:19:22
+ Date: 07/12/2022 23:02:23
 */
 
 SET NAMES utf8mb4;

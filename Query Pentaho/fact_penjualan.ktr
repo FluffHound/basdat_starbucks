@@ -2189,7 +2189,7 @@ FROM starbucks.produk
         <name>kode_produk</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM waktu 2</origin>
+        <origin>harga produk</origin>
         <comments>kode_produk</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -2212,7 +2212,7 @@ FROM starbucks.produk
         <name>nama_produk</name>
         <length>64</length>
         <precision>-1</precision>
-        <origin>DIM waktu 2</origin>
+        <origin>harga produk</origin>
         <comments>nama_produk</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -2235,7 +2235,7 @@ FROM starbucks.produk
         <name>id_tipe_produk_fk</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM waktu 2</origin>
+        <origin>harga produk</origin>
         <comments>id_tipe_produk_fk</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -2258,7 +2258,7 @@ FROM starbucks.produk
         <name>stok_tersedia</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM waktu 2</origin>
+        <origin>harga produk</origin>
         <comments>stok_tersedia</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -2281,7 +2281,7 @@ FROM starbucks.produk
         <name>harga</name>
         <length>10</length>
         <precision>3</precision>
-        <origin>DIM waktu 2</origin>
+        <origin>harga produk</origin>
         <comments>harga</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>

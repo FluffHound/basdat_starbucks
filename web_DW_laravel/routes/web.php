@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\dwStarbucks_control;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get('/', function () {
 });
 
 // PUNYAKUUU JANGAN DIEDIT
-Route::get('/test', function () {
-    return view('testsite');
-});
+// Route::get('/test', function () {
+//     return view('testsite');
+// });
+
+Route::get('test', [dwStarbucks_control::class, 'index']);

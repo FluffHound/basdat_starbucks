@@ -12,11 +12,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-        <!-- Core theme CSS & JS(includes Bootstrap)-->
-        <link href="./css/styles.css" rel="stylesheet"/>
-        <script src="https://code.jquery.com/jquery-3.6.1.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <!-- <link href="./css/styles.css" rel="stylesheet"/> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- Chart.JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Datatables -->
+        <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
     </head>
     <body>
       <div class="sb-nav-fixed">
@@ -33,9 +39,36 @@
       </div>
       
       <div class="card">
-        <h1>NOICE</h1>
+        <h1>CHARTS</h1>
         <div>
           <canvas id="myChart"></canvas>
+        </div>
+
+        <h1>TABLES</h1>
+
+        <p>dim_cabang</p>
+        <table class="table display" id="myTable">
+          <thead>
+            <tr>
+              <th>id_provinsi</th>
+              <th>nama_provinsi</th>
+              <th>Jumlah Cabang</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($datas as $row)
+            <tr>
+              <td>{{ $row -> id_provinsi }}</td>
+              <td>{{ $row -> nama_provinsi }}</td>
+              <td>{{ $row -> jumlahToko }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+        <h1>dim_cabang CHARTS</h1>
+        <div>
+          <canvas id="chart_dimCabang"></canvas>
         </div>
       </div>
       
@@ -60,6 +93,40 @@
               }
             }
           }
+        });
+      </script>
+      <!-- Datatable -->
+      <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+      </script>
+      <!-- dim_cabang CHARTS -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labels) }};
+          var count = {{ Js::from($data) }};
+          const chartCabang = document.getElementById('chart_dimCabang');
+        
+          new Chart(chartCabang, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah cabang',
+                data: count,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
         });
       </script>
     </body>       

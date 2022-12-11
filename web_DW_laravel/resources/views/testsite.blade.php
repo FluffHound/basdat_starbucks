@@ -15,17 +15,52 @@
         <!-- Core theme CSS & JS(includes Bootstrap)-->
         <link href="./css/styles.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.6.1.js" crossorigin="anonymous"></script>
+        <!-- Chart.JS -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
-    <body class="sb-nav-fixed">
+    <body>
+      <div class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 
-            <!-- Navbar Brand-->
-            <img class="img-fluid" src="./assets/img/Starbucks_Logo-removebg-preview.png" alt="logo" style="width: 45px;" />
-            <a class="navbar-brand ps-3" href="index.html">TESTSITE</a>
-    
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar-->
+          <!-- Navbar Brand-->
+          <img class="img-fluid" src="./assets/img/Starbucks_Logo-removebg-preview.png" alt="logo" style="width: 45px;" />
+          <a class="navbar-brand ps-3" href="index.html">TESTSITE</a>
+  
+          <!-- Sidebar Toggle-->
+          <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+          <!-- Navbar-->
         </nav>
-    </body>
+      </div>
+      
+      <div class="card">
+        <h1>NOICE</h1>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Chart Section -->
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+    </body>       
 </html>

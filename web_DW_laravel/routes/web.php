@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('landing');
 });
 
+// PUNYAKUUU JANGAN DIEDIT
 Route::get('/test', function () {
     return view('testsite');
 });

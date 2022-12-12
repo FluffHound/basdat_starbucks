@@ -24,5 +24,3 @@ Route::get('/', function () {
 // });
 
 Route::get('test', [dwStarbucks_control::class, 'index']);
-
-// End of my section

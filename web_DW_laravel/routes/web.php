@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing');
 });
-
 Route::get('/test', function () {
     return view('testsite');
+});
+Route::get('/landing2', function () {
+    return view('landing2');
 });

@@ -39,15 +39,18 @@
       </div>
       
       <div class="card">
-        <h1>CHARTS</h1>
+        <center>
+          <h1>DUMMY CHARTS</h1>
+        </center>
+        
         <div>
           <canvas id="myChart"></canvas>
         </div>
 
         <h1>TABLES</h1>
-
+<!-- ========================= DIM CABANG ========================= -->
         <p>dim_cabang</p>
-        <table class="table display" id="myTable">
+        <table class="table display" id="cabangTable">
           <thead>
             <tr>
               <th>id_provinsi</th>
@@ -56,7 +59,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($datas as $row)
+            @foreach($dbCabang as $row)
             <tr>
               <td>{{ $row -> id_provinsi }}</td>
               <td>{{ $row -> nama_provinsi }}</td>
@@ -69,6 +72,31 @@
         <h1>dim_cabang CHARTS</h1>
         <div>
           <canvas id="chart_dimCabang"></canvas>
+        </div>
+<!-- ========================= DIM KARYAWAN ========================= -->
+        <p>dim_karyawan</p>
+        <table class="table display" id="karyawanTable">
+          <thead>
+            <tr>
+              <th>id_provinsi</th>
+              <th>nama_provinsi</th>
+              <th>Jumlah Cabang</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($dbKaryawan as $row)
+            <tr>
+              <td>{{ $row -> id_toko }}</td>
+              <td>{{ $row -> nama_toko }}</td>
+              <td>{{ $row -> jumlahKaryawan }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+        <h1>dim_karyawan CHARTS</h1>
+        <div>
+          <canvas id="chart_dimKaryawan"></canvas>
         </div>
       </div>
       
@@ -95,18 +123,19 @@
           }
         });
       </script>
-      <!-- Datatable -->
+      <!-- ========================= Datatable ========================= -->
       <script>
         $(document).ready( function () {
-            $('#myTable').DataTable();
+            $('#cabangTable').DataTable();
+            $('#karyawanTable').DataTable();
         } );
       </script>
-      <!-- dim_cabang CHARTS -->
+      <!-- ========================= DIM CABANG CHARTS ========================= -->
       <script>
         $(function()
         {
-          var labels = {{ Js::from($labels) }};
-          var count = {{ Js::from($data) }};
+          var labels = {{ Js::from($labelCabang) }};
+          var count = {{ Js::from($dataCabang) }};
           const chartCabang = document.getElementById('chart_dimCabang');
         
           new Chart(chartCabang, {
@@ -115,6 +144,34 @@
               labels: labels,
               datasets: [{
                 label: 'jumlah cabang',
+                data: count,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
+      <!-- ========================= DIM KARYAWAN CHARTS ========================= -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelKaryawan) }};
+          var count = {{ Js::from($dataKaryawan) }};
+          const chartCabang = document.getElementById('chart_dimKaryawan');
+        
+          new Chart(chartCabang, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah karyawan',
                 data: count,
                 borderWidth: 1
               }]

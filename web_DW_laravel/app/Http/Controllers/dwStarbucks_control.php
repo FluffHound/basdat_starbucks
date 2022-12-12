@@ -22,15 +22,27 @@ class dwStarbucks_control extends Controller
 
     public function index()
     {
-        $datas = DB::table('dim_cabang')
+        // DIM cabang
+        $dbCabang = DB::table('dim_cabang')
                     ->select(DB::raw('id_provinsi, nama_provinsi, COUNT(id_toko) AS jumlahToko'))
                     ->groupBy('nama_provinsi', 'id_provinsi')
                     ->orderBy('id_provinsi')
                     ->get();
         
-        $labels = $datas -> pluck('nama_provinsi');
-        $data = $datas -> pluck('jumlahToko');
+        $labelCabang = $dbCabang -> pluck('nama_provinsi');
+        $dataCabang = $dbCabang -> pluck('jumlahToko');
+
+        // DIM karyawan
+        $dbKaryawan = DB::table('dim_karyawan')
+                    ->select(DB::raw('id_toko, nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
+                    ->groupBy('nama_toko', 'id_toko')
+                    ->orderBy('id_toko')
+                    ->get();
         
-        return view('testsite', compact('datas', 'labels', 'data'));
+        $labelKaryawan = $dbKaryawan -> pluck('nama_toko');
+        $dataKaryawan = $dbKaryawan -> pluck('jumlahKaryawan');
+        
+        return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
+                                        'dbKaryawan', 'labelKaryawan', 'dataKaryawan'));
     }
 }

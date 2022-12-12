@@ -11,7 +11,7 @@
  Target Server Version : 100424 (10.4.24-MariaDB)
  File Encoding         : 65001
 
- Date: 09/12/2022 22:15:57
+ Date: 12/12/2022 14:59:41
 */
 
 SET NAMES utf8mb4;
@@ -20,7 +20,6 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP DATABASE IF EXISTS starbucks;
 CREATE DATABASE starbucks;
 USE starbucks;
-
 
 -- ----------------------------
 -- Table structure for cuti
@@ -5389,13 +5388,14 @@ DROP TABLE IF EXISTS `produk`;
 CREATE TABLE `produk`  (
   `kode_produk` int NOT NULL,
   `nama_produk` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `id_tipe_produk_fk` int NOT NULL,
+  `id_tipe_produk_fk` int NULL DEFAULT NULL,
   `stok_tersedia` int UNSIGNED NULL DEFAULT NULL,
   `harga` decimal(10, 3) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`kode_produk`) USING BTREE,
+  INDEX `kode_produk`(`kode_produk` ASC) USING BTREE,
   INDEX `id_tipe_produk_fk`(`id_tipe_produk_fk` ASC) USING BTREE,
   CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_tipe_produk_fk`) REFERENCES `tipe_produk` (`id_tipe_produk`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of produk
@@ -5443,22 +5443,22 @@ INSERT INTO `produk` VALUES (41, 'Tuna Cheese Whole Wheat Panini', 8, 20, 48000.
 INSERT INTO `produk` VALUES (43, 'All Day Bfast Bun', 8, 20, 55000.000);
 INSERT INTO `produk` VALUES (44, 'Cheese Quiche', 9, 20, 37000.000);
 INSERT INTO `produk` VALUES (45, 'Smoked Beef Quiche', 9, 20, 35000.000);
-INSERT INTO `produk` VALUES (46, 'Asian Dolce Frappucino', 0, 20, 52000.000);
-INSERT INTO `produk` VALUES (47, 'Caramel Coffee Jelly Frappucino', 0, 0, 57000.000);
-INSERT INTO `produk` VALUES (48, 'Caramel Java Chip Frappucino', 0, 30, 57000.000);
-INSERT INTO `produk` VALUES (49, 'Coffee Frappucino', 0, 0, 44000.000);
-INSERT INTO `produk` VALUES (50, 'Dark Mocha Frappucino', 0, 30, 57000.000);
-INSERT INTO `produk` VALUES (51, 'Espresso Frappucino', 0, 0, 48000.000);
-INSERT INTO `produk` VALUES (52, 'Hazelnut Frappucino', 0, 30, 50000.000);
-INSERT INTO `produk` VALUES (53, 'Java Chip Frappucino', 0, 0, 57000.000);
-INSERT INTO `produk` VALUES (54, 'Mocha Frappucino', 0, 30, 53000.000);
-INSERT INTO `produk` VALUES (55, 'Mocha Jelly Frappucino', 0, 0, 55000.000);
-INSERT INTO `produk` VALUES (56, 'Caramel Cream Frappucino', 0, 0, 57000.000);
-INSERT INTO `produk` VALUES (57, 'Double Chocolate Cream Frappucino', 0, 30, 55000.000);
-INSERT INTO `produk` VALUES (58, 'Green Tea Cream Frappucino', 0, 0, 55000.000);
-INSERT INTO `produk` VALUES (59, 'Vanilla Cream Frappucino', 0, 0, 55000.000);
-INSERT INTO `produk` VALUES (60, 'Mango Passion Frappucino', 0, 10, 47000.000);
-INSERT INTO `produk` VALUES (61, 'Rapsberry Currant Frappucino', 0, 0, 47000.000);
+INSERT INTO `produk` VALUES (46, 'Asian Dolce Frappucino', 2, 20, 52000.000);
+INSERT INTO `produk` VALUES (47, 'Caramel Coffee Jelly Frappucino', 2, 0, 57000.000);
+INSERT INTO `produk` VALUES (48, 'Caramel Java Chip Frappucino', 2, 30, 57000.000);
+INSERT INTO `produk` VALUES (49, 'Coffee Frappucino', 2, 0, 44000.000);
+INSERT INTO `produk` VALUES (50, 'Dark Mocha Frappucino', 2, 30, 57000.000);
+INSERT INTO `produk` VALUES (51, 'Espresso Frappucino', 2, 0, 48000.000);
+INSERT INTO `produk` VALUES (52, 'Hazelnut Frappucino', 2, 30, 50000.000);
+INSERT INTO `produk` VALUES (53, 'Java Chip Frappucino', 2, 0, 57000.000);
+INSERT INTO `produk` VALUES (54, 'Mocha Frappucino', 3, 30, 53000.000);
+INSERT INTO `produk` VALUES (55, 'Mocha Jelly Frappucino', 2, 0, 55000.000);
+INSERT INTO `produk` VALUES (56, 'Caramel Cream Frappucino', 2, 0, 57000.000);
+INSERT INTO `produk` VALUES (57, 'Double Chocolate Cream Frappucino', 2, 30, 55000.000);
+INSERT INTO `produk` VALUES (58, 'Green Tea Cream Frappucino', 2, 0, 55000.000);
+INSERT INTO `produk` VALUES (59, 'Vanilla Cream Frappucino', 2, 0, 55000.000);
+INSERT INTO `produk` VALUES (60, 'Mango Passion Frappucino', 2, 10, 47000.000);
+INSERT INTO `produk` VALUES (61, 'Rapsberry Currant Frappucino', 2, 0, 47000.000);
 INSERT INTO `produk` VALUES (62, 'Cold Brew', 3, 30, 41000.000);
 INSERT INTO `produk` VALUES (63, 'reshly Brewed Coffee', 3, 0, 23000.000);
 INSERT INTO `produk` VALUES (64, 'Misto', 3, 20, 23000.000);

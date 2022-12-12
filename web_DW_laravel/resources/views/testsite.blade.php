@@ -4,16 +4,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Starbucks OLAP Panel</title>
-        <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="./assets/klee.webp" />
         <!-- Bootstrap -->
-        <!-- <link href="./css/styles.css" rel="stylesheet"/> -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- Chart.JS -->
@@ -29,8 +21,8 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 
           <!-- Navbar Brand-->
-          <img class="img-fluid" src="./assets/img/Starbucks_Logo-removebg-preview.png" alt="logo" style="width: 45px;" />
-          <a class="navbar-brand ps-3" href="index.html">TESTSITE</a>
+          <a class="navbar-brand ps-3" href="https://youtu.be/dQw4w9WgXcQ?t=42"><img class="img-fluid" src="./assets/klee.webp" alt="logo" style="width: 45px;"/></a>
+          <p style="color: white; font-size: 150%;">TESTSITE - coba coba sahaja === JANGAN EDIT, COPY TAKPE ===</p>
   
           <!-- Sidebar Toggle-->
           <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -41,20 +33,23 @@
       <div class="card">
         <center>
           <h1>DUMMY CHARTS</h1>
+          <p>Contoh barchart</p>
         </center>
-        
+
         <div>
           <canvas id="myChart"></canvas>
         </div>
+        <!-- ========================= DIM CABANG ========================= -->
+        <center>
+          <h1>Tabel dim_cabang</h1>
+          <p>Jumlah cabang per provinsi</p>
+        </center>
 
-        <h1>TABLES</h1>
-<!-- ========================= DIM CABANG ========================= -->
-        <p>dim_cabang</p>
         <table class="table display" id="cabangTable">
           <thead>
             <tr>
-              <th>id_provinsi</th>
-              <th>nama_provinsi</th>
+              <th>ID Provinsi</th>
+              <th>Nama Provinsi</th>
               <th>Jumlah Cabang</th>
             </tr>
           </thead>
@@ -69,18 +64,24 @@
           </tbody>
         </table>
 
-        <h1>dim_cabang CHARTS</h1>
+        <center>
+          <h1>Barchart dim_cabang</h1>
+        </center>
         <div>
           <canvas id="chart_dimCabang"></canvas>
         </div>
-<!-- ========================= DIM KARYAWAN ========================= -->
-        <p>dim_karyawan</p>
+        <!-- ========================= DIM KARYAWAN ========================= -->
+        <center>
+          <h1>Tabel dim_karyawan</h1>
+          <p>Jumlah karyawan per cabang</p>
+        </center>
+
         <table class="table display" id="karyawanTable">
           <thead>
             <tr>
-              <th>id_provinsi</th>
-              <th>nama_provinsi</th>
-              <th>Jumlah Cabang</th>
+              <th>ID Toko</th>
+              <th>Nama Toko</th>
+              <th>Jumlah Karyawan</th>
             </tr>
           </thead>
           <tbody>
@@ -94,13 +95,48 @@
           </tbody>
         </table>
 
-        <h1>dim_karyawan CHARTS</h1>
+        <center>
+          <h1>Barchart dim_karyawan</h1>
+        </center>
         <div>
           <canvas id="chart_dimKaryawan"></canvas>
         </div>
-      </div>
+
+        <!-- ========================= DIM Produk per tipe produk ========================= -->
+        <center>
+          <h1>Tabel Produk per tipe produk</h1>
+          <p>Jumlah produk per tipe produk</p>
+        </center>
+
+        <table class="table display" id="produkPerTipeTable">
+          <thead>
+            <tr>
+              <th>ID Tipe Produk</th>
+              <th>Tipe Produk</th>
+              <th>Jumlah Produk</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($dbProdukPerTipe as $row)
+            <tr>
+              <td>{{ $row -> id_tipe_produk }}</td>
+              <td>{{ $row -> tipe_produk }}</td>
+              <td>{{ $row -> jumlahProduk }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+        <center>
+          <h1>Barchart Produk per tipe produk</h1>
+        </center>
+        <div>
+          <canvas id="chart_produkPerTipe"></canvas>
+        </div>
+    
+      </div> <!-- Close card body -->
       
-      <!-- Chart Section -->
+      <!-- __________________________ DUMMY CHART __________________________ -->
       <script>
         const ctx = document.getElementById('myChart');
       
@@ -123,11 +159,12 @@
           }
         });
       </script>
-      <!-- ========================= Datatable ========================= -->
+      <!-- __________________________ Datatable __________________________ -->
       <script>
         $(document).ready( function () {
             $('#cabangTable').DataTable();
             $('#karyawanTable').DataTable();
+            $('#produkPerTipeTable').DataTable();
         } );
       </script>
       <!-- ========================= DIM CABANG CHARTS ========================= -->
@@ -186,5 +223,34 @@
           });
         });
       </script>
+      <!-- ========================= DIM produk/tipe produk CHARTS ========================= -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelProdukPerTipe) }};
+          var count = {{ Js::from($dataProdukPerTipe) }};
+          const chartProdukPerTipe = document.getElementById('chart_produkPerTipe');
+        
+          new Chart(chartProdukPerTipe, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah produk',
+                data: count,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
+      <!-- ========================= End Of Charts ========================= -->
     </body>       
 </html>

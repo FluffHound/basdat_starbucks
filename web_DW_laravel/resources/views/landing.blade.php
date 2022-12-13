@@ -7,6 +7,7 @@
     <title>Landing Page</title>
     <!-- <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" /> -->
     <!-- Font Awesome icons (free version)-->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -25,8 +26,26 @@
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+
+    <!-- Bootsrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+    <!-- Chart.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Core theme JS-->
     <script src="./js/scripts.js "></script>
+    <!-- Datatables -->
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 </head>
 
 <body>
@@ -195,14 +214,100 @@
 
         <section class="section dashboard">
             <div class="row">
-
                 <!-- Left side columns -->
                 <div class="col-lg-8">
                     <div class="row">
+                        <!-- Sales Card -->
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>Tables</b><span><b>/Dim Cabang</b></span></h5>
+                                    <!-- Line Chart -->
+                                    <!-- <canvas id="myChart"></canvas> -->
+                                    <!-- </div> -->
+                                    <table class="table display" id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>id_provinsi</th>
+                                                <th>nama_provinsi</th>
+                                                <th>Jumlah Cabang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($datas as $row)
+                                            <tr>
+                                                <td>{{ $row -> id_provinsi }}</td>
+                                                <td>{{ $row -> nama_provinsi }}</td>
+                                                <td>{{ $row -> jumlahToko }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <!-- Charts -->
+                                    <h4>dim_cabang CHARTS</h4>
+                                    <div>
+                                        <canvas id="chart_dimCabang"></canvas>
+                                    </div>
+                                    <!-- My Table -->
+                                    <script>
+                                    $(document).ready(function() {
+                                        $('#myTable').DataTable({"pageLength":5});
+                                    });
+                                    </script>
+                                    <!-- Chart Section -->
+                                    <script>
+                                        $(function()
+                                        {
 
-                        <!-- End Sales Card -->
+                                        var labels = {{ Js::from($labels) }};
+                                        var count = {{ Js::from($data) }};
+                                        const chartCabang = document.getElementById('chart_dimCabang');
+                                        
+                                        new Chart(chartCabang, {
+                                            type: 'bar',
+                                            data: {
+                                            labels: labels,
+                                            datasets: [{
+                                                label: 'jumlah cabang',
+                                                data: count,
+                                                borderWidth: 1,
+                                                backgroundColor: '#9BD0F5'
 
-                        <!-- Revenue Card -->
+                                            }]
+                                            },
+                                            options: {
+                                            scales: {
+                                                y: {
+                                                beginAtZero: true
+                                                }
+                                            }
+                                            }
+                                        });
+                                    });
+                                </script>
+                                    <!-- Datatable -->
+                                    <!-- dim_cabang CHARTS -->
+                                    <!-- End Line Chart -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Reports -->
+
+
+                </div>
+            </div>
+            <!-- End Left side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             <li class="dropdown-header text-start">
                                 <h6>Filter</h6>
@@ -213,114 +318,72 @@
                             <li><a class="dropdown-item" href="#">This Year</a></li>
                         </ul>
                     </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+
+                        <div class="activity">
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">32 min</div>
+                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                <div class="activity-content">
+                                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a>
+                                    beatae
+                                </div>
+                            </div>
+                            <!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">56 min</div>
+                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                                <div class="activity-content">
+                                    Voluptatem blanditiis blanditiis eveniet
+                                </div>
+                            </div>
+                            <!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">2 hrs</div>
+                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                <div class="activity-content">
+                                    Voluptates corrupti molestias voluptatem
+                                </div>
+                            </div>
+                            <!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">1 day</div>
+                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                                <div class="activity-content">
+                                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati
+                                        voluptatem</a> tempore
+                                </div>
+                            </div>
+                            <!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">2 days</div>
+                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                                <div class="activity-content">
+                                    Est sit eum reiciendis exercitationem
+                                </div>
+                            </div>
+                            <!-- End activity item-->
+
+                            <div class="activity-item d-flex">
+                                <div class="activite-label">4 weeks</div>
+                                <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                                <div class="activity-content">
+                                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                                </div>
+                            </div>
+                            <!-- End activity item-->
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            <!-- End Revenue Card -->
-            <!-- Reports -->
-            <div class='panel'>
-                <div id='barCharts'>
-                </div>
-            </div>
-            <script>
-            Highcharts.chart('barCharts', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'Monthly Average Rainfall'
-                },
-                subtitle: {
-                    text: 'Source: WorldClimate.com'
-                },
-                xAxis: {
-                    categories: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'May',
-                        'Jun',
-                        'Jul',
-                        'Aug',
-                        'Sep',
-                        'Oct',
-                        'Nov',
-                        'Dec'
-                    ],
-                    crosshair: true
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Rainfall (mm)'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series: [{
-                    name: 'Tokyo',
-                    data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4,
-                        194.1, 95.6, 54.4
-                    ]
-
-                }, {
-                    name: 'New York',
-                    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2,
-                        83.5,
-                        106.6, 92.3
-                    ]
-
-                }, {
-                    name: 'London',
-                    data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2,
-                        59.3,
-                        51.2
-                    ]
-
-                }, {
-                    name: 'Berlin',
-                    data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1,
-                        46.8,
-                        51.1
-                    ]
-
-                }]
-            });
-            </script>
-            <!-- End Line Chart -->
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <!-- End Reports -->
-            <!-- End Recent Sales -->
-
-            <!-- Top Selling -->
-            <!-- End Top Selling -->
-
-            </div>
-            </div>
-            <!-- End Left side columns -->
-
-            <!-- Right side columns -->
-            <div class="col-lg-4">
-
-
                 <!-- End Recent Activity -->
 
                 <!-- Budget Report -->
@@ -331,6 +394,7 @@
                             <li class="dropdown-header text-start">
                                 <h6>Filter</h6>
                             </li>
+
                             <li><a class="dropdown-item" href="#">Today</a></li>
                             <li><a class="dropdown-item" href="#">This Month</a></li>
                             <li><a class="dropdown-item" href="#">This Year</a></li>
@@ -504,14 +568,10 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+
+
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 </body>
 

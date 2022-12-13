@@ -14,7 +14,7 @@ use App\Http\Controllers\dwStarbucks_control;
 |
 */
 
-Route::get('/', function () {
+Route::get('/landing', function () {
     return view('landing');
 });
 

@@ -430,7 +430,7 @@
     <created_date>2022/12/09 20:01:12.933</created_date>
     <modified_user>-</modified_user>
     <modified_date>2022/12/09 20:01:12.933</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -598,13 +598,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>detail pemesanan</from>
-      <to>id_produk + pemesanan</to>
+      <from>DIM karyawan</from>
+      <to>sk_karyawan</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>DIM karyawan</from>
-      <to>sk_karyawan</to>
+      <from>detail pemesanan</from>
+      <to>id_produk + pemesanan</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -643,13 +643,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Total Harga</from>
-      <to>Final Columns</to>
+      <from>Final Columns</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Final Columns</from>
-      <to>Table output</to>
+      <from>Total Harga</from>
+      <to>sk_factpenjualan</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>sk_factpenjualan</from>
+      <to>Final Columns</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1290,10 +1295,16 @@ FROM dw_starbucks.dim_waktu
     </partitioning>
     <fields>
       <field>
+        <name>sk_factpenjualan</name>
+        <rename/>
+      </field>
+      <field>
         <name>sk_produk</name>
+        <rename/>
       </field>
       <field>
         <name>sk_karyawan</name>
+        <rename/>
       </field>
       <field>
         <name>id_toko_fk</name>
@@ -1301,12 +1312,19 @@ FROM dw_starbucks.dim_waktu
       </field>
       <field>
         <name>sk_waktu</name>
+        <rename/>
       </field>
       <field>
         <name>jumlah_pembelian</name>
+        <rename/>
       </field>
       <field>
         <name>total_harga</name>
+        <rename/>
+      </field>
+      <field>
+        <name>tipe_pembayaran</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1320,7 +1338,7 @@ FROM dw_starbucks.dim_waktu
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>608</yloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1941,8 +1959,8 @@ FROM starbucks.pemesanan
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>704</yloc>
+      <xloc>848</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2616,6 +2634,41 @@ FROM starbucks.produk
     <GUI>
       <xloc>608</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>sk_factpenjualan</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>sk_factpenjualan</valuename>
+    <use_database>N</use_database>
+    <connection/>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

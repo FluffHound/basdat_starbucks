@@ -170,6 +170,12 @@
         <div>
           <canvas id="chart_produkPerTipe"></canvas>
         </div>
+        <center>
+          <h1>Barchart Produk per tipe produk</h1>
+        </center>
+        <div>
+          <canvas id="chart_skwaktu"></canvas>
+        </div>
         
         <!-- ================================= EXPERIMENTAL ================================= -->
         <div>
@@ -184,7 +190,6 @@
               left: 0,
               right: 0,
           }
-
           const browserData =
           [
               @foreach($dbProdukPerTipe as $row)
@@ -565,6 +570,33 @@
           });
         });
       </script>
-      <!-- ========================= End Of Charts ========================= -->
+      <!-- =========================Line Chart End Of Charts ========================= -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelWaktu) }};
+          var count = {{ Js::from($labelPembelian) }};
+          const chart_skwaktu = document.getElementById('chart_skwaktu');
+        
+          new Chart(chart_skwaktu, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah produk',
+                data: count,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+        </script>
     </body>       
 </html>

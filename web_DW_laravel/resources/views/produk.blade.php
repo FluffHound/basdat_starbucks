@@ -205,15 +205,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="dim_produk.html">
+                <a class="nav-link collapsed" href="/produk">
                     <i class="bi bi-cup"></i>
                     <span>Dim Produk</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="dim_cabang.html">
-                    <i class="bi bi-shop"></i>
-                    <span>Dim Cabang</span>
+                <a class="nav-link collapsed" href="/cabang">
+                <i class="bi bi-shop"></i>
+                    <span> Dim Cabang</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -244,101 +244,18 @@
             <div class="row">
 
                 <!-- Left side columns -->
-                <div class="col-lg-10">
-                    <div class="row">
-                        <!-- First Card -->
-                        <div class="col-xxl-4 col-xl-12">
-                            <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
-                                    <!-- ========================= DIM CABANG ========================= -->
-                                    <center>
-                                    <h1>Tabel dim_cabang</h1>
-                                    <p>Jumlah cabang per provinsi</p>
-                                    </center>
-
-                                    <table class="table display" id="cabangTable">
-                                        <thead>
-                                            <tr>
-                                            <th>ID Provinsi</th>
-                                            <th>Nama Provinsi</th>
-                                            <th>Jumlah Cabang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($dbCabang as $row)
-                                            <tr>
-                                                <td>{{ $row -> id_provinsi }}</td>
-                                                <td>{{ $row -> nama_provinsi }}</td>
-                                                <td>{{ $row -> jumlahToko }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-
-                                    <center>
-                                        <h1>Barchart dim_cabang</h1>
-                                    </center>
-                                    <div>
-                                        <canvas id="chart_dimCabang"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Second Card -->
-                        <div class="col-xxl-4 col-xl-12">
-                            <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
-                                    <!-- ========================= DIM KARYAWAN ========================= -->
-                                    <center>
-                                    <h1>Tabel dim_karyawan</h1>
-                                    <p>Jumlah karyawan per cabang</p>
-                                    </center>
-
-                                    <table class="table display" id="karyawanTable">
-                                    <thead>
-                                        <tr>
-                                        <th>ID Toko</th>
-                                        <th>Nama Toko</th>
-                                        <th>Jumlah Karyawan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($dbKaryawan as $row)
-                                        <tr>
-                                        <td>{{ $row -> id_toko }}</td>
-                                        <td>{{ $row -> nama_toko }}</td>
-                                        <td>{{ $row -> jumlahKaryawan }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                    </table>
-
-                                    <center>
-                                    <h1>Barchart dim_karyawan</h1>
-                                    </center>
-                                    <div>
-                                    <canvas id="chart_dimKaryawan"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                <div class="col-lg-12">
                     <div class="row">
                         <!-- Third Card -->
-                        <div class="col-xxl-4 col-xl-12">
+                        <div class="col-lg-12">
                             <div class="card info-card customers-card">
                                 <div class="card-body">
                                     <h5 class="card-title">Customers <span>| This Year</span></h5>
                                     <!-- ========================= DIM Produk per tipe produk ========================= -->
                                     <center>
-                                    <h1>Tabel Produk per tipe produk</h1>
-                                    <p>Jumlah produk per tipe produk</p>
+                                    
+                                    <h2 class="card-title"><b>Tabel Jumlah Produk per
+                                                    Tipe</b><span></span></h2>
                                     </center>
 
                                     <table class="table display" id="produkPerTipeTable">
@@ -361,7 +278,9 @@
                                     </table>
 
                                     <center>
-                                    <h1>Barchart Produk per tipe produk</h1>
+                                    
+                                    <h2 class="card-title"><b>Jumlah Tipe per
+                                                    Produk</b><span></span></h2>
                                     </center>
                                     <div>
                                     <canvas id="chart_produkPerTipe"></canvas>
@@ -414,70 +333,12 @@
     <script>
         $(document).ready( function ()
         {
-            $('#cabangTable').DataTable();
-            $('#karyawanTable').DataTable();
-            $('#produkPerTipeTable').DataTable();
+            $('#produkPerTipeTable').DataTable({
+                "pageLength": 5
+            });
         } );
     </script>
 
-    <!-- ========================= DIM CABANG CHARTS ========================= -->
-    <script>
-        $(function()
-        {
-          var labels = {{ Js::from($labelCabang) }};
-          var count = {{ Js::from($dataCabang) }};
-          const chartCabang = document.getElementById('chart_dimCabang');
-        
-          new Chart(chartCabang, {
-            type: 'bar',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'jumlah cabang',
-                data: count,
-                borderWidth: 1,
-                backgroundColor: '#9BD0F5'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        });
-      </script>
-
-      <!-- ========================= DIM KARYAWAN CHARTS ========================= -->
-      <script>
-        $(function()
-        {
-          var labels = {{ Js::from($labelKaryawan) }};
-          var count = {{ Js::from($dataKaryawan) }};
-          const chartCabang = document.getElementById('chart_dimKaryawan');
-        
-          new Chart(chartCabang, {
-            type: 'bar',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'jumlah karyawan',
-                data: count,
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        });
-      </script>
 
       <!-- ========================= DIM produk/tipe produk CHARTS ========================= -->
       <script>
@@ -494,7 +355,8 @@
               datasets: [{
                 label: 'jumlah produk',
                 data: count,
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundColor: '#9BD0F5'
               }]
             },
             options: {

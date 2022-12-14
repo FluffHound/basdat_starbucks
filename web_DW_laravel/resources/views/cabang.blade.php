@@ -211,206 +211,221 @@
             <div class="row">
                 <!-- Chart Cabang pada masing-masing provinsi-->
                 <center>
-                <div class="col-lg-10">
-                    <div class="row">
-                        <!-- Sales Card -->
-                        <!-- Reports -->
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><b>Tables Provinsi</b></h5>
-                                    <!-- Line Chart -->
-                                    <!-- <canvas id="myChart"></canvas> -->
-                                    <!-- </div> -->
-                                    <table class="table display" id="myTable">
-                                        <thead>
-                                            <tr>
-                                                <th>id_provinsi</th>
-                                                <th>nama_provinsi</th>
-                                                <th>Jumlah Cabang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($dbCabang as $row)
-                                            <tr>
-                                                <td>{{ $row -> id_provinsi }}</td>
-                                                <td>{{ $row -> nama_provinsi }}</td>
-                                                <td>{{ $row -> jumlahToko }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="col-lg-">
-                                    <!-- Charts -->
-                                    <h3 class="card-title"><b>Bar Chart Jumlah Cabang per Provinsi</b><span></span></h3>
-                                    <div>
-                                        <canvas id="chart_dimCabang"></canvas>
-                                    </div>
-                                    <!-- My Table -->
-                                    <script>
-                                    $(document).ready(function() {
-                                        $('#myTable').DataTable({"pageLength":5});
-                                    });
-                                    </script>
-                                    <!-- Chart Section -->
-                                    <script>
-                                        $(function()
-                                        {
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <!-- Sales Card -->
+                            <!-- Reports -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><b>Tables Provinsi</b></h5>
+                                        <!-- Line Chart -->
+                                        <!-- <canvas id="myChart"></canvas> -->
+                                        <!-- </div> -->
+                                        <table class="table display" id="myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>id_provinsi</th>
+                                                    <th>nama_provinsi</th>
+                                                    <th>Jumlah Cabang</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($dbCabang as $row)
+                                                <tr>
+                                                    <td>{{ $row -> id_provinsi }}</td>
+                                                    <td>{{ $row -> nama_provinsi }}</td>
+                                                    <td>{{ $row -> jumlahToko }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        <div class="col-lg-4">
+                                            <!-- Charts -->
+                                            <h3 class="card-title"><b>Bar Chart Jumlah Cabang per
+                                                    Provinsi</b><span></span></h3>
+                                            <div>
+                                                <canvas id="chart_dimCabang"></canvas>
+                                            </div>
+                                            <!-- My Table -->
+                                            <script>
+                                            $(document).ready(function() {
+                                                $('#myTable').DataTable({
+                                                    "pageLength": 5
+                                                });
+                                            });
+                                            </script>
+                                            <!-- Chart Section -->
+                                            <script>
+                                            $(function() {
 
-                                        var labels = {{ Js::from($labelCabang) }};
-                                        var count = {{ Js::from($dataCabang) }};
-                                        const chartCabang = document.getElementById('chart_dimCabang');
-                                        
-                                        new Chart(chartCabang, {
-                                            type: 'bar',
-                                            data: {
-                                            labels: labels,
-                                            datasets: [{
-                                                label: 'jumlah cabang',
-                                                data: count,
-                                                borderWidth: 1,
-                                                backgroundColor: '#9BD0F5'
-
-                                            }]
-                                            },
-                                            options: 
-                                            {
-                                                scales: {
-                                                    y: {
-                                                    beginAtZero: true
+                                                var labels = {
+                                                    {
+                                                        Js::from($labelCabang)
                                                     }
-                                                }
-                                            }
-                                        });
-                                    });
-                                </script>
+                                                };
+                                                var count = {
+                                                    {
+                                                        Js::from($dataCabang)
+                                                    }
+                                                };
+                                                const chartCabang = document.getElementById('chart_dimCabang');
+
+                                                new Chart(chartCabang, {
+                                                    type: 'bar',
+                                                    data: {
+                                                        labels: labels,
+                                                        datasets: [{
+                                                            label: 'jumlah cabang',
+                                                            data: count,
+                                                            borderWidth: 1,
+                                                            backgroundColor: '#9BD0F5'
+
+                                                        }]
+                                                    },
+                                                    options: {
+                                                        scales: {
+                                                            y: {
+                                                                beginAtZero: true
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                            </script>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- End Reports -->
                         </div>
                     </div>
-                    <!-- End Reports -->
+
+                </center>
+
+                <!-- End Left side columns -->
+                <!-- BarChart Produk -->
+                <div class="row">
+                    <!-- Chart Cabang pada masing-masing provinsi-->
+                    <!-- Right side columns -->
+                    <div class="col-lg-4">
+
+                        <!-- Recent Activity -->
+
+                        <!-- End Recent Activity -->
+
+                        <!-- Budget Report -->
+                        <!-- End Budget Report -->
+                    </div>
+                    <!-- End Right side columns -->
+
                 </div>
-            </div>
-            
-                                </center>
-            
-            <!-- End Left side columns -->
-         <!-- BarChart Produk -->
-         <div class="row">
-                <!-- Chart Cabang pada masing-masing provinsi-->
-            <!-- Right side columns -->
-            <div class="col-lg-4">
-
-                <!-- Recent Activity -->
-
-                <!-- End Recent Activity -->
-
-                <!-- Budget Report -->
-                <!-- End Budget Report -->
-            </div>
-            <!-- End Right side columns -->
-
-            </div>
         </section>
 
         <!-- Produk -->
-        <section class="section dashboard">
+        <section class="section produk">
             <div class="row">
                 <!-- Chart Cabang pada masing-masing provinsi-->
                 <center>
-                <div class="col-lg-10">
-                    <div class="row">
-                        <!-- Sales Card -->
-                        <!-- Reports -->
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><b>Tables Provinsi</b></h5>
-                                    <!-- Line Chart -->
-                                    <!-- <canvas id="myChart"></canvas> -->
-                                    <!-- </div> -->
-                                    <table class="table display" id="myTable2">
-                                        <thead>
-                                            <tr>
-                                                <th>id_provinsi</th>
-                                                <th>nama_provinsi</th>
-                                                <th>Jumlah Cabang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($dbCabang as $row)
-                                            <tr>
-                                                <td>{{ $row -> id_provinsi }}</td>
-                                                <td>{{ $row -> nama_provinsi }}</td>
-                                                <td>{{ $row -> jumlahToko }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <div class="col-lg-">
-                                    <!-- Charts -->
-                                    <h3 class="card-title"><b>Bar Chart Jumlah Cabang per Provinsi</b><span></span></h3>
-                                    <div>
-                                        <canvas id="chart_dimCabang2"></canvas>
-                                    </div>
-                                    <!-- My Table -->
-                                    <script>
-                                    $(document).ready(function() {
-                                        $('#myTable2').DataTable({"pageLength":5});
-                                    });
-                                    </script>
-                                    <!-- Chart Section -->
-                                    <script>
-                                        $(function()
-                                        {
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <!-- Sales Card -->
+                            <!-- Reports -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><b>Tables Jenis Produk</b></h5>
+                                        <!-- Line Chart -->
+                                        <!-- <canvas id="myChart"></canvas> -->
+                                        <!-- </div> -->
+                                        <table class="table display" id="produkPerTipeTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID Tipe Produk</th>
+                                                    <th>Tipe Produk</th>
+                                                    <th>Jumlah Produk</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($dbProdukPerTipe as $row)
+                                                <tr>
+                                                    <td>{{ $row -> id_tipe_produk }}</td>
+                                                    <td>{{ $row -> tipe_produk }}</td>
+                                                    <td>{{ $row -> jumlahProduk }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
 
-                                        var labels = {{ Js::from($labelCabang) }};
-                                        var count = {{ Js::from($dataCabang) }};
-                                        const chartCabang = document.getElementById('chart_dimCabang2');
-                                        
-                                        new Chart(chartCabang, {
-                                            type: 'bar',
-                                            data: {
-                                            labels: labels,
-                                            datasets: [{
-                                                label: 'jumlah cabang',
-                                                data: count,
-                                                borderWidth: 1,
-                                                backgroundColor: '#9BD0F5'
+                                        <!-- Charts -->
+                                        <h3 class="card-title"><b>Bar Chart Jumlah Cabang per Provinsi</b><span></span>
+                                        </h3>
+                                        <div>
+                                            <canvas id="chart_produkPerTipe"></canvas>
+                                        </div>
+                                        <!-- My Table -->
+                                        <script>
+                                        $(document).ready(function() {
+                                            $('#produkPerTipeTable').DataTable({
+                                                "pageLength": 5
+                                            });
+                                        });
+                                        </script>
+                                        <!-- Chart Section -->
+                                        <script>
+                                        $(function() {
+                                            var labels = {
+                                                {
+                                                    Js::from($labelProdukPerTipe)
+                                                }
+                                            };
+                                            var count = {
+                                                {
+                                                    Js::from($dataProdukPerTipe)
+                                                }
+                                            };
+                                            const chartProdukPerTipe = document.getElementById(
+                                                'chart_produkPerTipe');
 
-                                            }]
-                                            },
-                                            options: 
-                                            {
-                                                scales: {
-                                                    y: {
-                                                    beginAtZero: true
+                                            new Chart(chartProdukPerTipe, {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: labels,
+                                                    datasets: [{
+                                                        label: 'jumlah produk',
+                                                        data: count,
+                                                        borderWidth: 1
+                                                    }]
+                                                },
+                                                options: {
+                                                    scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
                                                     }
                                                 }
-                                            }
+                                            });
                                         });
-                                    });
-                                </script>
+                                        </script>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- End Reports -->
                     </div>
-                    <!-- End Reports -->
-                </div>
             </div>
-            
-                                </center>
-            
-            <!-- End Left side columns -->
-         <!-- BarChart Produk -->
-         <div class="row">
-                <!-- Chart Cabang pada masing-masing provinsi-->
-            <!-- Right side columns -->
-            <div class="col-lg-4">
-                <!-- End Website Traffic -->
+            </center>
 
-            </div>
-            <!-- End Right side columns -->
+            <!-- End Left side columns -->
+            <!-- BarChart Produk -->
+            <div class="row">
+                <!-- Chart Cabang pada masing-masing provinsi-->
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+                    <!-- End Website Traffic -->
+
+                </div>
+                <!-- End Right side columns -->
 
             </div>
         </section>

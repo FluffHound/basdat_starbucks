@@ -108,7 +108,7 @@ class dwStarbucks_control extends Controller
         $labelTipeProduk = $dbTipeProduk -> pluck('id_tipe_produk');
         $dataTipeProduk = $dbTipeProduk -> pluck('jumlahTipeProduk');
         
-        return view('landing', compact('dbCabang', 'labelCabang', 'dataCabang',
+        return view('cabang', compact('dbCabang', 'labelCabang', 'dataCabang',
         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
         'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
         'dbTipeProduk', 'labelTipeProduk', 'dataTipeProduk'));

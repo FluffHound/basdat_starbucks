@@ -21,6 +21,7 @@ use App\Http\Controllers\dwStarbucks_control;
 
 Route::get('test', [dwStarbucks_control::class, 'index']);
 
-Route::get('landing', [dwStarbucks_control::class, 'grafik']);
+Route::get('cabang', [dwStarbucks_control::class, 'grafik']);
+Route::get('produk', [dwStarbucks_control::class, 'grafik']);
 
 // END OF MY SECTION

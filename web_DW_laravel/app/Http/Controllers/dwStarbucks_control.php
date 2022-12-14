@@ -75,7 +75,6 @@ class dwStarbucks_control extends Controller
         return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
                                         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
                                         'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
-                                        'dbTipeProduk', 'labelTipeProduk', 'dataTipeProduk',
                                         'dbSKPenjualan', 'labelWaktu', 'labelPembelian'));
         
     }

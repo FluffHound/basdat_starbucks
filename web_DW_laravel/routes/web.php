@@ -26,4 +26,4 @@ Route::get('cabang', [dwStarbucks_control::class, 'grafik']);
 // Landing produk
 Route::get('produk', [dwStarbucks_control::class, 'grafik']);
 //  Landing 
-
+Route::get('tipebayar', [dwStarbucks_control::class, 'TIPEBAYAR']);

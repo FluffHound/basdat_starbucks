@@ -22,8 +22,11 @@ Route::get('test', [dwStarbucks_control::class, 'index']);
 Route::get('cobak', [dwStarbucks_control::class, 'cobak']);
 // END OF MY SECTION
 // Landing Cabang
-Route::get('cabang', [dwStarbucks_control::class, 'grafik']);
+Route::get('cabang', [dwStarbucks_control::class, 'cabang']);
 // Landing produk
-Route::get('produk', [dwStarbucks_control::class, 'grafik']);
-//  Landing 
+Route::get('produk', [dwStarbucks_control::class, 'produk']);
+//  Landing  karyawan 
+Route::get('karyawan', [dwStarbucks_control::class, 'karyawan']);
+// Fact Penjualan
+Route::get('fact_penjualan', [dwStarbucks_control::class, 'penjualan']);
 Route::get('tipebayar', [dwStarbucks_control::class, 'TIPEBAYAR']);

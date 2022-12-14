@@ -174,13 +174,8 @@
       </div> <!-- Close card body -->
 
       <!-- ============ EXPERIMENTAL ============== -->
-      <div class="chartMenu">
-        <p>CHARTJ3S</p>
-      </div>
-      <div class="chartCard">
-          <div class="chartBox">
-              <canvas id="myChart"></canvas>
-          </div>
+      <div>
+        <canvas id="myChart"></canvas>
       </div>
 
       <script>
@@ -421,6 +416,8 @@
               clickButtonHandler(ctx, e);
           });
       </script>
+
+      <!-- ============ EXPERIMENTAL DONEEEEEE ============== -->
       
       <!-- __________________________ DUMMY CHART __________________________ -->
       <script>

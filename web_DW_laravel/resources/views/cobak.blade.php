@@ -244,9 +244,8 @@
             <div class="row">
 
                 <!-- Left side columns -->
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <div class="row">
-
                         <!-- First Card -->
                         <div class="col-xxl-4 col-xl-12">
                             <div class="card info-card customers-card">
@@ -287,7 +286,8 @@
                             </div>
 
                         </div>
-
+                    </div>
+                    <div class="row">
                         <!-- Second Card -->
                         <div class="col-xxl-4 col-xl-12">
                             <div class="card info-card customers-card">
@@ -328,7 +328,8 @@
                             </div>
 
                         </div>
-
+                    </div>
+                    <div class="row">
                         <!-- Third Card -->
                         <div class="col-xxl-4 col-xl-12">
                             <div class="card info-card customers-card">
@@ -367,8 +368,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+                    </div>
                 </div>
                 <!-- End Right side columns -->
             </div>

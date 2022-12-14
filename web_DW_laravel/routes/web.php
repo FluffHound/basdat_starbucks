@@ -18,10 +18,10 @@ use App\Http\Controllers\dwStarbucks_control;
 // Route::get('/test', function () {
 //     return view('testsite');
 // });
-
 Route::get('test', [dwStarbucks_control::class, 'index']);
+Route::get('cobak', [dwStarbucks_control::class, 'cobak']);
+// END OF MY SECTION
 
 Route::get('cabang', [dwStarbucks_control::class, 'grafik']);
 Route::get('produk', [dwStarbucks_control::class, 'grafik']);
 
-// END OF MY SECTION

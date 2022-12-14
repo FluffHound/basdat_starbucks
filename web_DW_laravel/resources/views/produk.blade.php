@@ -7,7 +7,6 @@
     <title>Landing Page</title>
     <!-- <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" /> -->
     <!-- Font Awesome icons (free version)-->
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -26,26 +25,55 @@
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js "></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
-
-    <!-- Bootsrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
+    <!-- Core theme JS-->
+    <!-- <script src="./js/scripts.js "></script> -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <!-- Chart.JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Core theme JS-->
-    <script src="./js/scripts.js "></script>
     <!-- Datatables -->
-    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        .chartMenu
+        {
+            width: 100vw;
+            height: 40px;
+            background: #1A1A1A;
+            color: rgba(255, 26, 104, 1);
+        }
+        .chartMenu p
+        {
+            padding: 10px;
+            font-size: 20px;
+        }
+        .chartCard
+        {
+            width: 100vw;
+            height: calc(100vh - 40px);
+            background: rgba(255, 26, 104, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chartBox
+        {
+            width: 700px;
+            padding: 20px;
+            border-radius: 20px;
+            border: solid 3px rgba(255, 26, 104, 1);
+            background: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -95,6 +123,7 @@
                         <span class="d-none d-md-block dropdown-toggle ps-2">Najma Attaqiya Alya</span>
                     </a>
                     <!-- End Profile Iamge Icon -->
+
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6>Najma Attaqiya Alya</h6>
@@ -103,6 +132,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-person"></i>
@@ -139,6 +169,7 @@
                                 <span>Sign Out</span>
                             </a>
                         </li>
+
                     </ul>
                     <!-- End Profile Dropdown Items -->
                 </li>
@@ -146,6 +177,7 @@
             </ul>
         </nav>
         <!-- End Icons Navigation -->
+
     </header>
     <!-- End Header -->
 
@@ -169,13 +201,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="dim_karyawan.html">
                     <i class="bi bi-person"></i>
-                    <span>Chart Karyawan</span>
+                    <span>Dim Karyawan</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="dim_produk.html">
                     <i class="bi bi-cup"></i>
-                    <span>Chart Produk</span>
+                    <span>Dim Produk</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -207,229 +239,141 @@
             </nav>
         </div>
         <!-- End Page Title -->
+
         <section class="section dashboard">
             <div class="row">
-                <!-- Chart Cabang pada masing-masing provinsi-->
-                <center>
-                    <div class="col-lg-10">
-                        <div class="row">
-                            <!-- Sales Card -->
-                            <!-- Reports -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Tables Provinsi</b></h5>
-                                        <!-- Line Chart -->
-                                        <!-- <canvas id="myChart"></canvas> -->
-                                        <!-- </div> -->
-                                        <table class="table display" id="myTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>id_provinsi</th>
-                                                    <th>nama_provinsi</th>
-                                                    <th>Jumlah Cabang</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($dbCabang as $row)
-                                                <tr>
-                                                    <td>{{ $row -> id_provinsi }}</td>
-                                                    <td>{{ $row -> nama_provinsi }}</td>
-                                                    <td>{{ $row -> jumlahToko }}</td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                        <div class="col-lg-4">
-                                            <!-- Charts -->
-                                            <h3 class="card-title"><b>Bar Chart Jumlah Cabang per
-                                                    Provinsi</b><span></span></h3>
-                                            <div>
-                                                <canvas id="chart_dimCabang"></canvas>
-                                            </div>
-                                            <!-- My Table -->
-                                            <script>
-                                            $(document).ready(function() {
-                                                $('#myTable').DataTable({
-                                                    "pageLength": 5
-                                                });
-                                            });
-                                            </script>
-                                            <!-- Chart Section -->
-                                            <script>
-                                            $(function() {
 
-                                                var labels = {
-                                                    {
-                                                        Js::from($labelCabang)
-                                                    }
-                                                };
-                                                var count = {
-                                                    {
-                                                        Js::from($dataCabang)
-                                                    }
-                                                };
-                                                const chartCabang = document.getElementById('chart_dimCabang');
+                <!-- Left side columns -->
+                <div class="col-lg-10">
+                    <div class="row">
+                        <!-- First Card -->
+                        <div class="col-xxl-4 col-xl-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                    <!-- ========================= DIM CABANG ========================= -->
+                                    <center>
+                                    <h1>Tabel dim_cabang</h1>
+                                    <p>Jumlah cabang per provinsi</p>
+                                    </center>
 
-                                                new Chart(chartCabang, {
-                                                    type: 'bar',
-                                                    data: {
-                                                        labels: labels,
-                                                        datasets: [{
-                                                            label: 'jumlah cabang',
-                                                            data: count,
-                                                            borderWidth: 1,
-                                                            backgroundColor: '#9BD0F5'
+                                    <table class="table display" id="cabangTable">
+                                        <thead>
+                                            <tr>
+                                            <th>ID Provinsi</th>
+                                            <th>Nama Provinsi</th>
+                                            <th>Jumlah Cabang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($dbCabang as $row)
+                                            <tr>
+                                                <td>{{ $row -> id_provinsi }}</td>
+                                                <td>{{ $row -> nama_provinsi }}</td>
+                                                <td>{{ $row -> jumlahToko }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
 
-                                                        }]
-                                                    },
-                                                    options: {
-                                                        scales: {
-                                                            y: {
-                                                                beginAtZero: true
-                                                            }
-                                                        }
-                                                    }
-                                                });
-                                            });
-                                            </script>
-                                        </div>
+                                    <center>
+                                        <h1>Barchart dim_cabang</h1>
+                                    </center>
+                                    <div>
+                                        <canvas id="chart_dimCabang"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Reports -->
+
                         </div>
                     </div>
+                    <div class="row">
+                        <!-- Second Card -->
+                        <div class="col-xxl-4 col-xl-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                    <!-- ========================= DIM KARYAWAN ========================= -->
+                                    <center>
+                                    <h1>Tabel dim_karyawan</h1>
+                                    <p>Jumlah karyawan per cabang</p>
+                                    </center>
 
-                </center>
+                                    <table class="table display" id="karyawanTable">
+                                    <thead>
+                                        <tr>
+                                        <th>ID Toko</th>
+                                        <th>Nama Toko</th>
+                                        <th>Jumlah Karyawan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbKaryawan as $row)
+                                        <tr>
+                                        <td>{{ $row -> id_toko }}</td>
+                                        <td>{{ $row -> nama_toko }}</td>
+                                        <td>{{ $row -> jumlahKaryawan }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    </table>
 
-                <!-- End Left side columns -->
-                <!-- BarChart Produk -->
-                <div class="row">
-                    <!-- Chart Cabang pada masing-masing provinsi-->
-                    <!-- Right side columns -->
-                    <div class="col-lg-4">
+                                    <center>
+                                    <h1>Barchart dim_karyawan</h1>
+                                    </center>
+                                    <div>
+                                    <canvas id="chart_dimKaryawan"></canvas>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <!-- Recent Activity -->
-
-                        <!-- End Recent Activity -->
-
-                        <!-- Budget Report -->
-                        <!-- End Budget Report -->
+                        </div>
                     </div>
-                    <!-- End Right side columns -->
+                    <div class="row">
+                        <!-- Third Card -->
+                        <div class="col-xxl-4 col-xl-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                    <!-- ========================= DIM Produk per tipe produk ========================= -->
+                                    <center>
+                                    <h1>Tabel Produk per tipe produk</h1>
+                                    <p>Jumlah produk per tipe produk</p>
+                                    </center>
 
-                </div>
-        </section>
+                                    <table class="table display" id="produkPerTipeTable">
+                                    <thead>
+                                        <tr>
+                                        <th>ID Tipe Produk</th>
+                                        <th>Tipe Produk</th>
+                                        <th>Jumlah Produk</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbProdukPerTipe as $row)
+                                        <tr>
+                                        <td>{{ $row -> id_tipe_produk }}</td>
+                                        <td>{{ $row -> tipe_produk }}</td>
+                                        <td>{{ $row -> jumlahProduk }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    </table>
 
-        <!-- Produk -->
-        <section class="section produk">
-            <div class="row">
-                <!-- Chart Cabang pada masing-masing provinsi-->
-                <center>
-                    <div class="col-lg-10">
-                        <div class="row">
-                            <!-- Sales Card -->
-                            <!-- Reports -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Tables Jenis Produk</b></h5>
-                                        <!-- Line Chart -->
-                                        <!-- <canvas id="myChart"></canvas> -->
-                                        <!-- </div> -->
-                                        <table class="table display" id="produkPerTipeTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID Tipe Produk</th>
-                                                    <th>Tipe Produk</th>
-                                                    <th>Jumlah Produk</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($dbProdukPerTipe as $row)
-                                                <tr>
-                                                    <td>{{ $row -> id_tipe_produk }}</td>
-                                                    <td>{{ $row -> tipe_produk }}</td>
-                                                    <td>{{ $row -> jumlahProduk }}</td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-
-                                        <!-- Charts -->
-                                        <h3 class="card-title"><b>Bar Chart Jumlah Cabang per Provinsi</b><span></span>
-                                        </h3>
-                                        <div>
-                                            <canvas id="chart_produkPerTipe"></canvas>
-                                        </div>
-                                        <!-- My Table -->
-                                        <script>
-                                        $(document).ready(function() {
-                                            $('#produkPerTipeTable').DataTable({
-                                                "pageLength": 5
-                                            });
-                                        });
-                                        </script>
-                                        <!-- Chart Section -->
-                                        <script>
-                                        $(function() {
-                                            var labels = {
-                                                {
-                                                    Js::from($labelProdukPerTipe)
-                                                }
-                                            };
-                                            var count = {
-                                                {
-                                                    Js::from($dataProdukPerTipe)
-                                                }
-                                            };
-                                            const chartProdukPerTipe = document.getElementById(
-                                                'chart_produkPerTipe');
-
-                                            new Chart(chartProdukPerTipe, {
-                                                type: 'bar',
-                                                data: {
-                                                    labels: labels,
-                                                    datasets: [{
-                                                        label: 'jumlah produk',
-                                                        data: count,
-                                                        borderWidth: 1
-                                                    }]
-                                                },
-                                                options: {
-                                                    scales: {
-                                                        y: {
-                                                            beginAtZero: true
-                                                        }
-                                                    }
-                                                }
-                                            });
-                                        });
-                                        </script>
+                                    <center>
+                                    <h1>Barchart Produk per tipe produk</h1>
+                                    </center>
+                                    <div>
+                                    <canvas id="chart_produkPerTipe"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Reports -->
                     </div>
-            </div>
-            </center>
-
-            <!-- End Left side columns -->
-            <!-- BarChart Produk -->
-            <div class="row">
-                <!-- Chart Cabang pada masing-masing provinsi-->
-                <!-- Right side columns -->
-                <div class="col-lg-4">
-                    <!-- End Website Traffic -->
-
                 </div>
                 <!-- End Right side columns -->
-
             </div>
         </section>
-
 
     </main>
     <!-- End #main -->
@@ -461,11 +405,108 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-
+    
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
+    <!-- __________________________ Datatable __________________________ -->
+    <script>
+        $(document).ready( function ()
+        {
+            $('#cabangTable').DataTable();
+            $('#karyawanTable').DataTable();
+            $('#produkPerTipeTable').DataTable();
+        } );
+    </script>
+
+    <!-- ========================= DIM CABANG CHARTS ========================= -->
+    <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelCabang) }};
+          var count = {{ Js::from($dataCabang) }};
+          const chartCabang = document.getElementById('chart_dimCabang');
+        
+          new Chart(chartCabang, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah cabang',
+                data: count,
+                borderWidth: 1,
+                backgroundColor: '#9BD0F5'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
+
+      <!-- ========================= DIM KARYAWAN CHARTS ========================= -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelKaryawan) }};
+          var count = {{ Js::from($dataKaryawan) }};
+          const chartCabang = document.getElementById('chart_dimKaryawan');
+        
+          new Chart(chartCabang, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah karyawan',
+                data: count,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
+
+      <!-- ========================= DIM produk/tipe produk CHARTS ========================= -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelProdukPerTipe) }};
+          var count = {{ Js::from($dataProdukPerTipe) }};
+          const chartProdukPerTipe = document.getElementById('chart_produkPerTipe');
+        
+          new Chart(chartProdukPerTipe, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah produk',
+                data: count,
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
 </body>
 
 </html>

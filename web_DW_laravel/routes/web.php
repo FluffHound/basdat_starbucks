@@ -25,5 +25,6 @@ Route::get('cobak', [dwStarbucks_control::class, 'cobak']);
 Route::get('cabang', [dwStarbucks_control::class, 'grafik']);
 // Landing produk
 Route::get('produk', [dwStarbucks_control::class, 'grafik']);
-//  Landing 
+//  Landing  karyawan 
+Route::get('karyawan', [dwStarbucks_control::class, 'grafik']);
 

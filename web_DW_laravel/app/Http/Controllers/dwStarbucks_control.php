@@ -52,20 +52,9 @@ class dwStarbucks_control extends Controller
         $labelProdukPerTipe = $dbProdukPerTipe -> pluck('tipe_produk');
         $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
         
-        // DIM produk - jumlah tipe produk
-        $dbTipeProduk = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(tipe_produk) AS jumlahTipeProduk'))
-                    ->groupBy('tipe_produk', 'id_tipe_produk')
-                    ->orderBy('id_tipe_produk')
-                    ->get();
-        
-        $labelTipeProduk = $dbTipeProduk -> pluck('id_tipe_produk');
-        $dataTipeProduk = $dbTipeProduk -> pluck('jumlahTipeProduk');
-        
         return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
                                         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
-                                        'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
-                                        'dbTipeProduk', 'labelTipeProduk', 'dataTipeProduk'));
+                                        'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe'));
     }
     public function grafik()
     {

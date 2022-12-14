@@ -456,9 +456,9 @@
         {
           var labels = {{ Js::from($labelKaryawan) }};
           var count = {{ Js::from($dataKaryawan) }};
-          const chartCabang = document.getElementById('chart_dimKaryawan');
+          const chartKaryawan = document.getElementById('chart_dimKaryawan');
         
-          new Chart(chartCabang, {
+          new Chart(chartKaryawan, {
             type: 'bar',
             data: {
               labels: labels,

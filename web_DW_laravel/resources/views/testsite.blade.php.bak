@@ -187,13 +187,6 @@
 
           const browserData =
           [
-              @foreach($dbProdukPerTipe as $row)
-                <tr>
-                  <td>{{ $row -> id_tipe_produk }}</td>
-                  <td>{{ $row -> tipe_produk }}</td>
-                  <td>{{ $row -> jumlahProduk }}</td>
-                </tr>
-              @endforeach
               { // 0
                   browser: 'Chrome',
                   color: 'rgba(75, 192, 192, 1)',

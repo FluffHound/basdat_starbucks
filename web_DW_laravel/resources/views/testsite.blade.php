@@ -542,7 +542,13 @@
         $(function()
         {
           var labels = {{ Js::from($labelProdukPerTipe) }};
+          // console.log(labels[0]);
+          for (type in labels)
+          {
+            console.log(labels[type]);
+          }
           var count = {{ Js::from($dataProdukPerTipe) }};
+          console.log(count);
           const chartProdukPerTipe = document.getElementById('chart_produkPerTipe');
         
           new Chart(chartProdukPerTipe, {

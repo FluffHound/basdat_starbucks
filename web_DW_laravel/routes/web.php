@@ -21,7 +21,9 @@ use App\Http\Controllers\dwStarbucks_control;
 Route::get('test', [dwStarbucks_control::class, 'index']);
 Route::get('cobak', [dwStarbucks_control::class, 'cobak']);
 // END OF MY SECTION
-
+// Landing Cabang
 Route::get('cabang', [dwStarbucks_control::class, 'grafik']);
+// Landing produk
 Route::get('produk', [dwStarbucks_control::class, 'grafik']);
+//  Landing 
 

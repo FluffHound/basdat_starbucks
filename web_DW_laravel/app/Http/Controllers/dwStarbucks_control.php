@@ -24,8 +24,6 @@ class dwStarbucks_control extends Controller
     {
         // DIM cabang - jumlah cabang per provinsi
         $dbCabang = DB::table('dim_cabang')
-<<<<<<< Updated upstream
-=======
                     ->select(DB::raw('id_provinsi, nama_provinsi, COUNT(id_toko) AS jumlahToko'))
                     ->groupBy('nama_provinsi', 'id_provinsi')
                     ->orderBy('id_provinsi')
@@ -71,8 +69,7 @@ class dwStarbucks_control extends Controller
     }
     public function grafik()
     {
-        $datas = DB::table('dim_cabang')
->>>>>>> Stashed changes
+        $dbCabang = DB::table('dim_cabang')
                     ->select(DB::raw('id_provinsi, nama_provinsi, COUNT(id_toko) AS jumlahToko'))
                     ->groupBy('nama_provinsi', 'id_provinsi')
                     ->orderBy('id_provinsi')
@@ -111,13 +108,9 @@ class dwStarbucks_control extends Controller
         $labelTipeProduk = $dbTipeProduk -> pluck('id_tipe_produk');
         $dataTipeProduk = $dbTipeProduk -> pluck('jumlahTipeProduk');
         
-<<<<<<< Updated upstream
-        return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
-                                        'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
-                                        'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
-                                        'dbTipeProduk', 'labelTipeProduk', 'dataTipeProduk'));
-=======
-        return view('landing', compact('datas', 'labels', 'data'));
->>>>>>> Stashed changes
+        return view('landing', compact('dbCabang', 'labelCabang', 'dataCabang',
+        'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
+        'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
+        'dbTipeProduk', 'labelTipeProduk', 'dataTipeProduk'));
     }
 }

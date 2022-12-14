@@ -14,15 +14,13 @@ use App\Http\Controllers\dwStarbucks_control;
 |
 */
 
-Route::get('/landing', function () {
-    return view('landing');
-});
-
 // PUNYAKUUU JANGAN DIEDIT
 // Route::get('/test', function () {
 //     return view('testsite');
 // });
 
 Route::get('test', [dwStarbucks_control::class, 'index']);
+
+Route::get('landing', [dwStarbucks_control::class, 'grafik']);
 
 // END OF MY SECTION

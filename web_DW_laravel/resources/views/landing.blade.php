@@ -95,7 +95,6 @@
                         <span class="d-none d-md-block dropdown-toggle ps-2">Najma Attaqiya Alya</span>
                     </a>
                     <!-- End Profile Iamge Icon -->
-
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6>Najma Attaqiya Alya</h6>
@@ -104,7 +103,6 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-person"></i>
@@ -141,7 +139,6 @@
                                 <span>Sign Out</span>
                             </a>
                         </li>
-
                     </ul>
                     <!-- End Profile Dropdown Items -->
                 </li>
@@ -149,7 +146,6 @@
             </ul>
         </nav>
         <!-- End Icons Navigation -->
-
     </header>
     <!-- End Header -->
 
@@ -173,13 +169,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="dim_karyawan.html">
                     <i class="bi bi-person"></i>
-                    <span>Dim Karyawan</span>
+                    <span>Chart Karyawan</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="dim_produk.html">
                     <i class="bi bi-cup"></i>
-                    <span>Dim Produk</span>
+                    <span>Chart Produk</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -211,18 +207,18 @@
             </nav>
         </div>
         <!-- End Page Title -->
-
         <section class="section dashboard">
             <div class="row">
-                <!-- Left side columns -->
-                <div class="col-lg-8">
+                <!-- Chart Cabang pada masing-masing provinsi-->
+                <center>
+                <div class="col-lg-10">
                     <div class="row">
                         <!-- Sales Card -->
                         <!-- Reports -->
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b>Tables</b><span><b>/Dim Cabang</b></span></h5>
+                                    <h5 class="card-title"><b>Tables Provinsi</b></h5>
                                     <!-- Line Chart -->
                                     <!-- <canvas id="myChart"></canvas> -->
                                     <!-- </div> -->
@@ -235,7 +231,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($datas as $row)
+                                            @foreach($dbCabang as $row)
                                             <tr>
                                                 <td>{{ $row -> id_provinsi }}</td>
                                                 <td>{{ $row -> nama_provinsi }}</td>
@@ -244,8 +240,9 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <div class="col-lg-">
                                     <!-- Charts -->
-                                    <h4>dim_cabang CHARTS</h4>
+                                    <h3 class="card-title"><b>Bar Chart Jumlah Cabang per Provinsi</b><span></span></h3>
                                     <div>
                                         <canvas id="chart_dimCabang"></canvas>
                                     </div>
@@ -260,8 +257,8 @@
                                         $(function()
                                         {
 
-                                        var labels = {{ Js::from($labels) }};
-                                        var count = {{ Js::from($data) }};
+                                        var labels = {{ Js::from($labelCabang) }};
+                                        var count = {{ Js::from($dataCabang) }};
                                         const chartCabang = document.getElementById('chart_dimCabang');
                                         
                                         new Chart(chartCabang, {
@@ -276,260 +273,140 @@
 
                                             }]
                                             },
-                                            options: {
-                                            scales: {
-                                                y: {
-                                                beginAtZero: true
+                                            options: 
+                                            {
+                                                scales: {
+                                                    y: {
+                                                    beginAtZero: true
+                                                    }
                                                 }
-                                            }
                                             }
                                         });
                                     });
                                 </script>
-                                    <!-- Datatable -->
-                                    <!-- dim_cabang CHARTS -->
-                                    <!-- End Line Chart -->
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End Reports -->
-
-
                 </div>
             </div>
+            
+                                </center>
+            
             <!-- End Left side columns -->
-
+         <!-- BarChart Produk -->
+         <div class="row">
+                <!-- Chart Cabang pada masing-masing provinsi-->
             <!-- Right side columns -->
             <div class="col-lg-4">
 
                 <!-- Recent Activity -->
-                <div class="card">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
 
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body">
-                        <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-                        <div class="activity">
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">32 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a>
-                                    beatae
-                                </div>
-                            </div>
-                            <!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">56 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptatem blanditiis blanditiis eveniet
-                                </div>
-                            </div>
-                            <!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 hrs</div>
-                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptates corrupti molestias voluptatem
-                                </div>
-                            </div>
-                            <!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">1 day</div>
-                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                                <div class="activity-content">
-                                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati
-                                        voluptatem</a> tempore
-                                </div>
-                            </div>
-                            <!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 days</div>
-                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                <div class="activity-content">
-                                    Est sit eum reiciendis exercitationem
-                                </div>
-                            </div>
-                            <!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">4 weeks</div>
-                                <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                                <div class="activity-content">
-                                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                                </div>
-                            </div>
-                            <!-- End activity item-->
-
-                        </div>
-
-                    </div>
-                </div>
                 <!-- End Recent Activity -->
 
                 <!-- Budget Report -->
-                <div class="card">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
-
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body pb-0">
-                        <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-                        <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-
-                        <script>
-                        document.addEventListener("DOMContentLoaded", () => {
-                            var budgetChart = echarts.init(document.querySelector("#budgetChart"))
-                                .setOption({
-                                    legend: {
-                                        data: ['Allocated Budget', 'Actual Spending']
-                                    },
-                                    radar: {
-                                        // shape: 'circle',
-                                        indicator: [{
-                                            name: 'Sales',
-                                            max: 6500
-                                        }, {
-                                            name: 'Administration',
-                                            max: 16000
-                                        }, {
-                                            name: 'Information Technology',
-                                            max: 30000
-                                        }, {
-                                            name: 'Customer Support',
-                                            max: 38000
-                                        }, {
-                                            name: 'Development',
-                                            max: 52000
-                                        }, {
-                                            name: 'Marketing',
-                                            max: 25000
-                                        }]
-                                    },
-                                    series: [{
-                                        name: 'Budget vs spending',
-                                        type: 'radar',
-                                        data: [{
-                                            value: [4200, 3000, 20000, 35000, 50000,
-                                                18000
-                                            ],
-                                            name: 'Allocated Budget'
-                                        }, {
-                                            value: [5000, 14000, 28000, 26000, 42000,
-                                                21000
-                                            ],
-                                            name: 'Actual Spending'
-                                        }]
-                                    }]
-                                });
-                        });
-                        </script>
-
-                    </div>
-                </div>
                 <!-- End Budget Report -->
+            </div>
+            <!-- End Right side columns -->
 
-                <!-- Website Traffic -->
-                <div class="card">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
+            </div>
+        </section>
 
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
+        <!-- Produk -->
+        <section class="section dashboard">
+            <div class="row">
+                <!-- Chart Cabang pada masing-masing provinsi-->
+                <center>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <!-- Sales Card -->
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>Tables Provinsi</b></h5>
+                                    <!-- Line Chart -->
+                                    <!-- <canvas id="myChart"></canvas> -->
+                                    <!-- </div> -->
+                                    <table class="table display" id="myTable2">
+                                        <thead>
+                                            <tr>
+                                                <th>id_provinsi</th>
+                                                <th>nama_provinsi</th>
+                                                <th>Jumlah Cabang</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($dbCabang as $row)
+                                            <tr>
+                                                <td>{{ $row -> id_provinsi }}</td>
+                                                <td>{{ $row -> nama_provinsi }}</td>
+                                                <td>{{ $row -> jumlahToko }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="col-lg-">
+                                    <!-- Charts -->
+                                    <h3 class="card-title"><b>Bar Chart Jumlah Cabang per Provinsi</b><span></span></h3>
+                                    <div>
+                                        <canvas id="chart_dimCabang2"></canvas>
+                                    </div>
+                                    <!-- My Table -->
+                                    <script>
+                                    $(document).ready(function() {
+                                        $('#myTable2').DataTable({"pageLength":5});
+                                    });
+                                    </script>
+                                    <!-- Chart Section -->
+                                    <script>
+                                        $(function()
+                                        {
+
+                                        var labels = {{ Js::from($labelCabang) }};
+                                        var count = {{ Js::from($dataCabang) }};
+                                        const chartCabang = document.getElementById('chart_dimCabang2');
+                                        
+                                        new Chart(chartCabang, {
+                                            type: 'bar',
+                                            data: {
+                                            labels: labels,
+                                            datasets: [{
+                                                label: 'jumlah cabang',
+                                                data: count,
+                                                borderWidth: 1,
+                                                backgroundColor: '#9BD0F5'
+
+                                            }]
+                                            },
+                                            options: 
+                                            {
+                                                scales: {
+                                                    y: {
+                                                    beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="card-body pb-0">
-                        <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-                        <script>
-                        document.addEventListener("DOMContentLoaded", () => {
-                            echarts.init(document.querySelector("#trafficChart")).setOption({
-                                tooltip: {
-                                    trigger: 'item'
-                                },
-                                legend: {
-                                    top: '5%',
-                                    left: 'center'
-                                },
-                                series: [{
-                                    name: 'Access From',
-                                    type: 'pie',
-                                    radius: ['40%', '70%'],
-                                    avoidLabelOverlap: false,
-                                    label: {
-                                        show: false,
-                                        position: 'center'
-                                    },
-                                    emphasis: {
-                                        label: {
-                                            show: true,
-                                            fontSize: '18',
-                                            fontWeight: 'bold'
-                                        }
-                                    },
-                                    labelLine: {
-                                        show: false
-                                    },
-                                    data: [{
-                                        value: 1048,
-                                        name: 'Search Engine'
-                                    }, {
-                                        value: 735,
-                                        name: 'Direct'
-                                    }, {
-                                        value: 580,
-                                        name: 'Email'
-                                    }, {
-                                        value: 484,
-                                        name: 'Union Ads'
-                                    }, {
-                                        value: 300,
-                                        name: 'Video Ads'
-                                    }]
-                                }]
-                            });
-                        });
-                        </script>
-
-                    </div>
+                    <!-- End Reports -->
                 </div>
+            </div>
+            
+                                </center>
+            
+            <!-- End Left side columns -->
+         <!-- BarChart Produk -->
+         <div class="row">
+                <!-- Chart Cabang pada masing-masing provinsi-->
+            <!-- Right side columns -->
+            <div class="col-lg-4">
                 <!-- End Website Traffic -->
 
             </div>
@@ -537,6 +414,7 @@
 
             </div>
         </section>
+
 
     </main>
     <!-- End #main -->

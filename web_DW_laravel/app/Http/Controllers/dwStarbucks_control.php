@@ -143,15 +143,19 @@ class dwStarbucks_control extends Controller
          // Jumlah Karyawan pada masing-masing posisi
          
          $dbjumlahKaryawan = DB::table('dim_karyawan')
-         ->select(DB::raw('id_posisi_karyawan, COUNT(id_karyawan) AS jumlahPegawai'))
-         ->groupBy('id_posisi_karyawan')
+         ->select(DB::raw('id_posisi_karyawan, nama_posisi, COUNT(id_karyawan) AS jumlahPegawai'))
+         ->whereIn('id_posisi_karyawan', [4,5,6,17,24,29,23])
+        //  ->where('id_posisi_karyawan', '=', '4', 'OR','id_posisi_karyawan', '=', '5', 'OR','id_posisi_karyawan', '=', '6', 'OR',
+        //  'id_posisi_karyawan', '=', '17', 'OR', 'id_posisi_karyawan', '=', '24', 'OR', 'id_posisi_karyawan', '=', '29', 'OR',
+        //  'id_posisi_karyawan', '=', '43')
+         ->groupBy('nama_posisi','id_posisi_karyawan')
          ->orderBy('id_posisi_karyawan')
          ->get();
 
-        $labelPosisi = $dbjumlahKaryawan -> pluck('id_posisi_karyawan');
+        $namaPosisi = $dbjumlahKaryawan -> pluck('nama_posisi');
         $labelJumlahKaryawan = $dbjumlahKaryawan -> pluck('jumlahPegawai');
 
-        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'labelPosisi', 'labelJumlahKaryawan'));
+        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'namaPosisi', 'labelJumlahKaryawan'));
     }
     
 

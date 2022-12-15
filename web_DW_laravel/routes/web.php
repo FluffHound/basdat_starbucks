@@ -29,4 +29,6 @@ Route::get('produk', [dwStarbucks_control::class, 'produk']);
 Route::get('karyawan', [dwStarbucks_control::class, 'karyawan']);
 // Fact Penjualan
 Route::get('fact_penjualan', [dwStarbucks_control::class, 'penjualan']);
+// Tipe Bayar
 Route::get('tipebayar', [dwStarbucks_control::class, 'TIPEBAYAR']);
+// 

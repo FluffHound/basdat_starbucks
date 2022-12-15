@@ -14,14 +14,7 @@ use App\Http\Controllers\dwStarbucks_control;
 |
 */
 
-// PUNYAKUUU JANGAN DIEDIT
-// Route::get('/test', function () {
-//     return view('testsite');
-// });
-Route::get('/', [dwStarbucks_control::class, 'dashboard']);
-Route::get('test', [dwStarbucks_control::class, 'index']);
-Route::get('cobak', [dwStarbucks_control::class, 'cobak']);
-// END OF MY SECTION
+Route::get('test', [dwStarbucks_control::class, 'test']);
 // Landing Cabang
 Route::get('cabang', [dwStarbucks_control::class, 'cabang']);
 // Landing produk
@@ -31,5 +24,4 @@ Route::get('karyawan', [dwStarbucks_control::class, 'karyawan']);
 // Fact Penjualan
 Route::get('fact_penjualan', [dwStarbucks_control::class, 'penjualan']);
 // Tipe Bayar
-Route::get('tipebayar', [dwStarbucks_control::class, 'TIPEBAYAR']);
-// Dashboard
+Route::get('tipebayar', [dwStarbucks_control::class, 'tipebayar']);

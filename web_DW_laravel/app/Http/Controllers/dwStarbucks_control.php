@@ -13,14 +13,9 @@ class dwStarbucks_control extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     $datas = DB::table('dim_cabang')->get();
- 
-    //     return view('testsite', ['datas' => $datas]);
-    // }
 
-    public function index()
+    //  ============================== HALAMAN TEST ==============================
+    public function test()
     {
         // DIM cabang - jumlah cabang per provinsi
         $dbCabang = DB::table('dim_cabang')
@@ -84,15 +79,29 @@ class dwStarbucks_control extends Controller
         
         $labelWaktu2019 = $dbJumlahPenjualan2019 -> pluck('sk_waktu');
         $dataPembelian2019 = $dbJumlahPenjualan2019 -> pluck('jumlahPembelian');
+
+        // fact_penjualan - produk per tipe produk
+        $dbPemasukan = DB::table('dim_produk')
+                    ->join('fact_penjualan', 'dim_produk.sk_produk', '=', 'fact_penjualan.sk_produk')
+                    ->select(DB::raw('dim_produk.id_tipe_produk, dim_produk.nama_tipe_produk, SUM(fact_penjualan.total_harga) AS totalPemasukan'))
+                    ->groupBy('dim_produk.nama_tipe_produk', 'dim_produk.id_tipe_produk')
+                    ->orderBy('dim_produk.id_tipe_produk')
+                    ->get();
+        
+        $labelPemasukan = $dbPemasukan -> pluck('nama_tipe_produk');
+        $dataPemasukan = $dbPemasukan -> pluck('totalPemasukan');
         
         return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
                                         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
                                         'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
                                         'dbJumlahPenjualan2021', 'labelWaktu2021', 'dataPembelian2021',
                                         'dbJumlahPenjualan2020', 'labelWaktu2020', 'dataPembelian2020',
-                                        'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019'));
+                                        'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019',
+                                        'dbPemasukan', 'labelPemasukan', 'dataPemasukan'));
         
     }
+
+    //  ============================== HALAMAN CABANG ==============================
     public function cabang()
     {
         $dbCabang = DB::table('dim_cabang')
@@ -106,6 +115,8 @@ class dwStarbucks_control extends Controller
         
         return view('cabang', compact('dbCabang', 'labelCabang', 'dataCabang'));
     }
+
+    //  ============================== HALAMAN PRODUK ==============================
     public function produk()
     {
         $dbProdukPerTipe = DB::table('dim_produk')
@@ -119,6 +130,8 @@ class dwStarbucks_control extends Controller
         
         return view('produk', compact('dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe'));
     }
+
+    //  ============================== HALAMAN PENJUALAN ==============================
     public function penjualan()
     {
         // fact_penjualan - jumlah tipe pembayaran
@@ -165,6 +178,8 @@ class dwStarbucks_control extends Controller
          'dbJumlahPenjualan2021', 'labelWaktu2021', 'dataPembelian2021', 'dbJumlahPenjualan2020',  'labelWaktu2020', 'dataPembelian2020',
          'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019'));
     }
+
+    //  ============================== HALAMAN KARYAWAN ==============================
     public function karyawan()
     {
         $dbKaryawan = DB::table('dim_karyawan')
@@ -194,10 +209,7 @@ class dwStarbucks_control extends Controller
     'dbKaryawan', 'labelKaryawan','dataKaryawan'));
     }
     
-    public function dashboard()
-    {
-    return view('dashboard');
-    }
+
     public function COBAK()
     {
         // DIM cabang - jumlah cabang per provinsi

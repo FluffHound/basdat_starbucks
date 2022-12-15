@@ -10,6 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- Chart.JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.js" integrity="sha512-zulXrCFpnkALZBNUHe4E6rTUt7IhNLDUuLTLqTyKb93z7CrEVzFdL8KfPV6VPplL8+b4MZGOdh00+d2nzGiveg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
         <!-- Datatables -->
         <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -133,7 +134,7 @@
         </table>
 
         <center>
-          <h1>Barchart dim_karyawan</h1>
+          <h1>Barchart dim_karyawan di Jatim</h1>
         </center>
         <div>
           <canvas id="chart_dimKaryawan"></canvas>
@@ -157,7 +158,7 @@
             @foreach($dbProdukPerTipe as $row)
             <tr>
               <td>{{ $row -> id_tipe_produk }}</td>
-              <td>{{ $row -> tipe_produk }}</td>
+              <td>{{ $row -> nama_tipe_produk }}</td>
               <td>{{ $row -> jumlahProduk }}</td>
             </tr>
             @endforeach
@@ -170,52 +171,40 @@
         <div>
           <canvas id="chart_produkPerTipe"></canvas>
         </div>
-        <center>
-          <h1>Barchart Produk per tipe produk</h1>
-        </center>
-        <div>
-          <canvas id="chart_skwaktu"></canvas>
-        </div>
 
-        <!-- Table Waktu Penjualan -->
+        <!-- ========================= Penjualan Produk per waktu ========================= -->
         <center>
-          <h1>Tabel Produk per tipe produk</h1>
-          <p>Jumlah produk per tipe produk</p>
+          <h1>Tabel Penjualan Produk per waktu</h1>
+          <p>Jumlah Penjualan Produk per waktu</p>
         </center>
 
-        <table class="table display" id="produkPerTipeTable">
+        <table class="table display" id="penjualanPerWaktu">
           <thead>
             <tr>
-              <th>ID Tipe Produk</th>
-              <th>Tipe Produk</th>
-              <th>Jumlah Produk</th>
+              <th>Waktu</th>
+              <th>Jumlah Pembelian</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($dbProdukPerTipe as $row)
+            @foreach($dbJumlahPenjualan2021 as $row)
             <tr>
-              <td>{{ $row -> id_tipe_produk }}</td>
-              <td>{{ $row -> tipe_produk }}</td>
-              <td>{{ $row -> jumlahProduk }}</td>
+              <td>{{ $row -> sk_waktu }}</td>
+              <td>{{ $row -> jumlahPembelian }}</td>
             </tr>
             @endforeach
           </tbody>
         </table>
-
+        
         <center>
-          <h1>Barchart Produk per tipe produk</h1>
-        </center>
-        <div>
-          <canvas id="chart_produkPerTipe"></canvas>
-        </div>
-        <center>
-          <h1>Barchart Produk per tipe produk</h1>
+          <h1>Linechart Penjualan Produk per waktu</h1>
         </center>
         <div>
           <canvas id="chart_skwaktu"></canvas>
         </div>
+
         <!-- ================================= EXPERIMENTAL ================================= -->
         <div>
+          <h1>Experimental Space</h1>
           <canvas id="drillChart"></canvas>
         </div>
 
@@ -232,7 +221,7 @@
               @foreach($dbProdukPerTipe as $row)
                 <tr>
                   <td>{{ $row -> id_tipe_produk }}</td>
-                  <td>{{ $row -> tipe_produk }}</td>
+                  <td>{{ $row -> nama_tipe_produk }}</td>
                   <td>{{ $row -> jumlahProduk }}</td>
                 </tr>
               @endforeach
@@ -521,6 +510,7 @@
             $('#cabangTable').DataTable();
             $('#karyawanTable').DataTable();
             $('#produkPerTipeTable').DataTable();
+            $('#penjualanPerWaktu').DataTable();
         } );
       </script>
       <!-- ========================= DIM CABANG CHARTS ========================= -->
@@ -564,7 +554,7 @@
             data: {
               labels: labels,
               datasets: [{
-                label: 'jumlah karyawan',
+                label: 'Jumlah Karyawan',
                 data: count,
                 borderWidth: 1
               }]
@@ -613,23 +603,38 @@
           });
         });
       </script>
-      <!-- =========================Line Chart End Of Charts ========================= -->
+      <!-- ========================= Penjualan Line Chart ========================= -->
       <script>
         $(function()
         {
-          var labels = {{ Js::from($labelWaktu) }};
-          var count = {{ Js::from($labelPembelian) }};
+          var count1 = {{ Js::from($dataPembelian2021) }};
+          var count2 = {{ Js::from($dataPembelian2020) }};
+          var count3 = {{ Js::from($dataPembelian2019) }};
           const chart_skwaktu = document.getElementById('chart_skwaktu');
         
           new Chart(chart_skwaktu, {
             type: 'line',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'jumlah produk',
-                data: count,
-                borderWidth: 1
-              }]
+            data:
+            {
+              labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+              datasets:
+              [
+                {
+                  label: 'Produk Terjual 2021',
+                  data: count1,
+                  borderWidth: 3
+                },
+                {
+                  label: 'Produk Terjual 2020',
+                  data: count2,
+                  borderWidth: 3
+                },
+                {
+                  label: 'Produk Terjual 2019',
+                  data: count3,
+                  borderWidth: 3
+                }
+              ]
             },
             options: {
               scales: {

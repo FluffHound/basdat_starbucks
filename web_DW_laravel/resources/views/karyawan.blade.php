@@ -185,18 +185,9 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
-
-            <li class="nav-item">
-                <a class="nav-link " href="index.html">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
             <!-- End Dashboard Nav -->
             <!-- End Components Nav -->
             <!-- Side Navbar -->
-
-            <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/karyawan">
@@ -281,6 +272,42 @@
                             </div>
 
                         </div>
+                        <div class="col-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <!-- ========================= DIM JUMLAH KARYAWAN ========================= -->
+                                    <center>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Karyawan per
+                                                    Jabatan</b></p>
+                                    </center>
+                                    <table class="table display" id="jumlahKaryawan">
+                                    <thead>
+                                        <tr>
+                                        <th>ID Posisi </th>
+                                        <th>Posisi Karyawan</th>
+                                        <th>Jumlah Karyawan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbjumlahKaryawan as $row)
+                                        <tr>
+                                        <td>{{ $row -> id_posisi_karyawan }}</td>
+                                        <td> {{ $row -> nama_posisi }}
+                                        <td>{{ $row -> jumlahPegawai }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    </table>
+                                    <center>
+                                    <p class="card-title" style='font-size:25px'><b>BarChart Jumlah Karyawan per
+                                                    Jabatan</b></p>
+                                    </center>
+                                    <div>
+                                    <canvas id="Chart_JumlahKaryawan"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- End Right side columns -->
@@ -329,6 +356,9 @@
             $('#karyawanTable').DataTable({
                 "pageLength": 5
             });
+            $('#jumlahKaryawan').DataTable({
+                "pageLength": 5
+            });
         } );
     </script>
 
@@ -339,9 +369,9 @@
         {
           var labels = {{ Js::from($labelKaryawan) }};
           var count = {{ Js::from($dataKaryawan) }};
-          const chartCabang = document.getElementById('chart_dimKaryawan');
+          const chart_dimKaryawan = document.getElementById('chart_dimKaryawan');
         
-          new Chart(chartCabang, {
+          new Chart(chart_dimKaryawan, {
             type: 'bar',
             data: {
               labels: labels,
@@ -350,6 +380,35 @@
                 data: count,
                 borderWidth: 1,
                 backgroundColor:'#189AB4'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
+      <!-- CHART JUMLAH KARYAWAN PERJABATAN -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($namaPosisi) }};
+          var count = {{ Js::from($labelJumlahKaryawan) }};
+          const Chart_JumlahKaryawan = document.getElementById('Chart_JumlahKaryawan');
+        
+          new Chart(Chart_JumlahKaryawan, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah karyawan',
+                data: count,
+                borderWidth: 1,
+                backgroundColor:'#B21368'
               }]
             },
             options: {

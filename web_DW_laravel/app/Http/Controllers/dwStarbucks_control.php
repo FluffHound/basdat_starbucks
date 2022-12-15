@@ -13,14 +13,9 @@ class dwStarbucks_control extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     $datas = DB::table('dim_cabang')->get();
- 
-    //     return view('testsite', ['datas' => $datas]);
-    // }
 
-    public function index()
+    //  ============================== HALAMAN TEST ==============================
+    public function test()
     {
         // DIM cabang - jumlah cabang per provinsi
         $dbCabang = DB::table('dim_cabang')
@@ -93,6 +88,8 @@ class dwStarbucks_control extends Controller
                                         'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019'));
         
     }
+
+    //  ============================== HALAMAN CABANG ==============================
     public function cabang()
     {
         $dbCabang = DB::table('dim_cabang')
@@ -106,6 +103,8 @@ class dwStarbucks_control extends Controller
         
         return view('cabang', compact('dbCabang', 'labelCabang', 'dataCabang'));
     }
+
+    //  ============================== HALAMAN PRODUK ==============================
     public function produk()
     {
         $dbProdukPerTipe = DB::table('dim_produk')
@@ -119,6 +118,8 @@ class dwStarbucks_control extends Controller
         
         return view('produk', compact('dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe'));
     }
+
+    //  ============================== HALAMAN PENJUALAN ==============================
     public function penjualan()
     {
         // fact_penjualan - jumlah tipe pembayaran
@@ -144,6 +145,8 @@ class dwStarbucks_control extends Controller
         return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran',
          'dbSKPenjualan', 'labelWaktu', 'labelPembelian'));
     }
+
+    //  ============================== HALAMAN KARYAWAN ==============================
     public function karyawan()
     {
         $dbKaryawan = DB::table('dim_karyawan')
@@ -173,56 +176,8 @@ class dwStarbucks_control extends Controller
         return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'namaPosisi', 'labelJumlahKaryawan'));
     }
     
-
-    public function COBAK()
-    {
-        // DIM cabang - jumlah cabang per provinsi
-        $dbCabang = DB::table('dim_cabang')
-                    ->select(DB::raw('id_provinsi, nama_provinsi, COUNT(id_toko) AS jumlahToko'))
-                    ->groupBy('nama_provinsi', 'id_provinsi')
-                    ->orderBy('id_provinsi')
-                    ->get();
-        
-        $labelCabang = $dbCabang -> pluck('nama_provinsi');
-        $dataCabang = $dbCabang -> pluck('jumlahToko');
-
-        // DIM karyawan - jumlah karyawan per cabang
-        $dbKaryawan = DB::table('dim_karyawan')
-                    ->select(DB::raw('id_toko, nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
-                    ->groupBy('nama_toko', 'id_toko')
-                    ->orderBy('id_toko')
-                    ->get();
-        
-        $labelKaryawan = $dbKaryawan -> pluck('nama_toko');
-        $dataKaryawan = $dbKaryawan -> pluck('jumlahKaryawan');
-        
-        // DIM produk - produk per tipe produk
-        $dbProdukPerTipe = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(id_produk) AS jumlahProduk'))
-                    ->groupBy('tipe_produk', 'id_tipe_produk')
-                    ->orderBy('id_tipe_produk')
-                    ->get();
-        
-        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('id_produk');
-        $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
-        
-        // DIM produk - jumlah tipe produk
-        $dbTipeProduk = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(tipe_produk) AS jumlahTipeProduk'))
-                    ->groupBy('tipe_produk', 'id_tipe_produk')
-                    ->orderBy('id_tipe_produk')
-                    ->get();
-        
-        $labelTipeProduk = $dbTipeProduk -> pluck('id_tipe_produk');
-        $dataTipeProduk = $dbTipeProduk -> pluck('jumlahTipeProduk');
-        
-        return view('cobak', compact('dbCabang', 'labelCabang', 'dataCabang',
-                                        'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
-                                        'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
-                                        'dbTipeProduk', 'labelTipeProduk', 'dataTipeProduk',
-                                    ));
-    }
-    public function TIPEBAYAR()
+    //  ============================== HALAMAN TIPE BAYAR ==============================
+    public function tipebayar()
     {
         // fact_penjualan - jumlah tipe pembayaran
         $dbTipePembayaran = DB::table('fact_penjualan')

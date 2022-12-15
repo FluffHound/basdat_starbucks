@@ -51,31 +51,22 @@ class dwStarbucks_control extends Controller
         
         $labelProdukPerTipe = $dbProdukPerTipe -> pluck('tipe_produk');
         $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
-        
-        // DIM produk - jumlah tipe produk
-        $dbTipeProduk = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(tipe_produk) AS jumlahTipeProduk'))
-                    ->groupBy('tipe_produk', 'id_tipe_produk')
-                    ->orderBy('id_tipe_produk')
-                    ->get();
-        
-        $labelTipeProduk = $dbTipeProduk -> pluck('id_tipe_produk');
-        $dataTipeProduk = $dbTipeProduk -> pluck('jumlahTipeProduk');
 
-        // DIM sk waktu 
-        $dbSKPenjualan = DB::table('fact_penjualan')
+        // DIM sk waktu - jumlah pembelian
+        $dbJumlahPenjualan = DB::table('fact_penjualan')
                     ->select(DB::raw('sk_waktu, COUNT(jumlah_pembelian) AS jumlahPembelian'))
+                    ->where('sk_waktu', 'like', '2021%')
                     ->groupBy('sk_waktu')
                     ->orderBy('sk_waktu')
                     ->get();
         
-        $labelWaktu = $dbSKPenjualan -> pluck('sk_waktu');
-        $labelPembelian = $dbSKPenjualan -> pluck('jumlahPembelian');
+        $labelWaktu = $dbJumlahPenjualan -> pluck('sk_waktu');
+        $dataPembelian = $dbJumlahPenjualan -> pluck('jumlahPembelian');
         
         return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
                                         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
                                         'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
-                                        'dbSKPenjualan', 'labelWaktu', 'labelPembelian'));
+                                        'dbJumlahPenjualan', 'labelWaktu', 'dataPembelian'));
         
     }
     public function cabang()

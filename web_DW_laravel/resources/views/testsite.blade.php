@@ -170,52 +170,40 @@
         <div>
           <canvas id="chart_produkPerTipe"></canvas>
         </div>
-        <center>
-          <h1>Barchart Produk per tipe produk</h1>
-        </center>
-        <div>
-          <canvas id="chart_skwaktu"></canvas>
-        </div>
 
-        <!-- Table Waktu Penjualan -->
+        <!-- ========================= Penjualan Produk per waktu ========================= -->
         <center>
-          <h1>Tabel Produk per tipe produk</h1>
-          <p>Jumlah produk per tipe produk</p>
+          <h1>Tabel Penjualan Produk per waktu</h1>
+          <p>Jumlah Penjualan Produk per waktu</p>
         </center>
 
-        <table class="table display" id="produkPerTipeTable">
+        <table class="table display" id="penjualanPerWaktu">
           <thead>
             <tr>
-              <th>ID Tipe Produk</th>
-              <th>Tipe Produk</th>
-              <th>Jumlah Produk</th>
+              <th>Waktu</th>
+              <th>Jumlah Pembelian</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($dbProdukPerTipe as $row)
+            @foreach($dbJumlahPenjualan as $row)
             <tr>
-              <td>{{ $row -> id_tipe_produk }}</td>
-              <td>{{ $row -> tipe_produk }}</td>
-              <td>{{ $row -> jumlahProduk }}</td>
+              <td>{{ $row -> sk_waktu }}</td>
+              <td>{{ $row -> jumlahPembelian }}</td>
             </tr>
             @endforeach
           </tbody>
         </table>
-
+        
         <center>
-          <h1>Barchart Produk per tipe produk</h1>
-        </center>
-        <div>
-          <canvas id="chart_produkPerTipe"></canvas>
-        </div>
-        <center>
-          <h1>Barchart Produk per tipe produk</h1>
+          <h1>Linechart Penjualan Produk per waktu</h1>
         </center>
         <div>
           <canvas id="chart_skwaktu"></canvas>
         </div>
+
         <!-- ================================= EXPERIMENTAL ================================= -->
         <div>
+          <h1>Experimental Space</h1>
           <canvas id="drillChart"></canvas>
         </div>
 
@@ -521,6 +509,7 @@
             $('#cabangTable').DataTable();
             $('#karyawanTable').DataTable();
             $('#produkPerTipeTable').DataTable();
+            $('#penjualanPerWaktu').DataTable();
         } );
       </script>
       <!-- ========================= DIM CABANG CHARTS ========================= -->
@@ -613,12 +602,12 @@
           });
         });
       </script>
-      <!-- =========================Line Chart End Of Charts ========================= -->
+      <!-- ========================= Penjualan Line Chart ========================= -->
       <script>
         $(function()
         {
           var labels = {{ Js::from($labelWaktu) }};
-          var count = {{ Js::from($labelPembelian) }};
+          var count = {{ Js::from($dataPembelian) }};
           const chart_skwaktu = document.getElementById('chart_skwaktu');
         
           new Chart(chart_skwaktu, {

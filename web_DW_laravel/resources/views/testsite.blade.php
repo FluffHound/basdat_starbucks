@@ -10,6 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- Chart.JS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.js" integrity="sha512-zulXrCFpnkALZBNUHe4E6rTUt7IhNLDUuLTLqTyKb93z7CrEVzFdL8KfPV6VPplL8+b4MZGOdh00+d2nzGiveg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
         <!-- Datatables -->
         <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -157,7 +158,7 @@
             @foreach($dbProdukPerTipe as $row)
             <tr>
               <td>{{ $row -> id_tipe_produk }}</td>
-              <td>{{ $row -> tipe_produk }}</td>
+              <td>{{ $row -> nama_tipe_produk }}</td>
               <td>{{ $row -> jumlahProduk }}</td>
             </tr>
             @endforeach
@@ -220,7 +221,7 @@
               @foreach($dbProdukPerTipe as $row)
                 <tr>
                   <td>{{ $row -> id_tipe_produk }}</td>
-                  <td>{{ $row -> tipe_produk }}</td>
+                  <td>{{ $row -> nama_tipe_produk }}</td>
                   <td>{{ $row -> jumlahProduk }}</td>
                 </tr>
               @endforeach
@@ -612,13 +613,22 @@
         
           new Chart(chart_skwaktu, {
             type: 'line',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'jumlah produk',
-                data: count,
-                borderWidth: 1
-              }]
+            data:
+            {
+              labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+              datasets:
+              [
+                {
+                  label: 'jumlah produk',
+                  data: count,
+                  borderWidth: 1
+                },
+                [
+                  label: 'jumlah produk',
+                  data: count,
+                  borderWidth: 1
+                ]
+              ]
             },
             options: {
               scales: {

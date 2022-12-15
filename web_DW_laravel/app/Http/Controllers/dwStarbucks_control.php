@@ -44,24 +44,23 @@ class dwStarbucks_control extends Controller
         
         // DIM produk - produk per tipe produk
         $dbProdukPerTipe = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(kode_produk) AS jumlahProduk'))
-                    ->groupBy('tipe_produk', 'id_tipe_produk')
+                    ->select(DB::raw('id_tipe_produk, nama_tipe_produk, COUNT(id_produk) AS jumlahProduk'))
+                    ->groupBy('nama_tipe_produk', 'id_tipe_produk')
                     ->orderBy('id_tipe_produk')
                     ->get();
         
-        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('tipe_produk');
+        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('nama_tipe_produk');
         $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
 
         // DIM sk waktu - jumlah pembelian
         $dbJumlahPenjualan = DB::table('fact_penjualan')
                     ->select(DB::raw('sk_waktu, COUNT(jumlah_pembelian) AS jumlahPembelian'))
-                    ->where('sk_waktu', 'like', '2021%')
                     ->groupBy('sk_waktu')
                     ->orderBy('sk_waktu')
                     ->get();
-        
-        $labelWaktu = $dbJumlahPenjualan -> pluck('sk_waktu');
-        $dataPembelian = $dbJumlahPenjualan -> pluck('jumlahPembelian');
+                    
+        $labelWaktu = $dbJumlahPenjualan -> where('sk_waktu', 'like', '2021%') -> pluck('sk_waktu');
+        $dataPembelian = $dbJumlahPenjualan -> where('sk_waktu', 'like', '2021%') -> pluck('jumlahPembelian');
         
         return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
                                         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
@@ -170,12 +169,12 @@ class dwStarbucks_control extends Controller
         
         // DIM produk - produk per tipe produk
         $dbProdukPerTipe = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(kode_produk) AS jumlahProduk'))
+                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(id_produk) AS jumlahProduk'))
                     ->groupBy('tipe_produk', 'id_tipe_produk')
                     ->orderBy('id_tipe_produk')
                     ->get();
         
-        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('tipe_produk');
+        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('id_produk');
         $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
         
         // DIM produk - jumlah tipe produk

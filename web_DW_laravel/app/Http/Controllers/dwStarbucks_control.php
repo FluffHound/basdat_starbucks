@@ -34,9 +34,11 @@ class dwStarbucks_control extends Controller
 
         // DIM karyawan - jumlah karyawan per cabang
         $dbKaryawan = DB::table('dim_karyawan')
-                    ->select(DB::raw('id_toko, nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
-                    ->groupBy('nama_toko', 'id_toko')
-                    ->orderBy('id_toko')
+                    ->join('dim_cabang', 'dim_karyawan.id_toko', '=', 'dim_cabang.id_toko')
+                    ->select(DB::raw('dim_karyawan.id_toko, dim_karyawan.nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
+                    ->where('dim_cabang.id_provinsi', '=', '21')
+                    ->groupBy('nama_toko', 'dim_karyawan.id_toko')
+                    ->orderBy('dim_karyawan.id_toko')
                     ->get();
         
         $labelKaryawan = $dbKaryawan -> pluck('nama_toko');

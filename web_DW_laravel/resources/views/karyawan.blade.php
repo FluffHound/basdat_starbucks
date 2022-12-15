@@ -292,7 +292,8 @@
                                     <table class="table display" id="jumlahKaryawan">
                                     <thead>
                                         <tr>
-                                        <th>ID Posisi Karyawan</th>
+                                        <th>ID Posisi </th>
+                                        <th>Posisi Karyawan</th>
                                         <th>Jumlah Karyawan</th>
                                         </tr>
                                     </thead>
@@ -300,6 +301,7 @@
                                         @foreach($dbjumlahKaryawan as $row)
                                         <tr>
                                         <td>{{ $row -> id_posisi_karyawan }}</td>
+                                        <td> {{ $row -> nama_posisi }}
                                         <td>{{ $row -> jumlahPegawai }}</td>
                                         </tr>
                                         @endforeach
@@ -310,7 +312,7 @@
                                                     Jabatan</b></p>
                                     </center>
                                     <div>
-                                    <canvas id="chart_dimKaryawan"></canvas>
+                                    <canvas id="Chart_JumlahKaryawan"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -376,9 +378,38 @@
         {
           var labels = {{ Js::from($labelKaryawan) }};
           var count = {{ Js::from($dataKaryawan) }};
-          const chartCabang = document.getElementById('chart_dimKaryawan');
+          const chart_dimKaryawan = document.getElementById('chart_dimKaryawan');
         
-          new Chart(chartCabang, {
+          new Chart(chart_dimKaryawan, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah karyawan',
+                data: count,
+                borderWidth: 1,
+                backgroundColor:'#189AB4'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+      </script>
+      <!-- CHART JUMLAH KARYAWAN PERJABATAN -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($namaPosisi) }};
+          var count = {{ Js::from($labelJumlahKaryawan) }};
+          const Chart_JumlahKaryawan = document.getElementById('Chart_JumlahKaryawan');
+        
+          new Chart(Chart_JumlahKaryawan, {
             type: 'bar',
             data: {
               labels: labels,

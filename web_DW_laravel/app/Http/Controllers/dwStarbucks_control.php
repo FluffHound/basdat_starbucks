@@ -53,19 +53,42 @@ class dwStarbucks_control extends Controller
         $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
 
         // DIM sk waktu - jumlah pembelian
-        $dbJumlahPenjualan = DB::table('fact_penjualan')
+        $dbJumlahPenjualan2021 = DB::table('fact_penjualan')
                     ->select(DB::raw('sk_waktu, COUNT(jumlah_pembelian) AS jumlahPembelian'))
+                    ->where('sk_waktu', 'like', '2021%')
                     ->groupBy('sk_waktu')
                     ->orderBy('sk_waktu')
                     ->get();
-                    
-        $labelWaktu = $dbJumlahPenjualan -> where('sk_waktu', 'like', '2021%') -> pluck('sk_waktu');
-        $dataPembelian = $dbJumlahPenjualan -> where('sk_waktu', 'like', '2021%') -> pluck('jumlahPembelian');
+        
+        $labelWaktu2021 = $dbJumlahPenjualan2021 -> pluck('sk_waktu');
+        $dataPembelian2021 = $dbJumlahPenjualan2021 -> pluck('jumlahPembelian');
+
+        $dbJumlahPenjualan2020 = DB::table('fact_penjualan')
+                    ->select(DB::raw('sk_waktu, COUNT(jumlah_pembelian) AS jumlahPembelian'))
+                    ->where('sk_waktu', 'like', '2020%')
+                    ->groupBy('sk_waktu')
+                    ->orderBy('sk_waktu')
+                    ->get();
+        
+        $labelWaktu2020 = $dbJumlahPenjualan2020 -> pluck('sk_waktu');
+        $dataPembelian2020 = $dbJumlahPenjualan2020 -> pluck('jumlahPembelian');
+
+        $dbJumlahPenjualan2019 = DB::table('fact_penjualan')
+                    ->select(DB::raw('sk_waktu, COUNT(jumlah_pembelian) AS jumlahPembelian'))
+                    ->where('sk_waktu', 'like', '2019%')
+                    ->groupBy('sk_waktu')
+                    ->orderBy('sk_waktu')
+                    ->get();
+        
+        $labelWaktu2019 = $dbJumlahPenjualan2019 -> pluck('sk_waktu');
+        $dataPembelian2019 = $dbJumlahPenjualan2019 -> pluck('jumlahPembelian');
         
         return view('testsite', compact('dbCabang', 'labelCabang', 'dataCabang',
                                         'dbKaryawan', 'labelKaryawan', 'dataKaryawan',
                                         'dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe',
-                                        'dbJumlahPenjualan', 'labelWaktu', 'dataPembelian'));
+                                        'dbJumlahPenjualan2021', 'labelWaktu2021', 'dataPembelian2021',
+                                        'dbJumlahPenjualan2020', 'labelWaktu2020', 'dataPembelian2020',
+                                        'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019'));
         
     }
     public function cabang()

@@ -186,7 +186,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($dbJumlahPenjualan as $row)
+            @foreach($dbJumlahPenjualan2021 as $row)
             <tr>
               <td>{{ $row -> sk_waktu }}</td>
               <td>{{ $row -> jumlahPembelian }}</td>
@@ -607,8 +607,9 @@
       <script>
         $(function()
         {
-          var labels = {{ Js::from($labelWaktu) }};
-          var count = {{ Js::from($dataPembelian) }};
+          var count1 = {{ Js::from($dataPembelian2021) }};
+          var count2 = {{ Js::from($dataPembelian2020) }};
+          var count3 = {{ Js::from($dataPembelian2019) }};
           const chart_skwaktu = document.getElementById('chart_skwaktu');
         
           new Chart(chart_skwaktu, {
@@ -619,15 +620,20 @@
               datasets:
               [
                 {
-                  label: 'jumlah produk',
-                  data: count,
-                  borderWidth: 1
+                  label: 'Produk Terjual 2021',
+                  data: count1,
+                  borderWidth: 5
                 },
-                [
-                  label: 'jumlah produk',
-                  data: count,
-                  borderWidth: 1
-                ]
+                {
+                  label: 'Produk Terjual 2020',
+                  data: count2,
+                  borderWidth: 5
+                },
+                {
+                  label: 'Produk Terjual 2019',
+                  data: count3,
+                  borderWidth: 5
+                }
               ]
             },
             options: {

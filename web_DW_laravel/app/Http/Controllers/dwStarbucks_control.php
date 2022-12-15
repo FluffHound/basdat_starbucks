@@ -168,11 +168,13 @@ class dwStarbucks_control extends Controller
     public function karyawan()
     {
         $dbKaryawan = DB::table('dim_karyawan')
-                    ->select(DB::raw('id_toko, nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
-                    ->groupBy('nama_toko', 'id_toko')
-                    ->orderBy('id_toko')
-                    ->get();
-        
+        ->join('dim_cabang', 'dim_karyawan.id_toko', '=', 'dim_cabang.id_toko')
+        ->select(DB::raw('dim_karyawan.id_toko, dim_karyawan.nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
+        ->where('dim_cabang.id_provinsi', '=', '21')
+        ->groupBy('nama_toko', 'dim_karyawan.id_toko')
+        ->orderBy('dim_karyawan.id_toko')
+        ->get();
+
         $labelKaryawan = $dbKaryawan -> pluck('nama_toko');
         $dataKaryawan = $dbKaryawan -> pluck('jumlahKaryawan');
         
@@ -181,9 +183,6 @@ class dwStarbucks_control extends Controller
          $dbjumlahKaryawan = DB::table('dim_karyawan')
          ->select(DB::raw('id_posisi_karyawan, nama_posisi, COUNT(id_karyawan) AS jumlahPegawai'))
          ->whereIn('id_posisi_karyawan', [4,5,6,17,24,29,23])
-        //  ->where('id_posisi_karyawan', '=', '4', 'OR','id_posisi_karyawan', '=', '5', 'OR','id_posisi_karyawan', '=', '6', 'OR',
-        //  'id_posisi_karyawan', '=', '17', 'OR', 'id_posisi_karyawan', '=', '24', 'OR', 'id_posisi_karyawan', '=', '29', 'OR',
-        //  'id_posisi_karyawan', '=', '43')
          ->groupBy('nama_posisi','id_posisi_karyawan')
          ->orderBy('id_posisi_karyawan')
          ->get();
@@ -191,7 +190,8 @@ class dwStarbucks_control extends Controller
         $namaPosisi = $dbjumlahKaryawan -> pluck('nama_posisi');
         $labelJumlahKaryawan = $dbjumlahKaryawan -> pluck('jumlahPegawai');
 
-        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'namaPosisi', 'labelJumlahKaryawan'));
+        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'namaPosisi', 'labelJumlahKaryawan',
+    'dbKaryawan', 'labelKaryawan','dataKaryawan'));
     }
     
 

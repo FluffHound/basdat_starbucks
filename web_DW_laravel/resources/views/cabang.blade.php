@@ -186,17 +186,10 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link " href="index.html">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
             <!-- End Dashboard Nav -->
             <!-- End Components Nav -->
             <!-- Side Navbar -->
 
-            <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/karyawan">
@@ -256,29 +249,29 @@
                                                     Cabang</b></p>
                                     </center>
                                     <table class="table display" id="cabangTable">
-                                        <thead>
-                                            <tr>
-                                            <th>ID Provinsi</th>
-                                            <th>Nama Provinsi</th>
-                                            <th>Jumlah Cabang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($dbCabang as $row)
-                                            <tr>
-                                                <td>{{ $row -> id_provinsi }}</td>
-                                                <td>{{ $row -> nama_provinsi }}</td>
-                                                <td>{{ $row -> jumlahToko }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
+                                    <thead>
+                                        <tr>
+                                        <th>ID Provinsi</th>
+                                        <th>Nama Provinsi</th>
+                                        <th>Jumlah Cabang</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbCabang as $row)
+                                        <tr>
+                                        <td>{{ $row -> id_provinsi }}</td>
+                                        <td>{{ $row -> nama_provinsi }}</td>
+                                        <td>{{ $row -> jumlahToko }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                                     </table>
+
                                     <center>
-                                    <p class="card-title" style='font-size:25px'><b>Bar Chart Jumlah Cabang per
-                                                    Provinsi</b></p>
+                                    <p class="card-title" style='font-size:25px'><b>Bar Chart Jumlah Karyawan per Cabang</b></p>
                                     </center>
                                     <div>
-                                        <canvas id="chart_dimCabang"></canvas>
+                                    <canvas id="chart_dimCabang"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +344,8 @@
                 label: 'jumlah cabang',
                 data: count,
                 borderWidth: 1,
-                backgroundColor: '#E8B4B8'
+                borderColor:'#613659',
+                backgroundColor:'#C197D2'
               }]
             },
             options: {

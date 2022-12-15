@@ -622,17 +622,17 @@
                 {
                   label: 'Produk Terjual 2021',
                   data: count1,
-                  borderWidth: 5
+                  borderWidth: 3
                 },
                 {
                   label: 'Produk Terjual 2020',
                   data: count2,
-                  borderWidth: 5
+                  borderWidth: 3
                 },
                 {
                   label: 'Produk Terjual 2019',
                   data: count3,
-                  borderWidth: 5
+                  borderWidth: 3
                 }
               ]
             },

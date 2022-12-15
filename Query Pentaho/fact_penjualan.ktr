@@ -691,7 +691,7 @@ FROM dw_starbucks.`dim cabang`
         <name>sk_cabang</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>Tabel Cabang</origin>
+        <origin>DIM cabang</origin>
         <comments>sk_cabang</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -705,7 +705,7 @@ FROM dw_starbucks.`dim cabang`
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -714,7 +714,7 @@ FROM dw_starbucks.`dim cabang`
         <name>id_provinsi</name>
         <length>4</length>
         <precision>-1</precision>
-        <origin>Tabel Cabang</origin>
+        <origin>DIM cabang</origin>
         <comments>id_provinsi</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -728,7 +728,7 @@ FROM dw_starbucks.`dim cabang`
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -737,7 +737,7 @@ FROM dw_starbucks.`dim cabang`
         <name>nama_provinsi</name>
         <length>255</length>
         <precision>-1</precision>
-        <origin>Tabel Cabang</origin>
+        <origin>DIM cabang</origin>
         <comments>nama_provinsi</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -751,7 +751,7 @@ FROM dw_starbucks.`dim cabang`
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -760,7 +760,7 @@ FROM dw_starbucks.`dim cabang`
         <name>id_toko</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>Tabel Cabang</origin>
+        <origin>DIM cabang</origin>
         <comments>id_toko</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -774,7 +774,7 @@ FROM dw_starbucks.`dim cabang`
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -783,7 +783,7 @@ FROM dw_starbucks.`dim cabang`
         <name>nama_toko</name>
         <length>16383</length>
         <precision>-1</precision>
-        <origin>Tabel Cabang</origin>
+        <origin>DIM cabang</origin>
         <comments>nama_toko</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -797,7 +797,7 @@ FROM dw_starbucks.`dim cabang`
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -844,7 +844,7 @@ FROM dw_starbucks.dim_karyawan
         <name>sk_karyawan</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM produk 2</origin>
+        <origin>DIM karyawan</origin>
         <comments>sk_karyawan</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -858,7 +858,7 @@ FROM dw_starbucks.dim_karyawan
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -867,7 +867,7 @@ FROM dw_starbucks.dim_karyawan
         <name>id_toko</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM produk 2</origin>
+        <origin>DIM karyawan</origin>
         <comments>id_toko</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -881,7 +881,7 @@ FROM dw_starbucks.dim_karyawan
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -890,7 +890,7 @@ FROM dw_starbucks.dim_karyawan
         <name>nama_toko</name>
         <length>16383</length>
         <precision>-1</precision>
-        <origin>DIM produk 2</origin>
+        <origin>DIM karyawan</origin>
         <comments>nama_toko</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -904,7 +904,7 @@ FROM dw_starbucks.dim_karyawan
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -913,7 +913,7 @@ FROM dw_starbucks.dim_karyawan
         <name>id_karyawan</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>DIM produk 2</origin>
+        <origin>DIM karyawan</origin>
         <comments>id_karyawan</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -927,17 +927,17 @@ FROM dw_starbucks.dim_karyawan
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>nama</name>
+        <name>nama_karyawan</name>
         <length>255</length>
         <precision>-1</precision>
-        <origin>DIM produk 2</origin>
-        <comments>nama</comments>
+        <origin>DIM karyawan</origin>
+        <comments>nama_karyawan</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -950,7 +950,30 @@ FROM dw_starbucks.dim_karyawan
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>id_posisi_karyawan</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>DIM karyawan</origin>
+        <comments>id_posisi_karyawan</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_ID</date_format_locale>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -983,8 +1006,8 @@ FROM dw_starbucks.dim_karyawan
     <sql>SELECT
   sk_produk
 , id_tipe_produk
-, tipe_produk
-, kode_produk
+, nama_tipe_produk
+, id_produk
 , nama_produk
 FROM dw_starbucks.dim_produk
 </sql>
@@ -1015,7 +1038,7 @@ FROM dw_starbucks.dim_produk
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1038,17 +1061,17 @@ FROM dw_starbucks.dim_produk
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>tipe_produk</name>
+        <name>nama_tipe_produk</name>
         <length>32</length>
         <precision>-1</precision>
         <origin>DIM produk</origin>
-        <comments>tipe_produk</comments>
+        <comments>nama_tipe_produk</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1061,17 +1084,17 @@ FROM dw_starbucks.dim_produk
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>kode_produk</name>
+        <name>id_produk</name>
         <length>9</length>
         <precision>0</precision>
         <origin>DIM produk</origin>
-        <comments>kode_produk</comments>
+        <comments>id_produk</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1084,7 +1107,7 @@ FROM dw_starbucks.dim_produk
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1107,7 +1130,7 @@ FROM dw_starbucks.dim_produk
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_ID</date_format_locale>
-        <date_format_timezone>Asia/Bangkok</date_format_timezone>
+        <date_format_timezone>Asia/Jakarta</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -1299,7 +1322,11 @@ FROM dw_starbucks.dim_waktu
         <rename/>
       </field>
       <field>
-        <name>sk_produk</name>
+        <name>sk_waktu</name>
+        <rename/>
+      </field>
+      <field>
+        <name>sk_cabang</name>
         <rename/>
       </field>
       <field>
@@ -1307,11 +1334,7 @@ FROM dw_starbucks.dim_waktu
         <rename/>
       </field>
       <field>
-        <name>id_toko_fk</name>
-        <rename>id_toko</rename>
-      </field>
-      <field>
-        <name>sk_waktu</name>
+        <name>sk_produk</name>
         <rename/>
       </field>
       <field>
@@ -1932,7 +1955,7 @@ FROM starbucks.pemesanan
       <schema_name/>
     </partitioning>
     <connection>dw_starbucks</connection>
-    <schema/>
+    <schema>dw_starbucks</schema>
     <table>fact_penjualan</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -2512,6 +2535,41 @@ FROM starbucks.produk
     </GUI>
   </step>
   <step>
+    <name>sk_factpenjualan</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>sk_factpenjualan</valuename>
+    <use_database>N</use_database>
+    <connection/>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>sk_karyawan</name>
     <type>StreamLookup</type>
     <description/>
@@ -2572,7 +2630,7 @@ FROM starbucks.produk
     <lookup>
       <key>
         <name>kode_produk_fk</name>
-        <field>kode_produk</field>
+        <field>id_produk</field>
       </key>
       <value>
         <name>sk_produk</name>
@@ -2634,41 +2692,6 @@ FROM starbucks.produk
     <GUI>
       <xloc>608</xloc>
       <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>sk_factpenjualan</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>sk_factpenjualan</valuename>
-    <use_database>N</use_database>
-    <connection/>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

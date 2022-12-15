@@ -202,6 +202,38 @@
           <canvas id="chart_skwaktu"></canvas>
         </div>
 
+        <!-- ========================= Pemasukan Tiap Kategori ========================= -->
+        <center>
+          <h1>Tabel Pemasukan per Tipe Produk</h1>
+          <p>Tipe produk paling menguntungkan</p>
+        </center>
+
+        <table class="table display" id="pemasukanProduk">
+          <thead>
+            <tr>
+              <th>ID Tipe Produk</th>
+              <th>Nama Tipe Produk</th>
+              <th>Total Pemasukan</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($dbPemasukan as $row)
+            <tr>
+              <td>{{ $row -> id_tipe_produk }}</td>
+              <td>{{ $row -> nama_tipe_produk }}</td>
+              <td>{{ $row -> totalPemasukan }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        
+        <center>
+          <h1>Barchart Pemasukan per Tipe Produk</h1>
+        </center>
+        <div>
+          <canvas id="chart_pemasukan"></canvas>
+        </div>
+
         <!-- ================================= EXPERIMENTAL ================================= -->
         <div>
           <h1>Experimental Space</h1>
@@ -511,6 +543,7 @@
             $('#karyawanTable').DataTable();
             $('#produkPerTipeTable').DataTable();
             $('#penjualanPerWaktu').DataTable();
+            $('#pemasukanProduk').DataTable();
         } );
       </script>
       <!-- ========================= DIM CABANG CHARTS ========================= -->
@@ -633,6 +666,39 @@
                   label: 'Produk Terjual 2019',
                   data: count3,
                   borderWidth: 3
+                }
+              ]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+        </script>
+
+        <!-- ========================= Pemasukan Bar Chart ========================= -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelPemasukan) }};
+          var count = {{ Js::from($dataPemasukan) }};
+          const chart_pemasukan = document.getElementById('chart_pemasukan');
+        
+          new Chart(chart_pemasukan, {
+            type: 'bar',
+            data:
+            {
+              labels: labels,
+              datasets:
+              [
+                {
+                  label: 'Tipe Produk',
+                  data: count,
+                  borderWidth: 1
                 }
               ]
             },

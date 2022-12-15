@@ -134,7 +134,7 @@
         </table>
 
         <center>
-          <h1>Barchart dim_karyawan</h1>
+          <h1>Barchart dim_karyawan di Jatim</h1>
         </center>
         <div>
           <canvas id="chart_dimKaryawan"></canvas>
@@ -554,7 +554,7 @@
             data: {
               labels: labels,
               datasets: [{
-                label: 'jumlah karyawan',
+                label: 'Jumlah Karyawan',
                 data: count,
                 borderWidth: 1
               }]

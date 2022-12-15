@@ -417,7 +417,7 @@
                 label: 'jumlah karyawan',
                 data: count,
                 borderWidth: 1,
-                backgroundColor:'#189AB4'
+                backgroundColor:'#B21368'
               }]
             },
             options: {

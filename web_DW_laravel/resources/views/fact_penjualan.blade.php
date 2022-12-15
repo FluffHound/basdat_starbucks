@@ -308,26 +308,7 @@
                             <div class="card info-card customers-card">
                                 <div class="card-body">
                                 <center>
-                                    <p class="card-title" style='font-size:25px'><b>Jumlah Pembelian Berdasarkan Waktu</b></p>
-                                    </center>
-                                    <table class="table display" id="pembelianTable">
-                                        <thead>
-                                            <tr>
-                                            <th>Waktu Pembelian</th>
-                                            <th>Jumlah pembelian</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($dbSKPenjualan as $row)
-                                            <tr>
-                                                <td>{{ $row -> sk_waktu }}</td>
-                                                <td>{{ $row -> jumlahPembelian }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <center>
-                                    <p class="card-title" style='font-size:25px'><b>Line Plot Jumlah Pembelian per
+                                    <p class="card-title" style='font-size:25px'><b>Line Chart Jumlah Pembelian per
                                                     Waktu</b></p>
                                     </center>
                                     <div>
@@ -416,20 +397,37 @@
       <script>
         $(function()
         {
-          var labels = {{ Js::from($labelWaktu) }};
-          var count = {{ Js::from($labelPembelian) }};
+          var count1 = {{ Js::from($dataPembelian2021) }};
+          var count2 = {{ Js::from($dataPembelian2020) }};
+          var count3 = {{ Js::from($dataPembelian2019) }};
           const chart_skwaktu = document.getElementById('chart_skwaktu');
         
           new Chart(chart_skwaktu, {
             type: 'line',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'jumlah produk',
-                data: count,
-                borderWidth: 1,
-                borderColor: "#084de0"
-              }]
+            data:
+            {
+              labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+              datasets:
+              [
+                {
+                  label: 'Produk Terjual 2021',
+                  data: count1,
+                  borderWidth: 3,
+                  borderColor: '#01949A'
+                },
+                {
+                  label: 'Produk Terjual 2020',
+                  data: count2,
+                  borderWidth: 3,
+                  borderColor: '#FA53A0'
+                },
+                {
+                  label: 'Produk Terjual 2019',
+                  data: count3,
+                  borderWidth: 3,
+                  borderColor: '#F9D030'
+                }
+              ]
             },
             options: {
               scales: {

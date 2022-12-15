@@ -85,12 +85,12 @@ class dwStarbucks_control extends Controller
     public function produk()
     {
         $dbProdukPerTipe = DB::table('dim_produk')
-                    ->select(DB::raw('id_tipe_produk, tipe_produk, COUNT(kode_produk) AS jumlahProduk'))
-                    ->groupBy('tipe_produk', 'id_tipe_produk')
+                    ->select(DB::raw('id_tipe_produk, nama_tipe_produk, COUNT(id_tipe_produk) AS jumlahProduk'))
+                    ->groupBy('nama_tipe_produk', 'id_tipe_produk')
                     ->orderBy('id_tipe_produk')
                     ->get();
         
-        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('tipe_produk');
+        $labelProdukPerTipe = $dbProdukPerTipe -> pluck('nama_tipe_produk');
         $dataProdukPerTipe = $dbProdukPerTipe -> pluck('jumlahProduk');
         
         return view('produk', compact('dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe'));
@@ -117,7 +117,8 @@ class dwStarbucks_control extends Controller
         $labelPembelian = $dbSKPenjualan -> pluck('jumlahPembelian');
         
 
-        return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran', 'dbSKPenjualan', 'labelWaktu', 'labelPembelian'));
+        return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran',
+         'dbSKPenjualan', 'labelWaktu', 'labelPembelian'));
     }
     public function karyawan()
     {
@@ -129,7 +130,19 @@ class dwStarbucks_control extends Controller
         
         $labelKaryawan = $dbKaryawan -> pluck('nama_toko');
         $dataKaryawan = $dbKaryawan -> pluck('jumlahKaryawan');
-        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan'));
+        
+         // Jumlah Karyawan pada masing-masing posisi
+         
+         $dbjumlahKaryawan = DB::table('dim_karyawan')
+         ->select(DB::raw('id_posisi_karyawan, COUNT(id_karyawan) AS jumlahPegawai'))
+         ->groupBy('id_posisi_karyawan')
+         ->orderBy('id_posisi_karyawan')
+         ->get();
+
+        $labelPosisi = $dbjumlahKaryawan -> pluck('id_posisi_karyawan');
+        $labelJumlahKaryawan = $dbjumlahKaryawan -> pluck('jumlahPegawai');
+
+        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'labelPosisi', 'labelJumlahKaryawan'));
     }
     
 

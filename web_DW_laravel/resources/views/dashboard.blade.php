@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Produk</title>
+    <title>Cabang</title>
     <!-- <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" /> -->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -76,7 +76,7 @@
     </style>
 </head>
 
-<body>
+<body class='body'>
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center" style="height: 70px;">
@@ -104,6 +104,8 @@
                 <!-- End Search Icon-->
 
                 <li class="nav-item dropdown">
+
+
                 <li class="nav-item dropdown">
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -180,106 +182,19 @@
     <!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-
-        <ul class="sidebar-nav" id="sidebar-nav">
-            <!-- End Dashboard Nav -->
-            <!-- End Components Nav -->
-            <!-- Side Navbar -->
-
-            <li class="nav-heading">Pages</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/karyawan">
-                    <i class="bi bi-person"></i>
-                    <span>Chart Karyawan</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/produk">
-                    <i class="bi bi-cup"></i>
-                    <span>Chart Produk</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/cabang">
-                <i class="bi bi-shop"></i>
-                    <span> Chart Cabang</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/fact_penjualan">
-                    <i class="bi bi-activity"></i>
-                    <span>Fakta Penjualan</span>
-                </a>
-            </li>
-        </ul>
-
-    </aside>
     <!-- End Sidebar-->
 
     <main id="main" class="main">
-
-        <div class="pagetitle">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Produk</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-        </div>
-        <!-- End Page Title -->
-
-        <section class="section dashboard">
-            <div class="row">
-
-                <!-- Left side columns -->
-                <div class="col-lg-12">
+    <div class="col-lg-12">
                     <div class="row">
-                        <!-- Third Card -->
-                        <div class="col-lg-12">
+                        <!-- First Card -->
+                        <div class="col-12">
                             <div class="card info-card customers-card">
-                                <div class="card-body">
-                                    <!-- ========================= DIM Produk per tipe produk ========================= -->
-                                    <center>
-                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Produk per
-                                                    Tipe</b></p>
-                                    </center>
-                                    <table class="table display" id="produkPerTipeTable">
-                                    <thead>
-                                        <tr>
-                                        <th>ID Tipe Produk</th>
-                                        <th>Tipe Produk</th>
-                                        <th>Jumlah Produk</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($dbProdukPerTipe as $row)
-                                        <tr>
-                                        <td>{{ $row -> id_tipe_produk }}</td>
-                                        <td>{{ $row -> nama_tipe_produk }}</td>
-                                        <td>{{ $row -> jumlahProduk }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                    </table>
-                                    <center>
-                                    <p class="card-title" style='font-size:25px'><b> Bar Chart Jumlah Produk per
-                                                    Tipe</b></p>
-                                    </center>
-                                    <div>
-                                    <canvas id="chart_produkPerTipe"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Right side columns -->
-            </div>
-        </section>
-
+                                <div class="card-body" style='padding-top:500px;'>
+    </div>
+    </div>
+    </div>
+    </div>
     </main>
     <!-- End #main -->
 
@@ -315,46 +230,9 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 
-    <!-- __________________________ Datatable __________________________ -->
-    <script>
-        $(document).ready( function ()
-        {
-            $('#produkPerTipeTable').DataTable({
-                "pageLength": 5
-            });
-        } );
-    </script>
 
 
-      <!-- ========================= DIM produk/tipe produk CHARTS ========================= -->
-      <script>
-        $(function()
-        {
-          var labels = {{ Js::from($labelProdukPerTipe) }};
-          var count = {{ Js::from($dataProdukPerTipe) }};
-          const chartProdukPerTipe = document.getElementById('chart_produkPerTipe');
-        
-          new Chart(chartProdukPerTipe, {
-            type: 'bar',
-            data: {
-              labels: labels,
-              datasets: [{
-                label: 'jumlah produk',
-                data: count,
-                borderWidth: 1,
-                backgroundColor: '#A49393'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        });
-      </script>
+  
 </body>
 
 </html>

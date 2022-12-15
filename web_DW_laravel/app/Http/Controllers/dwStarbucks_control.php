@@ -194,7 +194,10 @@ class dwStarbucks_control extends Controller
     'dbKaryawan', 'labelKaryawan','dataKaryawan'));
     }
     
-
+    public function dashboard()
+    {
+    return view('dashboard');
+    }
     public function COBAK()
     {
         // DIM cabang - jumlah cabang per provinsi

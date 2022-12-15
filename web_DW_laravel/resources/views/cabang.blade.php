@@ -221,7 +221,6 @@
     <!-- End Sidebar-->
 
     <main id="main" class="main">
-
         <div class="pagetitle">
             <h1>Dashboard</h1>
             <nav>
@@ -246,7 +245,7 @@
                                     <!-- ========================= DIM CABANG ========================= -->
                                     <center>
                                     <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Karyawan per
-                                                    Cabang</b></p>
+                                                    Provinsi</b></p>
                                     </center>
                                     <table class="table display" id="cabangTable">
                                     <thead>
@@ -268,7 +267,7 @@
                                     </table>
 
                                     <center>
-                                    <p class="card-title" style='font-size:25px'><b>Bar Chart Jumlah Karyawan per Cabang</b></p>
+                                    <p class="card-title" style='font-size:25px'><b>Bar Chart Jumlah Karyawan per Provinsi</b></p>
                                     </center>
                                     <div>
                                     <canvas id="chart_dimCabang"></canvas>

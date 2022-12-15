@@ -18,6 +18,7 @@ use App\Http\Controllers\dwStarbucks_control;
 // Route::get('/test', function () {
 //     return view('testsite');
 // });
+Route::get('/', [dwStarbucks_control::class, 'dashboard']);
 Route::get('test', [dwStarbucks_control::class, 'index']);
 Route::get('cobak', [dwStarbucks_control::class, 'cobak']);
 // END OF MY SECTION
@@ -31,4 +32,4 @@ Route::get('karyawan', [dwStarbucks_control::class, 'karyawan']);
 Route::get('fact_penjualan', [dwStarbucks_control::class, 'penjualan']);
 // Tipe Bayar
 Route::get('tipebayar', [dwStarbucks_control::class, 'TIPEBAYAR']);
-// 
+// Dashboard

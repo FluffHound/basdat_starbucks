@@ -104,6 +104,19 @@ class dwStarbucks_control extends Controller
         
         return view('produk', compact('dbProdukPerTipe', 'labelProdukPerTipe', 'dataProdukPerTipe'));
     }
+    public function penjualan()
+    {
+        // fact_penjualan - jumlah tipe pembayaran
+        $dbTipePembayaran = DB::table('fact_penjualan')
+                        ->select(DB::raw('tipe_pembayaran, COUNT(tipe_pembayaran) AS jumlah'))
+                        ->groupBy('tipe_pembayaran')
+                        ->get();
+        
+        $labelTipePembayaran = $dbTipePembayaran -> pluck('tipe_pembayaran');
+        $dataTipePembayaran = $dbTipePembayaran -> pluck('jumlah');
+
+        return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran'));
+    }
 
 
     public function COBAK()

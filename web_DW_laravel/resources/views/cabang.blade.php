@@ -201,23 +201,23 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/karyawan">
                     <i class="bi bi-person"></i>
-                    <span>Dim Karyawan</span>
+                    <span>Chart Karyawan</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/produk">
                     <i class="bi bi-cup"></i>
-                    <span>Dim Produk</span>
+                    <span>Chart Produk</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/cabang">
                     <i class="bi bi-shop"></i>
-                    <span>Dim Cabang</span>
+                    <span>Chart Cabang</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="fakta_penjualan.html">
+                <a class="nav-link collapsed" href="/fact_penjualan">
                     <i class="bi bi-activity"></i>
                     <span>Fakta Penjualan</span>
                 </a>
@@ -233,7 +233,7 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.html">Cabang</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
@@ -250,12 +250,10 @@
                         <div class="col-12">
                             <div class="card info-card customers-card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
                                     <!-- ========================= DIM CABANG ========================= -->
                                     <center>
-                                    
-                                    <h2 class="card-title"><b>Tabel Jumlah Cabang per
-                                                    Provinsi</b><span></span></h2>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Cabang per
+                                                    Provinsi</b></p>
                                     </center>
 
                                     <table class="table display" id="cabangTable">
@@ -277,8 +275,8 @@
                                         </tbody>
                                     </table>
                                     <center>
-                                    <h2 class="card-title"><b>Bar Chart Jumlah Cabang per
-                                                    Provinsi</b><span></span></h2>
+                                    <p class="card-title" style='font-size:25px'><b>Bar Chart Jumlah Cabang per
+                                                    Provinsi</b></p>
                                     </center>
                                     <div>
                                         <canvas id="chart_dimCabang"></canvas>
@@ -354,7 +352,7 @@
                 label: 'jumlah cabang',
                 data: count,
                 borderWidth: 1,
-                backgroundColor: '#9BD0F5'
+                backgroundColor: '#E8B4B8'
               }]
             },
             options: {

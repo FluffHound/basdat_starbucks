@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Landing Page</title>
+    <title>Fakta Penjualan</title>
     <!-- <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" /> -->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -201,23 +201,23 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/karyawan">
                     <i class="bi bi-person"></i>
-                    <span>Dim Karyawan</span>
+                    <span>Chart Karyawan</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/produk">
                     <i class="bi bi-cup"></i>
-                    <span>Dim Produk</span>
+                    <span>Chart Produk</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/cabang">
                     <i class="bi bi-shop"></i>
-                    <span>Dim Cabang</span>
+                    <span>Chart Cabang</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="fakta_penjualan.html">
+                <a class="nav-link collapsed" href="/fact_penjualan">
                     <i class="bi bi-activity"></i>
                     <span>Fakta Penjualan</span>
                 </a>
@@ -233,7 +233,7 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.html">Fakta Penjualan</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
@@ -247,45 +247,53 @@
                 <div class="col-lg-12">
                     <div class="row">
                         <!-- First Card -->
-                        <div class="col-12">
+                        <div class="col-5" style='padding-top:65px;'>
                             <div class="card info-card customers-card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
                                     <!-- ========================= DIM CABANG ========================= -->
                                     <center>
                                     
-                                    <h2 class="card-title"><b>Tabel Jumlah Cabang per
-                                                    Provinsi</b><span></span></h2>
+                                    <h2 class="card-title"><b>Tabel Metode Pembayaran</b><span></span></h2>
                                     </center>
-
-                                    <table class="table display" id="cabangTable">
-                                        <thead>
-                                            <tr>
-                                            <th>ID Provinsi</th>
-                                            <th>Nama Provinsi</th>
-                                            <th>Jumlah Cabang</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($dbCabang as $row)
-                                            <tr>
-                                                <td>{{ $row -> id_provinsi }}</td>
-                                                <td>{{ $row -> nama_provinsi }}</td>
-                                                <td>{{ $row -> jumlahToko }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
+                                    <table class="table display" id="tipePembayaranTable">
+                                    <thead>
+                                        <tr>
+                                        <th>Tipe Pembayaran</th>
+                                        <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbTipePembayaran as $row)
+                                        <tr>
+                                        <td>{{ $row -> tipe_pembayaran }}</td>
+                                        <td>{{ $row -> jumlah }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                                     </table>
-                                    <center>
-                                    <h2 class="card-title"><b>Bar Chart Jumlah Cabang per
-                                                    Provinsi</b><span></span></h2>
-                                    </center>
-                                    <div>
-                                        <canvas id="chart_dimCabang"></canvas>
-                                    </div>
                                 </div>
                             </div>
 
+                        </div>
+                        <div class="col-7">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <!-- ========================= Chart tipe Pembayaran ========================= -->
+                                    <div class="row">
+                                    <center>
+                                    <h2 class="card-title"><b>Pie Chart Metode Pembayaran</b><span></span></h2>
+                                    </center>
+                                    </div>
+                                    <div class="row">
+                                        <center>
+                                        <div class='Chart' style='width:350px;'>
+                                            <canvas id="chart_tipePembayaran">
+                                            </canvas>
+                                        </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -330,45 +338,38 @@
 
     <!-- __________________________ Datatable __________________________ -->
     <script>
-        $(document).ready( function ()
-        {
-            $('#cabangTable').DataTable({
-                "pageLength": 5
+        $(document).ready( function () {
+            $('#tipePembayaranTable').DataTable({
+                "pageLength": FALSE
             });
         } );
-    </script>
+      </script>
 
-    <!-- ========================= DIM CABANG CHARTS ========================= -->
+    <!-- ========================= TIPE PEMBAYARAN CHARTS ========================= -->
     <script>
         $(function()
         {
-          var labels = {{ Js::from($labelCabang) }};
-          var count = {{ Js::from($dataCabang) }};
-          const chartCabang = document.getElementById('chart_dimCabang');
-        
-          new Chart(chartCabang, {
-            type: 'bar',
+          var labels = {{ Js::from($labelTipePembayaran) }};
+          var count = {{ Js::from($dataTipePembayaran) }};
+          const chartTipePembayaran = document.getElementById('chart_tipePembayaran');
+          new Chart(chartTipePembayaran, {
+            type: 'pie',
             data: {
-              labels: labels,
+              labels: ['Tunai', 'Debit', 'Membership'],
               datasets: [{
-                label: 'jumlah cabang',
+                label: 'jumlah',
                 data: count,
                 borderWidth: 1,
-                backgroundColor: '#9BD0F5'
+                backgroundColor: ["#E8B4B8", "#EED6D3", "#A49393"],
               }]
             },
             options: {
               scales: {
                 y: {
-                  beginAtZero: true
                 }
               }
             }
           });
         });
       </script>
-
-  
-</body>
-
 </html>

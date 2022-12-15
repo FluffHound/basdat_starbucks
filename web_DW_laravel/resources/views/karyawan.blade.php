@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Landing Page</title>
+    <title>Karyawan</title>
     <!-- <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" /> -->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -199,25 +199,25 @@
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="dim_karyawan.html">
+                <a class="nav-link collapsed" href="/karyawan">
                     <i class="bi bi-person"></i>
-                    <span>Dim Karyawan</span>
+                    <span>Chart Karyawan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="dim_produk.html">
+                <a class="nav-link collapsed" href="/produk">
                     <i class="bi bi-cup"></i>
-                    <span>Dim Produk</span>
+                    <span>Chart Produk</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="dim_cabang.html">
+                <a class="nav-link collapsed" href="/cabang">
                     <i class="bi bi-shop"></i>
-                    <span>Dim Cabang</span>
+                    <span>Chart Cabang</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="fakta_penjualan.html">
+                <a class="nav-link collapsed" href="/fact_penjualan">
                     <i class="bi bi-activity"></i>
                     <span>Fakta Penjualan</span>
                 </a>
@@ -233,26 +233,25 @@
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.html">Karyawan</a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
         </div>
         <!-- End Page Title -->
 
-        <section class="section dashboard">
-            <div class="row">
-                        <!-- Second Card -->
-                        <div class="col-xxl-4 col-xl-12">
+       <!-- Left side columns -->
+       <div class="col-lg-12">
+                    <div class="row">
+                        <!-- First Card -->
+                        <div class="col-12">
                             <div class="card info-card customers-card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
                                     <!-- ========================= DIM KARYAWAN ========================= -->
                                     <center>
-                                    <h1>Tabel dim_karyawan</h1>
-                                    <p>Jumlah karyawan per cabang</p>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Karyawan per
+                                                    Cabang</b></p>
                                     </center>
-
                                     <table class="table display" id="karyawanTable">
                                     <thead>
                                         <tr>
@@ -271,9 +270,9 @@
                                         @endforeach
                                     </tbody>
                                     </table>
-
                                     <center>
-                                    <h1>Barchart dim_karyawan</h1>
+                                    <p class="card-title" style='font-size:25px'><b>BarChart Jumlah Karyawan per
+                                                    Cabang</b></p>
                                     </center>
                                     <div>
                                     <canvas id="chart_dimKaryawan"></canvas>
@@ -327,7 +326,9 @@
     <script>
         $(document).ready( function ()
         {
-            $('#karyawanTable').DataTable();
+            $('#karyawanTable').DataTable({
+                "pageLength": 5
+            });
         } );
     </script>
 
@@ -347,7 +348,8 @@
               datasets: [{
                 label: 'jumlah karyawan',
                 data: count,
-                borderWidth: 1
+                borderWidth: 1,
+                backgroundColor:'#189AB4'
               }]
             },
             options: {

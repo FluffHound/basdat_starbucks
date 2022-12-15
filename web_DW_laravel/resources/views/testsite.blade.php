@@ -176,7 +176,44 @@
         <div>
           <canvas id="chart_skwaktu"></canvas>
         </div>
-        
+
+        <!-- Table Waktu Penjualan -->
+        <center>
+          <h1>Tabel Produk per tipe produk</h1>
+          <p>Jumlah produk per tipe produk</p>
+        </center>
+
+        <table class="table display" id="produkPerTipeTable">
+          <thead>
+            <tr>
+              <th>ID Tipe Produk</th>
+              <th>Tipe Produk</th>
+              <th>Jumlah Produk</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($dbProdukPerTipe as $row)
+            <tr>
+              <td>{{ $row -> id_tipe_produk }}</td>
+              <td>{{ $row -> tipe_produk }}</td>
+              <td>{{ $row -> jumlahProduk }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+        <center>
+          <h1>Barchart Produk per tipe produk</h1>
+        </center>
+        <div>
+          <canvas id="chart_produkPerTipe"></canvas>
+        </div>
+        <center>
+          <h1>Barchart Produk per tipe produk</h1>
+        </center>
+        <div>
+          <canvas id="chart_skwaktu"></canvas>
+        </div>
         <!-- ================================= EXPERIMENTAL ================================= -->
         <div>
           <canvas id="drillChart"></canvas>

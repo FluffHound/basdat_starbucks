@@ -241,6 +241,7 @@
         <!-- End Page Title -->
 
         <section class="section dashboard">
+            <!-- Row Tipe Pembayaran -->
             <div class="row">
 
                 <!-- Left side columns -->
@@ -252,8 +253,7 @@
                                 <div class="card-body">
                                     <!-- ========================= DIM CABANG ========================= -->
                                     <center>
-                                    
-                                    <h2 class="card-title"><b>Tabel Metode Pembayaran</b><span></span></h2>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Metode Pembayaran</b></p>
                                     </center>
                                     <table class="table display" id="tipePembayaranTable">
                                     <thead>
@@ -281,7 +281,7 @@
                                     <!-- ========================= Chart tipe Pembayaran ========================= -->
                                     <div class="row">
                                     <center>
-                                    <h2 class="card-title"><b>Pie Chart Metode Pembayaran</b><span></span></h2>
+                                    <p class="card-title" style='font-size:25px'><b>Pie Chart Metode Pembayaran</b></p>
                                     </center>
                                     </div>
                                     <div class="row">
@@ -298,6 +298,46 @@
                     </div>
                 </div>
                 <!-- End Right side columns -->
+            </div>
+            <div class="row">
+                <!-- Left side columns -->
+                <div class="col-lg-12">
+                    <div class="row">
+                        <!-- Second Card -->
+                        <div class="col-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                <center>
+                                    <p class="card-title" style='font-size:25px'><b>Jumlah Pembelian Berdasarkan Waktu</b></p>
+                                    </center>
+                                    <table class="table display" id="pembelianTable">
+                                        <thead>
+                                            <tr>
+                                            <th>Waktu Pembelian</th>
+                                            <th>Jumlah pembelian</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($dbSKPenjualan as $row)
+                                            <tr>
+                                                <td>{{ $row -> sk_waktu }}</td>
+                                                <td>{{ $row -> jumlahPembelian }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <center>
+                                    <p class="card-title" style='font-size:25px'><b>Line Plot Jumlah Pembelian per
+                                                    Waktu</b></p>
+                                    </center>
+                                    <div>
+                                        <canvas id="chart_skwaktu"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -339,8 +379,8 @@
     <!-- __________________________ Datatable __________________________ -->
     <script>
         $(document).ready( function () {
-            $('#tipePembayaranTable').DataTable({
-                "pageLength": FALSE
+            $('#pembelianTable').DataTable({
+                "pageLength": 5
             });
         } );
       </script>
@@ -372,4 +412,33 @@
           });
         });
       </script>
+      <!-- Line Chart Jumlah Pembelian -->
+      <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelWaktu) }};
+          var count = {{ Js::from($labelPembelian) }};
+          const chart_skwaktu = document.getElementById('chart_skwaktu');
+        
+          new Chart(chart_skwaktu, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'jumlah produk',
+                data: count,
+                borderWidth: 1,
+                borderColor: "#084de0"
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+        </script>
 </html>

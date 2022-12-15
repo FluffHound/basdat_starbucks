@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Landing Page</title>
+    <title>Cabang</title>
     <!-- <link rel="icon" type="image/x-icon" href="./starbucks_resource/assets/favicon.ico" /> -->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -76,7 +76,7 @@
     </style>
 </head>
 
-<body>
+<body class='body'>
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center" style="height: 70px;">
@@ -252,10 +252,9 @@
                                 <div class="card-body">
                                     <!-- ========================= DIM CABANG ========================= -->
                                     <center>
-                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Cabang per
-                                                    Provinsi</b></p>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Karyawan per
+                                                    Cabang</b></p>
                                     </center>
-
                                     <table class="table display" id="cabangTable">
                                         <thead>
                                             <tr>

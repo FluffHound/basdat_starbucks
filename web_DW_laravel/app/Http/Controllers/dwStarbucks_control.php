@@ -114,10 +114,33 @@ class dwStarbucks_control extends Controller
         
         $labelTipePembayaran = $dbTipePembayaran -> pluck('tipe_pembayaran');
         $dataTipePembayaran = $dbTipePembayaran -> pluck('jumlah');
+        
+        // Jumlah Pembelian berdasarkan waktu 
+        $dbSKPenjualan = DB::table('fact_penjualan')
+                    ->select(DB::raw('sk_waktu, COUNT(jumlah_pembelian) AS jumlahPembelian'))
+                    ->groupBy('sk_waktu')
+                    ->orderBy('sk_waktu')
+                    ->get();
+        
+        $labelWaktu = $dbSKPenjualan -> pluck('sk_waktu');
+        $labelPembelian = $dbSKPenjualan -> pluck('jumlahPembelian');
+        
 
-        return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran'));
+        return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran', 'dbSKPenjualan', 'labelWaktu', 'labelPembelian'));
     }
-
+    public function karyawan()
+    {
+        $dbKaryawan = DB::table('dim_karyawan')
+                    ->select(DB::raw('id_toko, nama_toko, COUNT(id_karyawan) AS jumlahKaryawan'))
+                    ->groupBy('nama_toko', 'id_toko')
+                    ->orderBy('id_toko')
+                    ->get();
+        
+        $labelKaryawan = $dbKaryawan -> pluck('nama_toko');
+        $dataKaryawan = $dbKaryawan -> pluck('jumlahKaryawan');
+        return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan'));
+    }
+    
 
     public function COBAK()
     {

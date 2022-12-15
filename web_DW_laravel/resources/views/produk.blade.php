@@ -104,8 +104,6 @@
                 <!-- End Search Icon-->
 
                 <li class="nav-item dropdown">
-
-
                 <li class="nav-item dropdown">
 
                     <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -267,7 +265,7 @@
                                         @foreach($dbProdukPerTipe as $row)
                                         <tr>
                                         <td>{{ $row -> id_tipe_produk }}</td>
-                                        <td>{{ $row -> tipe_produk }}</td>
+                                        <td>{{ $row -> nama_tipe_produk }}</td>
                                         <td>{{ $row -> jumlahProduk }}</td>
                                         </tr>
                                         @endforeach

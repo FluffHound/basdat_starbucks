@@ -281,6 +281,40 @@
                             </div>
 
                         </div>
+                        <div class="col-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <!-- ========================= DIM JUMLAH KARYAWAN ========================= -->
+                                    <center>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Jumlah Karyawan per
+                                                    Jabatan</b></p>
+                                    </center>
+                                    <table class="table display" id="jumlahKaryawan">
+                                    <thead>
+                                        <tr>
+                                        <th>ID Posisi Karyawan</th>
+                                        <th>Jumlah Karyawan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbjumlahKaryawan as $row)
+                                        <tr>
+                                        <td>{{ $row -> id_posisi_karyawan }}</td>
+                                        <td>{{ $row -> jumlahPegawai }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    </table>
+                                    <center>
+                                    <p class="card-title" style='font-size:25px'><b>BarChart Jumlah Karyawan per
+                                                    Jabatan</b></p>
+                                    </center>
+                                    <div>
+                                    <canvas id="chart_dimKaryawan"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- End Right side columns -->
@@ -327,6 +361,9 @@
         $(document).ready( function ()
         {
             $('#karyawanTable').DataTable({
+                "pageLength": 5
+            });
+            $('#jumlahKaryawan').DataTable({
                 "pageLength": 5
             });
         } );

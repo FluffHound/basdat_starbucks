@@ -297,7 +297,7 @@
                         <div class="col-12">
                             <div class="card info-card customers-card">
                                 <div class="card-body">
-                                <center>
+                                <!-- <center>
                                     <p class="card-title" style='font-size:25px'><b>Tabel Metode Pembayaran</b></p>
                                     </center>
                                     <table class="table display" id="tipePembayaranTable">
@@ -316,7 +316,8 @@
                                         @endforeach
                                     </tbody>
                                     </table>
-                                <center>
+                                <center> -->
+                                    <center>
                                     <p class="card-title" style='font-size:25px'><b>Line Chart Jumlah Pembelian per
                                                     Waktu</b></p>
                                     </center>

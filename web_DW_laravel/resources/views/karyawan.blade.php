@@ -435,7 +435,7 @@
             },
             title: {
                 align: 'left',
-                text: 'Click the columns to view versions.'
+                text: ' '
             },
             accessibility: {
                 announceNewData: {
@@ -2082,12 +2082,12 @@
             },
             title: {
                 align: 'left',
-                text: 'Click the columns to view versions.'
-            // },
+                text: ' '
+            },
             // subtitle: {
             //     align: 'left',
             //     text: 'Click the columns to view versions.'
-            },
+            // },
             accessibility: {
                 announceNewData: {
                     enabled: true

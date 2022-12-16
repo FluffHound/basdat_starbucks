@@ -298,11 +298,72 @@
                             <div class="card info-card customers-card">
                                 <div class="card-body">
                                 <center>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Metode Pembayaran</b></p>
+                                    </center>
+                                    <table class="table display" id="tipePembayaranTable">
+                                    <thead>
+                                        <tr>
+                                        <th>Tipe Pembayaran</th>
+                                        <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbTipePembayaran as $row)
+                                        <tr>
+                                        <td>{{ $row -> tipe_pembayaran }}</td>
+                                        <td>{{ $row -> jumlah }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    </table>
+                                <center>
                                     <p class="card-title" style='font-size:25px'><b>Line Chart Jumlah Pembelian per
                                                     Waktu</b></p>
                                     </center>
                                     <div>
                                         <canvas id="chart_skwaktu"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Left side columns -->
+                <div class="col-lg-12">
+                    <div class="row">
+                        <!-- Second Card -->
+                        <div class="col-12">
+                            <div class="card info-card customers-card">
+                                <div class="card-body">
+                                    <center>
+                                    <p class="card-title" style='font-size:25px'><b>Tabel Pemasukan per Tipe Produk</b></p>
+                                    </center>
+                                    <table class="table display" id="pemasukanProduk">
+                                    <thead>
+                                        <tr>
+                                        <th>ID Tipe Produk</th>
+                                        <th>Nama Tipe Produk</th>
+                                        <th>Total Pemasukan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($dbPemasukan as $row)
+                                        <tr>
+                                        <td>{{ $row -> id_tipe_produk }}</td>
+                                        <td>{{ $row -> nama_tipe_produk }}</td>
+                                        <td>{{ $row -> totalPemasukan }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    </table>
+                                    
+                                <center>
+                                    <p class="card-title" style='font-size:25px'><b>Barchart Pemasukan per Tipe Produk</b></p>
+                                    </center>
+                                    <div>
+                                        <canvas id="chart_pemasukan"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -351,6 +412,9 @@
     <script>
         $(document).ready( function () {
             $('#pembelianTable').DataTable({
+                "pageLength": 5
+            });
+            $('#pemasukanProduk').DataTable({
                 "pageLength": 5
             });
         } );
@@ -416,6 +480,39 @@
                   data: count3,
                   borderWidth: 3,
                   borderColor: '#F9D030'
+                }
+              ]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        });
+        </script>
+        <!-- Pemasukan per produk -->
+        <script>
+        $(function()
+        {
+          var labels = {{ Js::from($labelPemasukan) }};
+          var count = {{ Js::from($dataPemasukan) }};
+          const chart_pemasukan = document.getElementById('chart_pemasukan');
+        
+          new Chart(chart_pemasukan, {
+            type: 'bar',
+            data:
+            {
+              labels: labels,
+              datasets:
+              [
+                {
+                  label: 'Tipe Produk',
+                  data: count,
+                  borderWidth: 1,
+                  backgroundColor:'#F4B9B8'
                 }
               ]
             },

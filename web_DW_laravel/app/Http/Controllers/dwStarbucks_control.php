@@ -174,9 +174,19 @@ class dwStarbucks_control extends Controller
         $labelWaktu2019 = $dbJumlahPenjualan2019 -> pluck('sk_waktu');
         $dataPembelian2019 = $dbJumlahPenjualan2019 -> pluck('jumlahPembelian');
 
+        $dbPemasukan = DB::table('dim_produk')
+                    ->join('fact_penjualan', 'dim_produk.sk_produk', '=', 'fact_penjualan.sk_produk')
+                    ->select(DB::raw('dim_produk.id_tipe_produk, dim_produk.nama_tipe_produk, SUM(fact_penjualan.total_harga) AS totalPemasukan'))
+                    ->groupBy('dim_produk.nama_tipe_produk', 'dim_produk.id_tipe_produk')
+                    ->orderBy('dim_produk.id_tipe_produk')
+                    ->get();
+        
+        $labelPemasukan = $dbPemasukan -> pluck('nama_tipe_produk');
+        $dataPemasukan = $dbPemasukan -> pluck('totalPemasukan');
+
         return view('fact_penjualan', compact('dbTipePembayaran', 'labelTipePembayaran', 'dataTipePembayaran',
          'dbJumlahPenjualan2021', 'labelWaktu2021', 'dataPembelian2021', 'dbJumlahPenjualan2020',  'labelWaktu2020', 'dataPembelian2020',
-         'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019'));
+         'dbJumlahPenjualan2019', 'labelWaktu2019', 'dataPembelian2019', 'dbPemasukan', 'labelPemasukan', 'dataPemasukan'));
     }
 
     //  ============================== HALAMAN KARYAWAN ==============================
@@ -208,7 +218,8 @@ class dwStarbucks_control extends Controller
         return view('karyawan', compact('dbKaryawan', 'labelKaryawan', 'dataKaryawan','dbjumlahKaryawan', 'namaPosisi', 'labelJumlahKaryawan',
     'dbKaryawan', 'labelKaryawan','dataKaryawan'));
     }
-    
+// MANUALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+
 
     public function COBAK()
     {

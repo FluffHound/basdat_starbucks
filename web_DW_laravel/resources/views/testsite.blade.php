@@ -16,6 +16,12 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/data.js"></script>
+        <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
         <style>
           *
           {
@@ -232,6 +238,9 @@
         </center>
         <div>
           <canvas id="chart_pemasukan"></canvas>
+        </div>
+        <div>
+          <div id="hm"></div>
         </div>
 
         <!-- ================================= EXPERIMENTAL ================================= -->
@@ -712,5 +721,263 @@
           });
         });
         </script>
+        <!-- Manual  -->
+        <script>
+          Highcharts.chart('hm', {
+              chart: {
+                  type: 'column'
+              },
+              title: {
+                  align: 'left',
+                  text: 'Jumlah Karyawan Starbucks per Provinsi”'
+              },
+              subtitle: {
+                  align: 'left',
+                  text: 'Click the columns to view versions.'
+              },
+              accessibility: {
+                  announceNewData: {
+                      enabled: true
+                  }
+              },
+              xAxis: {
+                  type: 'category'
+              },
+              yAxis: {
+                  title: {
+                      text: 'Jumlah Karyawan'
+                  }
+
+              },
+              legend: {
+                  enabled: false
+              },
+              plotOptions: {
+                  series: {
+                      borderWidth: 0,
+                      dataLabels: {
+                          enabled: true,
+                          format: '{point.y}'
+                      }
+                  }
+              },
+
+              tooltip: {
+                  headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                  pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br/>'
+              },
+              
+              series: [
+                  {
+                      name: "Pulau",
+                      colorByPoint: true,
+                      data: [
+                          {
+                              name: "Jawa",
+                              y: 743,
+                              drilldown: "Jawa"
+                          },
+                          {
+                              name: "Sumatera",
+                              y: 726,
+                              drilldown: "Sumatra"
+                          },
+                          {
+                              name: "Sulawesi",
+                              y: 583,
+                              drilldown: "Sulawesi"
+                          },
+                          {
+                              name: "Papua",
+                              y: 86,
+                              drilldown: "Papua"
+                          },
+                          {
+                              name: "Kalimantan",
+                              y: 382,
+                              drilldown: "Kalimantan"
+                          }
+                      ]
+                  }
+              ],
+              drilldown: {
+                  breadcrumbs: {
+                      position: {
+                          align: 'right'
+                      }
+                  },
+                  series: [
+                      {
+                          name: "Jawa",
+                          id: "Jawa",
+                          data: [
+                              [
+                                  "Bali",
+                                  71
+                              ],
+                              [
+                                  "Banten",
+                                  68
+                              ],
+                              [
+                                  "DI Yogyakarta",
+                                  89
+                              ],
+                              [
+                                  "DKI Jakarta",
+                                  90
+                              ],
+                              [
+                                  "Jawa Barat",
+                                  108
+                              ],
+                              [
+                                  "Jawa Timur",
+                                  90
+                              ],
+                              [
+                                  "Jawa Tengah",
+                                  92
+                              ],
+                              [
+                                  "Nusa Tenggara Barat",
+                                  61
+                              ],
+                              [
+                                "Nusa Tenggara Timur",
+                                  74
+                              ]
+                          ]
+                      },
+                      {
+                          name: "Sumatera",
+                          id: "Sumatera",
+                          data: [
+                              [
+                                  "Bangka Belitung",
+                                  67
+                              ],
+                              [
+                                  "Bengkulu",
+                                  62
+                              ],
+                              [
+                                  "Jambi",
+                                  58
+                              ],
+                              [
+                                  "Kepulauan Riau",
+                                  89
+                              ],
+                              [
+                                  "Riau",
+                                  85
+                              ],
+                              [
+                                  "Lampung",
+                                  92
+                              ],
+                              [
+                                  "Nanggroe Aceh Darussalam",
+                                  57
+                              ],
+                              [
+                                  "Sumatera Barat",
+                                  90
+                              ],
+                              [
+                                  "Sumatera Selatan",
+                                  61
+                              ],
+                              [
+                                  "Sumatera Utara",
+                                  65
+                              ]
+                          ]
+                      },
+                      {
+                          name: "Sulawesi",
+                          id: "Sulawesi",
+                          data: [
+                              [
+                                  "Gorontalo",
+                                  102
+                              ],
+                              [
+                                  "Maluku",
+                                  44
+                              ],
+                              [
+                                  "Maluku Utara",
+                                  42
+                              ],
+                              [
+                                  "Sulawesi Barat",
+                                  100
+                              ],
+                              [
+                                  "Sulawesi Selatan",
+                                  57
+                              ],
+                              [
+                                  "Sulawesi Tengah",
+                                  85
+                              ],
+                              [
+                                  "Sulawesi Tenggara",
+                                  64
+                              ],
+                              [
+                                  "Sulawesi Utara",
+                                  89
+                              ]
+                          ]
+                      },
+                      {
+                          name: "Kalimantan",
+                          id: "Kalimantan",
+                          data: [
+                              [
+                                  "Kalimantan Barat",
+                                  89
+                              ],
+                              [
+                                  "Kalimantan Selatan",
+                                  67
+                              ],
+                              [
+                                  "Kalimantan Tengah",
+                                  90
+                              ],
+                              [
+                                  "Kalimantan Timur",
+                                  63
+                              ],
+                              [
+                                  "Kalimantan Utara",
+                                  73
+                              ]
+                          ]
+                      },
+                      {
+                          name: "Papua",
+                          id: "Papua",
+                          data: [
+                              [
+                                  "Papua",
+                                  40
+                              ],
+                              [
+                                  "Papua Barat",
+                                  46
+                              ]
+                          ]
+                      }
+                  ]
+              }
+          });
+
+  </script>
+
     </body>       
 </html>
